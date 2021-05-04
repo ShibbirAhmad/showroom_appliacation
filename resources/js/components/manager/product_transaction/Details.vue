@@ -35,7 +35,7 @@
 
                             </td>
                             <td>
-                              {{ item.product.name}}
+                              {{ item.product.name}} - {{ item.product.product_code }}
                             </td>
                             <td>
                               <img v-if="item.product.product_image.length>0" :src="base_url+item.product.product_image[0].product_image" style="width:60px;height:50px;">

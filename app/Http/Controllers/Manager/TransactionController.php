@@ -48,6 +48,12 @@ class TransactionController extends Controller
            foreach ($transaction_items as $item) {
                $isExistProduct=ShowroomProduct::where('showroom_id',$transaction->showroom->id)->where('product_id',$item->product_id)->first();
                if ($isExistProduct) {
+                  //if stock has more than 0 then current purcahse will be those average purchase price ??
+                  $number_of_p=ProductTransferItem::where('product_id',$isExistProduct->product_id)->count();
+                  $total_p_price=ProductTransferItem::where('product_id',$isExistProduct->product_id)->sum('purchase_price');
+                  $avarage_p_price=$total_p_price / $number_of_p ;
+                  $isExistProduct->purchase_price=$avarage_p_price ;
+                  $isExistProduct->sale_price=$item->sale_price ;
                   $isExistProduct->stock=$isExistProduct->stock + $item->quantity ;
                   $isExistProduct->save();
                } else {

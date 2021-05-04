@@ -534,6 +534,8 @@ var render = function() {
                                 _vm._v(
                                   "\n                            " +
                                     _vm._s(item.product.name) +
+                                    " - " +
+                                    _vm._s(item.product.product_code) +
                                     "\n                          "
                                 )
                               ]),
