@@ -31,36 +31,17 @@
           </ul>
         </li>
 
-
         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-list-alt"></i> <span>products</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li>   <router-link :to="{ name : 'manager_product_add'}"><i class="fa fa-plus "></i> Add </router-link></li>
-            <li>   <router-link :to="{ name : 'manager_product_menage'}"><i class="fa fa-list "></i> Menage </router-link></li>
-          </ul>
+             <router-link :to="{ name : 'showroom_products'}"><i class="fa fa-list "> </i> Products </router-link>
         </li>
 
-
         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-exchange"></i> <span>products transaction</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li>   <router-link :to="{ name : 'product_transaction'}"><i class="fa fa-list "></i> Menage </router-link></li>
-          </ul>
+         <router-link :to="{ name : 'product_transaction'}"> <i class="fa fa-exchange"></i> Products Transaction </router-link>
         </li>
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-cogs"></i> <span> profile</span>
+            <i class="fa fa-cogs"></i> <span>Setting</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

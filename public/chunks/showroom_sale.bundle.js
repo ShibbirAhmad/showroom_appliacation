@@ -363,32 +363,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -396,19 +370,18 @@ __webpack_require__.r(__webpack_exports__);
     navbar: _Navbar__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   created: function created() {
-    this.ordersList();
-    this.others();
+    this.salesList();
   },
   data: function data() {
     return {
-      orders: {},
+      sales: {},
       loading: true,
       item: "10",
       courier: {
-        order_id: "",
+        sale_id: "",
         courier_id: "",
         memo_no: "",
-        order_index: ""
+        sale_index: ""
       },
       couriers: "",
       comments: "",
@@ -425,41 +398,40 @@ __webpack_require__.r(__webpack_exports__);
       page: 1,
       selected: false,
       //for biblk action
-      select_order_id: [],
+      select_sale_id: [],
       bulk_status: "all",
       //heading in table
-      heading: "All Order",
+      heading: "All sale",
       bulkActionType: "0",
-      //for filtaring order
+      //for filtaring sale
       courier_id: ""
     };
   },
   methods: {
-    //get order list
-    ordersList: function ordersList() {
+    //get sale list
+    salesList: function salesList() {
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       //start progress bar
       this.$Progress.start();
-      axios.get("/orders?page=" + page, {
+      axios.get("/api/showroom/sales/list?page=" + page, {
         params: {
           //send data
           status: this.status,
           item: this.item,
           type: this.type,
           start_date: this.start_date,
-          end_date: this.end_date,
-          courier_id: this.courier_id
+          end_date: this.end_date
         }
       }).then(function (resp) {
-        // console.log(resp);
-        //finish progress bar after resp
+        console.log(resp);
+
         _this.$Progress.finish(); //only success resp
 
 
         if (resp.data.status == "SUCCESS") {
-          _this.orders = resp.data.orders;
+          _this.sales = resp.data.sales;
           _this.loading = false;
           _this.page = _this.page + 1;
           _this.loading = false;
@@ -471,264 +443,33 @@ __webpack_require__.r(__webpack_exports__);
               duration: 5000
             });
           }
-      })["catch"](function (error) {
-        //finish progress bar after resp
-        _this.$Progress.finish();
-
-        _this.$toasted.show("some thing want to wrong", {
-          type: "error",
-          position: "top-center",
-          duration: 4000
-        });
       });
     },
-    //initail others method for get courier list
-    others: function others() {
+    pending: function pending(sale, index) {
       var _this2 = this;
 
-      axios.get("/others").then(function (resp) {
-        //only success resp
-        console.log(resp);
-
-        if (resp.data.status == "SUCCESS") {
-          _this2.couriers = resp.data.couriers;
-          _this2.comments = resp.data.comments;
-        }
-      });
-    },
-    //initial method for order approved
-    approved: function approved(order, index) {
-      var _this3 = this;
-
-      /////index initial for update order from orderLit or order arrow.
+      /////index initial for update sale from saleLit or sale arrow.
       //start progress bar
       this.$Progress.start();
-      axios.get("/approved/order/" + order.id).then(function (resp) {
-        //end progress bar after resp
-        _this3.$Progress.finish(); //if resp success then....
-
-
-        if (resp.data.status == "SUCCESS") {
-          _this3.$toasted.show(resp.data.message, {
-            type: "success",
-            position: "top-center",
-            duration: 2000
-          });
-
-          _this3.orders.data[index].status = 3;
-        } //not resp success.....
-        else {
-            _this3.$toasted.show(resp.data, {
-              type: "error",
-              position: "top-center",
-              duration: 5000
-            });
-          }
-      })["catch"](function (error) {
-        //end progress bar after resp
-        _this3.$toasted.show("some thing want to wrong", {
-          type: "error",
-          position: "top-center",
-          duration: 4000
-        });
-      });
-    },
-    //initial method for order cancel
-    cancel: function cancel(order, index) {
-      var _this4 = this;
-
-      /////index initial for update order from orderLit or order arrow.
-      //start progress bar
-      this.$Progress.start();
-      axios.get("/cancel/order/" + order.id).then(function (resp) {
-        //end progress bar after resp
-        _this4.$Progress.finish(); //only success resp .......
-
-
-        if (resp.data.status == "SUCCESS") {
-          _this4.$toasted.show(resp.data.message, {
-            type: "success",
-            position: "top-center",
-            duration: 2000
-          });
-
-          _this4.orders.data[index].status = 6;
-        } //for any kind of error resp .......
-        else {
-            _this4.$toasted.show("some thing want to wrong", {
-              type: "error",
-              position: "top-center",
-              duration: 2000
-            });
-          }
-      })["catch"](function (error) {
-        //end progress bar after resp
-        _this4.$toasted.show("some thing want to wrong", {
-          type: "error",
-          position: "top-center",
-          duration: 4000
-        });
-      });
-    },
-    //initial method for order return
-    returnOrder: function returnOrder(order, index) {
-      var _this5 = this;
-
-      /////index initial for update order from orderLit or order arrow.
-      //start progress bar
-      this.$Progress.start();
-      axios.get("/return/order/" + order.id).then(function (resp) {
+      axios.get("/pending/sale/" + sale.id).then(function (resp) {
         console.log(resp); //end progress bar after resp
 
-        _this5.$Progress.finish(); //only success resp .......
+        _this2.$Progress.finish(); //only success resp .......
 
 
         if (resp.data.status == "SUCCESS") {
-          _this5.$toasted.show(resp.data.message, {
+          _this2.$toasted.show(resp.data.message, {
             type: "success",
             position: "top-center",
             duration: 2000
           });
 
-          _this5.orders.data[index].status = 7;
-        } //for any kind off error resp
-        else {
-            _this5.$toasted.show("some thing want to wrong", {
-              type: "error",
-              position: "top-center",
-              duration: 2000
-            });
-          }
-      })["catch"](function (error) {
-        console.log(error);
-
-        _this5.$toasted.show("some thing want to wrong", {
-          type: "error",
-          position: "top-center",
-          duration: 4000
-        });
-      });
-    },
-    delivered: function delivered(order, index) {
-      var _this6 = this;
-
-      Swal.fire({
-        title: 'CHECK IT',
-        html: "\n\n            <div class=\"form-group\">\n              <label>Credit Amount</label>\n              <input class=\"form-control\" readonly value=\"".concat(parseInt(order.total) - parseInt(order.paid) - parseInt(order.discount) + parseInt(order.shipping_cost), "\">\n            </div>\n\n              <div class=\"form-group\">\n              <label>Credit In</label>\n              <select class=\"form-control\" id=\"credit_id\">\n                <option value=\"Cash\">Cash</option>\n                <option value=\"Bkash(personal)\">Bkash(personal)</option>\n                <option value=\"Bkash(merchant)\">Bkash(merchant)</option>\n                <option value=\"Bank\">Bank</option>\n              </select>\n            </div>\n\n        ")
-      }).then(function (result) {
-        if (result.value) {
-          var credit_in = document.getElementById('credit_id').value;
-
-          _this6.$Progress.start();
-
-          axios.get("/delivered/order/" + order.id, {
-            params: {
-              credit_in: credit_in
-            }
-          }).then(function (resp) {
-            console.log(resp); //end progress bar after resp
-
-            _this6.$Progress.finish(); //only success resp .......
-
-
-            if (resp.data.status == "SUCCESS") {
-              _this6.$toasted.show(resp.data.message, {
-                type: "success",
-                position: "top-center",
-                duration: 2000
-              });
-
-              _this6.orders.data[index].status = 5;
-            } //any kind of error resp
-            else {
-                _this6.$toasted.show(resp.data, {
-                  type: "error",
-                  position: "top-center",
-                  duration: 2000
-                });
-              }
-          })["catch"](function (error) {
-            console.log(error);
-
-            _this6.$toasted.show("some thing want to wrong", {
-              type: "error",
-              position: "top-center",
-              duration: 4000
-            });
-          });
-          console.log(credit_in);
-        } else {
-          console.log('jhgj');
-        }
-      });
-      console.log(order); ///index initial for update order from orderLit or order arrow.
-      //start progress bar
-    },
-    shipment: function shipment(order, index) {
-      var _this7 = this;
-
-      /////index initial for update order from orderLit or order arrow.
-      //start progress bar
-      this.$Progress.start();
-      axios.get("/shipment/order/" + order.id).then(function (resp) {
-        console.log(resp); //end progress bar after resp
-
-        _this7.$Progress.finish(); //only success resp .......
-
-
-        if (resp.data.status == "SUCCESS") {
-          _this7.$toasted.show(resp.data.message, {
-            type: "success",
-            position: "top-center",
-            duration: 2000
-          });
-
-          _this7.orders.data[index].status = 4;
-        } //any kind of error resp
-        else {
-            _this7.$Progress.finish();
-
-            _this7.$toasted.show("some thing want to wrong", {
-              type: "error",
-              position: "top-center",
-              duration: 2000
-            });
-          }
-      })["catch"](function (error) {
-        console.log(error);
-
-        _this7.$toasted.show("some thing want to wrong", {
-          type: "error",
-          position: "top-center",
-          duration: 4000
-        });
-      });
-    },
-    pending: function pending(order, index) {
-      var _this8 = this;
-
-      /////index initial for update order from orderLit or order arrow.
-      //start progress bar
-      this.$Progress.start();
-      axios.get("/pending/order/" + order.id).then(function (resp) {
-        console.log(resp); //end progress bar after resp
-
-        _this8.$Progress.finish(); //only success resp .......
-
-
-        if (resp.data.status == "SUCCESS") {
-          _this8.$toasted.show(resp.data.message, {
-            type: "success",
-            position: "top-center",
-            duration: 2000
-          });
-
-          _this8.orders.data[index].status = 2;
+          _this2.sales.data[index].status = 2;
         } //any kibd off error resp
         else {
-            _this8.$Progress.finish();
+            _this2.$Progress.finish();
 
-            _this8.$toasted.show("some thing want to wrong", {
+            _this2.$toasted.show("some thing want to wrong", {
               type: "error",
               position: "top-center",
               duration: 2000
@@ -737,75 +478,16 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
 
-        _this8.$toasted.show("some thing want to wrong", {
+        _this2.$toasted.show("some thing want to wrong", {
           type: "error",
           position: "top-center",
           duration: 4000
         });
       });
     },
-    //method open for open courier modal
-    courierModal: function courierModal(order, index) {
-      //set courier list first
-      this.others(); //set courier -> order id
-
-      this.courier.order_id = order.id; // get courier from couerir order list by the index number
-
-      this.courier.order_index = index;
-
-      if (order.courier_id) {
-        //console.log(order.courier_id)
-        this.courier.courier_id = order.courier_id;
-      } //after set all data, open courier modal .........
-
-
-      this.$modal.show("example");
-    },
-    OrderCourier: function OrderCourier() {
-      var _this9 = this;
-
-      //start the progress bar
-      this.$Progress.start();
-      var order_index = this.courier.order_index;
-      axios.post("/order/courier/update/" + this.courier.order_id, {
-        courier_id: this.courier.courier_id,
-        memo_no: this.courier.memo_no
-      }).then(function (resp) {
-        //end progressbar after resp...........
-        _this9.$Progress.finish();
-
-        if (resp.data.status == "SUCCESS") {
-          _this9.$modal.hide("example");
-
-          console.log(resp.data.courier);
-
-          if (resp.data.order.courier_id) {
-            _this9.orders.data[order_index].courier_id = resp.data.order.courier_id;
-          }
-
-          if (resp.data.order.memo_no) {
-            _this9.orders.data[order_index].memo_no = resp.data.order.memo_no;
-          }
-
-          if (resp.data.courier) {
-            _this9.orders.data[order_index].courier = resp.data.courier;
-          }
-
-          _this9.courier.courier_id = "";
-          _this9.courier.memo_no = "", _this9.$toasted.show(resp.data.message, {
-            type: "success",
-            position: "top-center",
-            duration: 2000
-          });
-        }
-      })["catch"](function (error) {
-        console.log(error);
-        alert("some thing want wrong");
-      });
-    },
-    //method initial for order search
-    orderSearch: function orderSearch() {
-      var _this10 = this;
+    //method initial for sale search
+    salesearch: function salesearch() {
+      var _this3 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
@@ -814,26 +496,26 @@ __webpack_require__.r(__webpack_exports__);
         //show loader
         this.loading = true; //fetch data
 
-        axios.get("/order/search/" + this.search + "?page=" + page).then(function (resp) {
+        axios.get("/sale/search/" + this.search + "?page=" + page).then(function (resp) {
           //if success resp
           if (resp.data.status == "SUCCESS") {
-            _this10.orders = resp.data.orders;
-            _this10.loading = false;
+            _this3.sales = resp.data.sales;
+            _this3.loading = false;
           }
         }) //for any kind of error
         ["catch"](function (error) {
           console.log(error);
           alert("some thing want wrong");
         });
-      } //if search lenght smaller then 2, then excute orderist method .......
+      } //if search lenght smaller then 2, then excute saleist method .......
       else {
           this.loading = false;
-          this.ordersList();
+          this.salesList();
         }
     },
-    //method initial for filter order, data to date, and single data......
-    filterOrder: function filterOrder() {
-      var _this11 = this;
+    //method initial for filter sale, data to date, and single data......
+    filtersale: function filtersale() {
+      var _this4 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       //start progressbar
@@ -841,7 +523,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true; //fetch data
 
-      axios.get("/order/filter?page=" + page, {
+      axios.get("/sale/filter?page=" + page, {
         //send data
         params: {
           start_date: this.start_date,
@@ -851,19 +533,19 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (resp) {
         //only success resp ........
-        _this11.$Progress.finish();
+        _this4.$Progress.finish();
 
-        _this11.loading = false;
+        _this4.loading = false;
 
         if (resp.data.status == "SUCCESS") {
-          _this11.orders = resp.data.orders;
-          _this11.loading = false;
+          _this4.sales = resp.data.sales;
+          _this4.loading = false;
         }
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    //method initial for rest all data, or order arrow
+    //method initial for rest all data, or sale arrow
     resetAll: function resetAll() {
       location.reload();
     },
@@ -889,21 +571,21 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           checkBoxClass[i].checked = false;
         }
-      } //at last push order id in selected_order_id arrow....
+      } //at last push sale id in selected_sale_id arrow....
       //and agin check selected true or false.....
 
 
       if (this.selected == true) {
-        for (var _i = 0; _i < this.orders.data.length; _i++) {
-          this.select_order_id.push(this.orders.data[_i].id);
+        for (var _i = 0; _i < this.sales.data.length; _i++) {
+          this.select_sale_id.push(this.sales.data[_i].id);
         }
       } else {
-        this.select_order_id = [];
+        this.select_sale_id = [];
       }
     },
     //method inital for a bulk action
     selectBulkAction: function selectBulkAction() {
-      if (this.select_order_id.length <= 0) {
+      if (this.select_sale_id.length <= 0) {
         Swal.fire({
           type: "warning",
           text: "Please select at least one row"
@@ -914,84 +596,22 @@ __webpack_require__.r(__webpack_exports__);
       var action_type = this.bulkActionType;
 
       if (action_type == "LABEL PRINT") {
-        window.open("/order/label/print/" + this.select_order_id, "_blank");
+        window.open("/sale/label/print/" + this.select_sale_id, "_blank");
       }
 
       if (action_type == "INVOICE PRINT") {
-        window.open("/order/invoice/print/" + this.select_order_id, "_blank");
+        window.open("/sale/invoice/print/" + this.select_sale_id, "_blank");
       }
 
       if (action_type == 'EXPORT SELECT ITEM') {
-        // alert('export select order');
-        window.open('/export/selected/item/' + this.select_order_id, '_blank');
+        // alert('export select sale');
+        window.open('/export/selected/item/' + this.select_sale_id, '_blank');
       }
     },
     labelPrint: function labelPrint() {
       window.open("", "_self", "width=600,height=600");
     },
-    comment: function comment(order_id, order_index, _comment) {
-      var _this12 = this;
-
-      console.log(_comment);
-      var options = {};
-      this.comments.forEach(function (element) {
-        options[element.name] = element.name;
-      });
-      var sSelect = document.getElementsByClassName("swal2-select");
-      Swal.fire({
-        title: _comment ? _comment : "Select a comment",
-        input: "select",
-        inputOptions: options,
-        inputPlaceholder: "Select or change a comment",
-        showCancelButton: true
-      }).then(function (result) {
-        if (result.value == "others") {
-          Swal.fire({
-            input: "text"
-          }).then(function (other) {
-            if (other.value) {
-              axios.get("/api/order/comment", {
-                params: {
-                  order_id: order_id,
-                  comment: other.value
-                }
-              }).then(function (resp) {
-                console.log(resp);
-
-                if (resp.data.status == "OK") {
-                  location.reload();
-
-                  _this12.$toasted.show(resp.data.message, {
-                    type: "success",
-                    duration: 4000,
-                    position: "top-center"
-                  });
-                }
-              })["catch"](function (e) {
-                // console.log
-                console.log(e); // console.log(e);
-              });
-            }
-          });
-        }
-
-        if (result.value) {
-          axios.get("/api/order/comment", {
-            params: {
-              order_id: order_id,
-              comment: result.value
-            }
-          }).then(function (resp) {
-            console.log(resp);
-          })["catch"](function (e) {
-            console.log(e);
-          });
-        } else {
-          console.log("Ok");
-        }
-      });
-    },
-    exportOrder: function exportOrder() {
+    exportsale: function exportsale() {
       if (!this.courier_id) {
         alert('please select a specific courier');
         return;
@@ -1002,44 +622,44 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      window.open('/order/export/' + this.status + '/' + this.courier_id);
+      window.open('/sale/export/' + this.status + '/' + this.courier_id);
     }
   },
   watch: {
     status: function status(value) {
       if (value == 1) {
-        this.heading = "New Orders";
+        this.heading = "New sales";
       } else if (value == 2) {
-        this.heading = "Pending Orders";
+        this.heading = "Pending sales";
       } else if (value == 3) {
-        this.heading = "Approved Orders";
+        this.heading = "Approved sales";
       } else if (value == 4) {
-        this.heading = "Shipment Orders";
+        this.heading = "Shipment sales";
       } else if (value == 5) {
-        this.heading = "Delivered Orders";
+        this.heading = "Delivered sales";
       } else if (value == 7) {
-        this.heading = "Return Orders";
+        this.heading = "Return sales";
       } else if (value == 6) {
-        this.heading = "Cancel Orders";
+        this.heading = "Cancel sales";
       } else {
-        this.heading = "All Orders";
+        this.heading = "All sales";
       }
     },
     start_date: function start_date(value) {
       if (value.length > 1) {
-        this.ordersList();
+        this.salesList();
       }
     },
     end_date: function end_date(value) {
       if (value.length > 1) {
-        this.ordersList();
+        this.salesList();
       }
     },
     bulkActionType: function bulkActionType(value) {
       this.selectBulkAction();
     },
     courier_id: function courier_id(value) {
-      this.ordersList();
+      this.salesList();
     }
   }
 });
@@ -1058,7 +678,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.orders-heading {\r\n  text-align: center;\r\n  text-transform: uppercase;\r\n  border-bottom: 2px solid #000;\r\n  margin-bottom: 10px;\n}\r\n", ""]);
+exports.push([module.i, "\n.sales-heading {\r\n  text-align: center;\r\n  text-transform: uppercase;\r\n  border-bottom: 2px solid #000;\r\n  margin-bottom: 10px;\n}\r\n", ""]);
 
 // exports
 
@@ -1288,7 +908,7 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-success",
-                  attrs: { to: { name: "NewOrder" } }
+                  attrs: { to: { name: "Newsale" } }
                 },
                 [_vm._v("Today")]
               ),
@@ -1297,16 +917,25 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-success",
-                  attrs: { to: { name: "WholeSaleOrder" } }
+                  attrs: { to: { name: "WholeSalesale" } }
                 },
-                [_vm._v("wholesale")]
+                [_vm._v("Retail Sale ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-sm btn-success",
+                  attrs: { to: { name: "WholeSalesale" } }
+                },
+                [_vm._v("Whole Sale ")]
               ),
               _vm._v(" "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-success active",
-                  attrs: { to: { name: "order" } }
+                  attrs: { to: { name: "sale" } }
                 },
                 [_vm._v("All")]
               )
@@ -1322,7 +951,7 @@ var render = function() {
             _c("div", { staticClass: "row justify-content-center" }, [
               _c("div", { staticClass: "col-lg-10" }, [
                 _c("div", { staticClass: "box box-primary" }, [
-                  _c("div", { staticClass: "box-header with-border" }, [
+                  _c("div", { staticClass: "box-header with-bsale" }, [
                     _c(
                       "div",
                       {
@@ -1393,7 +1022,7 @@ var render = function() {
                           "div",
                           {
                             staticClass:
-                              "col-lg-4 col-lg-offset-1 orders-heading"
+                              "col-lg-4 col-lg-offset-1 sales-heading"
                           },
                           [
                             _c("h3", { staticClass: "box-title" }, [
@@ -1405,63 +1034,6 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-2" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.type,
-                                expression: "type"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            on: {
-                              change: [
-                                function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.type = $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                },
-                                _vm.ordersList
-                              ]
-                            }
-                          },
-                          [
-                            _c("option", { attrs: { value: "all" } }, [
-                              _vm._v("All type")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v("Onely Admin")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v("Only Customer")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "3" } }, [
-                              _vm._v("Whole Sale")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "4" } }, [
-                              _vm._v("Only Reseller")
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
                       _c("div", { staticClass: "col-lg-2" }, [
                         _c(
                           "select",
@@ -1491,7 +1063,7 @@ var render = function() {
                                     ? $$selectedVal
                                     : $$selectedVal[0]
                                 },
-                                _vm.ordersList
+                                _vm.salesList
                               ]
                             }
                           },
@@ -1502,22 +1074,6 @@ var render = function() {
                             _vm._v(" "),
                             _c("option", { attrs: { value: "1" } }, [
                               _vm._v("New")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v("Pending")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "3" } }, [
-                              _vm._v("Approved")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "4" } }, [
-                              _vm._v("Shipment")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "5" } }, [
-                              _vm._v("Delivired")
                             ]),
                             _vm._v(" "),
                             _c("option", { attrs: { value: "7" } }, [
@@ -1545,7 +1101,7 @@ var render = function() {
                           attrs: { placeholder: "Enter Invoice,Cutomer_phone" },
                           domProps: { value: _vm.search },
                           on: {
-                            keyup: _vm.orderSearch,
+                            keyup: _vm.salesearch,
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
@@ -1563,7 +1119,7 @@ var render = function() {
                             on: {
                               submit: function($event) {
                                 $event.preventDefault()
-                                return _vm.filterOrder($event)
+                                return _vm.filtersale($event)
                               }
                             }
                           },
@@ -1665,7 +1221,7 @@ var render = function() {
                                         ? $$selectedVal
                                         : $$selectedVal[0]
                                     },
-                                    _vm.filterOrder
+                                    _vm.filtersale
                                   ]
                                 }
                               },
@@ -1713,7 +1269,7 @@ var render = function() {
                                         ? $$selectedVal
                                         : $$selectedVal[0]
                                     },
-                                    _vm.ordersList
+                                    _vm.salesList
                                   ]
                                 }
                               },
@@ -1736,194 +1292,205 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "box-body" }, [
-                    _c("table", { staticClass: "table" }, [
-                      _c("thead", [
-                        _c("tr", [
-                          _c("th", { attrs: { scope: "col" } }, [
-                            _c("input", {
-                              attrs: { type: "checkbox" },
-                              on: { click: _vm.selectAll }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("th", { attrs: { scope: "col" } }, [
-                            _vm._v("customer_name")
-                          ]),
-                          _vm._v(" "),
-                          _c("th", { attrs: { scope: "col" } }, [
-                            _vm._v("C_phone")
-                          ]),
-                          _vm._v(" "),
-                          _c("th", { attrs: { scope: "col" } }, [
-                            _vm._v("C_address")
-                          ]),
-                          _vm._v(" "),
-                          _c("th", { attrs: { scope: "col" } }, [
-                            _vm._v("Invoice")
-                          ]),
-                          _vm._v(" "),
-                          _c("th", { attrs: { scope: "col" } }, [
-                            _vm._v("Total")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "th",
-                            {
-                              staticStyle: { width: "2%" },
-                              attrs: { scope: "col" }
-                            },
-                            [_vm._v("Order_place")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Order_date")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Action")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        [
-                          _vm.loading
-                            ? _c("h1", [
-                                _c("i", {
-                                  staticClass: "fa fa-spin fa-spinner"
-                                })
-                              ])
-                            : _vm._l(_vm.orders.data, function(order, index) {
-                                return _c("tr", { key: index }, [
-                                  _c("td", { staticStyle: { width: "1%" } }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.select_order_id,
-                                          expression: "select_order_id"
-                                        }
-                                      ],
-                                      staticClass: "select-all",
-                                      attrs: { type: "checkbox" },
-                                      domProps: {
-                                        value: order.id,
-                                        checked: Array.isArray(
-                                          _vm.select_order_id
-                                        )
-                                          ? _vm._i(
-                                              _vm.select_order_id,
-                                              order.id
-                                            ) > -1
-                                          : _vm.select_order_id
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          var $$a = _vm.select_order_id,
-                                            $$el = $event.target,
-                                            $$c = $$el.checked ? true : false
-                                          if (Array.isArray($$a)) {
-                                            var $$v = order.id,
-                                              $$i = _vm._i($$a, $$v)
-                                            if ($$el.checked) {
-                                              $$i < 0 &&
-                                                (_vm.select_order_id = $$a.concat(
-                                                  [$$v]
-                                                ))
+                    _c(
+                      "table",
+                      {
+                        staticClass:
+                          "table table-striped table-hover table-bordered"
+                      },
+                      [
+                        _c("thead", [
+                          _c("tr", [
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _c("input", {
+                                attrs: { type: "checkbox" },
+                                on: { click: _vm.selectAll }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("customer_name")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("C_phone")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("C_address")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("Invoice")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("Total")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("sale_date")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Action")])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          [
+                            _vm.loading
+                              ? _c("h1", [
+                                  _c("i", {
+                                    staticClass: "fa fa-spin fa-spinner"
+                                  })
+                                ])
+                              : _vm._l(_vm.sales.data, function(sale, index) {
+                                  return _c("tr", { key: index }, [
+                                    _c("td", { staticStyle: { width: "1%" } }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.select_sale_id,
+                                            expression: "select_sale_id"
+                                          }
+                                        ],
+                                        staticClass: "select-all",
+                                        attrs: { type: "checkbox" },
+                                        domProps: {
+                                          value: sale.id,
+                                          checked: Array.isArray(
+                                            _vm.select_sale_id
+                                          )
+                                            ? _vm._i(
+                                                _vm.select_sale_id,
+                                                sale.id
+                                              ) > -1
+                                            : _vm.select_sale_id
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.select_sale_id,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = sale.id,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.select_sale_id = $$a.concat(
+                                                    [$$v]
+                                                  ))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.select_sale_id = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
                                             } else {
-                                              $$i > -1 &&
-                                                (_vm.select_order_id = $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1)))
+                                              _vm.select_sale_id = $$c
                                             }
-                                          } else {
-                                            _vm.select_order_id = $$c
                                           }
                                         }
-                                      }
-                                    })
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "three-percent" }, [
-                                    _vm._v(
-                                      "\n                        " +
-                                        _vm._s(
-                                          order.customer
-                                            ? order.customer.name
-                                            : ""
-                                        ) +
-                                        "\n                      "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "three-percent" }, [
-                                    _vm._v(
-                                      "\n                        " +
-                                        _vm._s(order.cutomer_phone) +
-                                        "\n                      "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "three-percent" }, [
-                                    _vm._v(
-                                      "\n                        " +
-                                        _vm._s(
-                                          order.customer
-                                            ? order.customer.address
-                                            : ""
-                                        ) +
-                                        "\n                      "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "two-percent" }, [
-                                    _vm._v(_vm._s(order.invoice_no))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "two-percent" }, [
-                                    _c("b", [
+                                      })
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                        " +
+                                          _vm._s(sale.customer_name) +
+                                          "\n                      "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                        " +
+                                          _vm._s(sale.customer_phone) +
+                                          "\n                      "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                        " +
+                                          _vm._s(
+                                            sale.customer
+                                              ? sale.customer.address
+                                              : ""
+                                          ) +
+                                          "\n                      "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(sale.invoice_no))]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                         Total: "
+                                      ),
                                       _c("strong", [
                                         _vm._v(
-                                          "\n                            Total:\n                            " +
-                                            _vm._s(
-                                              parseInt(order.total) -
-                                                parseInt(order.discount) +
-                                                parseInt(order.shipping_cost)
-                                            ) +
-                                            "\n                          "
+                                          " " +
+                                            _vm._s(parseInt(sale.total)) +
+                                            "  "
                                         )
                                       ]),
-                                      _vm._v(" "),
+                                      _vm._v("  ৳ "),
+                                      _c("br"),
+                                      _vm._v("\n                          P: "),
                                       _c("strong", [
                                         _vm._v(
-                                          " P: " +
-                                            _vm._s(parseInt(order.paid)) +
+                                          " " +
+                                            _vm._s(parseInt(sale.paid)) +
+                                            "  "
+                                        )
+                                      ]),
+                                      _vm._v(
+                                        " ৳\n                          D:  "
+                                      ),
+                                      _c("strong", [
+                                        _vm._v(
+                                          "  " +
+                                            _vm._s(parseInt(sale.due_amount)) +
                                             " "
                                         )
                                       ]),
-                                      _vm._v(" "),
-                                      _c("strong", [
-                                        _vm._v(
-                                          "\n                            D:\n                            " +
-                                            _vm._s(
-                                              parseInt(order.total) -
-                                                (parseInt(order.discount) +
-                                                  parseInt(order.paid)) +
-                                                parseInt(order.shipping_cost)
-                                            ) +
-                                            "\n                          "
+                                      _vm._v("  ৳\n                      ")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(sale.created_at))]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass: "btn ",
+                                            attrs: {
+                                              to: {
+                                                name: "showroom_sale_view",
+                                                params: { id: sale.id }
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-lg fa-eye"
+                                            })
+                                          ]
                                         )
-                                      ])
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "two-percent" }, [
-                                    _vm._v(_vm._s(order.created_at))
+                                      ],
+                                      1
+                                    )
                                   ])
-                                ])
-                              })
-                        ],
-                        2
-                      )
-                    ])
+                                })
+                          ],
+                          2
+                        )
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "box-footer" }, [
@@ -1933,8 +1500,8 @@ var render = function() {
                         { staticClass: "col-lg-6" },
                         [
                           _c("pagination", {
-                            attrs: { data: _vm.orders, limit: 5 },
-                            on: { "pagination-change-page": _vm.ordersList }
+                            attrs: { data: _vm.sales, limit: 5 },
+                            on: { "pagination-change-page": _vm.salesList }
                           })
                         ],
                         1
@@ -1954,11 +1521,11 @@ var render = function() {
                             _vm._v(
                               "\n                      Showing\n                      "
                             ),
-                            _c("strong", [_vm._v(_vm._s(_vm.orders.from))]),
+                            _c("strong", [_vm._v(_vm._s(_vm.sales.from))]),
                             _vm._v(" to\n                      "),
-                            _c("strong", [_vm._v(_vm._s(_vm.orders.to))]),
+                            _c("strong", [_vm._v(_vm._s(_vm.sales.to))]),
                             _vm._v(" of total\n                      "),
-                            _c("strong", [_vm._v(_vm._s(_vm.orders.total))]),
+                            _c("strong", [_vm._v(_vm._s(_vm.sales.total))]),
                             _vm._v(" entries\n                    ")
                           ])
                         ]
@@ -1988,7 +1555,7 @@ var staticRenderFns = [
         ])
       ]),
       _vm._v(" "),
-      _c("li", { staticClass: "active" }, [_vm._v("All Order")])
+      _c("li", { staticClass: "active" }, [_vm._v("All sale")])
     ])
   }
 ]

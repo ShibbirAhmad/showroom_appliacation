@@ -7,23 +7,26 @@
           <router-link :to="{ name: 'showroom_sale_add' }" class="btn btn-primary">
             <i class="fa fa-plus"></i>
           </router-link>
-          <router-link :to="{ name: 'NewOrder' }" class="btn btn-sm btn-success"
+          <router-link :to="{ name: 'Newsale' }" class="btn btn-sm btn-success"
             >Today</router-link
           >
-          <router-link :to="{ name: 'WholeSaleOrder' }" class="btn btn-sm btn-success"
-            >wholesale</router-link
+          <router-link :to="{ name: 'WholeSalesale' }" class="btn btn-sm btn-success"
+            >Retail Sale </router-link
+          >
+          <router-link :to="{ name: 'WholeSalesale' }" class="btn btn-sm btn-success"
+            >Whole Sale </router-link
           >
 
-          <router-link :to="{ name: 'order' }" class="btn btn-sm btn-success active"
+          <router-link :to="{ name: 'sale' }" class="btn btn-sm btn-success active"
             >All</router-link
           >
-          <!-- <a @click.prevent="exportOrder" href="#" class="btn btn-sm btn-success">Export</a> -->
+          <!-- <a @click.prevent="exportsale" href="#" class="btn btn-sm btn-success">Export</a> -->
         </h1>
         <ol class="breadcrumb">
           <li>
             <a href="#"> <i class="fa fa-dashboard"></i>Dashboard </a>
           </li>
-          <li class="active">All Order</li>
+          <li class="active">All sale</li>
         </ol>
       </section>
       <section class="content">
@@ -31,7 +34,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <div class="box box-primary">
-                <div class="box-header with-border">
+                <div class="box-header with-bsale">
                   <div class="row" style="margin-bottom: 3px">
                     <div class="col-lg-3">
                       <select name="" id="" v-model="bulkActionType" class="form-control">
@@ -42,28 +45,16 @@
                          <!-- <option value="EXPORT SELECT ITEM">Export Selected</option> -->
                       </select>
                     </div>
-                    <div class="col-lg-4 col-lg-offset-1 orders-heading">
+                    <div class="col-lg-4 col-lg-offset-1 sales-heading">
                       <h3 class="box-title">{{ heading }}</h3>
                     </div>
                   </div>
                   <div class="row">
+
                     <div class="col-lg-2">
-                      <select class="form-control" v-model="type" @change="ordersList">
-                        <option value="all">All type</option>
-                        <option value="2">Onely Admin</option>
-                        <option value="1">Only Customer</option>
-                        <option value="3">Whole Sale</option>
-                        <option value="4">Only Reseller</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-2">
-                      <select class="form-control" v-model="status" @change="ordersList">
+                      <select class="form-control" v-model="status" @change="salesList">
                         <option value="all">All</option>
                         <option value="1">New</option>
-                        <option value="2">Pending</option>
-                        <option value="3">Approved</option>
-                        <option value="4">Shipment</option>
-                        <option value="5">Delivired</option>
                         <option value="7">Retrun</option>
                         <option value="6">Cancel</option>
                       </select>
@@ -71,13 +62,13 @@
                     <div class="col-lg-2">
                       <input
                         class="form-control"
-                        @keyup="orderSearch"
+                        @keyup="salesearch"
                         v-model="search"
                         placeholder="Enter Invoice,Cutomer_phone"
                       />
                     </div>
                     <div class="col-lg-4">
-                      <form @submit.prevent="filterOrder">
+                      <form @submit.prevent="filtersale">
                         <div class="row">
                           <div class="col-lg-4">
                             <date-picker
@@ -95,7 +86,7 @@
                               :config="options"
                             ></date-picker>
                           </div>
-                          
+
                         </div>
                       </form>
                     </div>
@@ -115,7 +106,7 @@
                         class="form-control"
                         v-model="item"
                         v-if="start_date.length > 0"
-                        @change="filterOrder"
+                        @change="filtersale"
                       >
                         <option value="10">10</option>
                         <option value="20">20</option>
@@ -125,7 +116,7 @@
                         class="form-control"
                         v-model="item"
                         v-else
-                        @change="ordersList"
+                        @change="salesList"
                       >
                         <option value="10">10</option>
                         <option value="20">20</option>
@@ -135,7 +126,7 @@
                   </div>
                 </div>
                 <div class="box-body">
-                  <table class="table">
+                  <table class="table table-striped table-hover table-bordered">
                     <thead>
                       <tr>
                         <th scope="col">
@@ -144,12 +135,9 @@
                         <th scope="col">customer_name</th>
                         <th scope="col">C_phone</th>
                         <th scope="col">C_address</th>
-
                         <th scope="col">Invoice</th>
                         <th scope="col">Total</th>
-
-                        <th scope="col" style="width: 2%">Order_place</th>
-                        <th>Order_date</th>
+                        <th>sale_date</th>
 
                         <th>Action</th>
 
@@ -160,49 +148,35 @@
                         <i class="fa fa-spin fa-spinner"></i>
                       </h1>
 
-                      <tr v-else v-for="(order, index) in orders.data" :key="index">
+                      <tr v-else v-for="(sale, index) in sales.data" :key="index">
                         <td style="width: 1%">
                           <input
                             type="checkbox"
                             class="select-all"
-                            v-model="select_order_id"
-                            :value="order.id"
+                            v-model="select_sale_id"
+                            :value="sale.id"
                           />
                         </td>
-                        <td class="three-percent">
-                          {{ order.customer ? order.customer.name : "" }}
+                        <td>
+                          {{  sale.customer_name }}
                         </td>
-                        <td class="three-percent">
-                          {{ order.cutomer_phone }}
+                        <td >
+                          {{ sale.customer_phone }}
                         </td>
-                        <td class="three-percent">
-                          {{ order.customer ? order.customer.address : "" }}
+                        <td >
+                          {{ sale.customer ? sale.customer.address : "" }}
                         </td>
-                        <td class="two-percent">{{ order.invoice_no }}</td>
-                        <td class="two-percent">
-                          <b>
-                            <strong>
-                              Total:
-                              {{
-                                parseInt(order.total) -
-                                parseInt(order.discount) +
-                                parseInt(order.shipping_cost)
-                              }}
-                            </strong>
-                            <strong> P: {{ parseInt(order.paid) }} </strong>
-                            <strong>
-                              D:
-                              {{
-                                parseInt(order.total) -
-                                (parseInt(order.discount) + parseInt(order.paid)) +
-                                parseInt(order.shipping_cost)
-                              }}
-                            </strong>
-                          </b>
+                        <td >{{ sale.invoice_no }}</td>
+                        <td >
+                           Total: <strong> {{ parseInt( sale.total)  }}  </strong>  &#2547; <br>
+                            P: <strong> {{ parseInt(sale.paid) }}  </strong> &#2547;
+                            D:  <strong>  {{ parseInt(sale.due_amount) }} </strong>  &#2547;
                         </td>
 
-                        <td class="two-percent">{{ order.created_at }}</td>
-
+                        <td >{{ sale.created_at }}</td>
+                        <td >
+                          <router-link class="btn " :to="{name:'showroom_sale_view',params:{id:sale.id}}"> <i class="fa fa-lg fa-eye"></i> </router-link>
+                        </td>
 
                       </tr>
                     </tbody>
@@ -212,8 +186,8 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <pagination
-                        :data="orders"
-                        @pagination-change-page="ordersList"
+                        :data="sales"
+                        @pagination-change-page="salesList"
                         :limit="5"
                       ></pagination>
                     </div>
@@ -223,9 +197,9 @@
                     >
                       <p>
                         Showing
-                        <strong>{{ orders.from }}</strong> to
-                        <strong>{{ orders.to }}</strong> of total
-                        <strong>{{ orders.total }}</strong> entries
+                        <strong>{{ sales.from }}</strong> to
+                        <strong>{{ sales.to }}</strong> of total
+                        <strong>{{ sales.total }}</strong> entries
                       </p>
                     </div>
                   </div>
@@ -248,19 +222,19 @@ export default {
   components: { navbar },
 
   created() {
-    this.ordersList();
-    this.others();
+    this.salesList();
+
   },
   data() {
     return {
-      orders: {},
+      sales: {},
       loading: true,
       item: "10",
       courier: {
-        order_id: "",
+        sale_id: "",
         courier_id: "",
         memo_no: "",
-        order_index: "",
+        sale_index: "",
       },
       couriers: "",
       comments: "",
@@ -279,25 +253,25 @@ export default {
       selected: false,
 
       //for biblk action
-      select_order_id: [],
+      select_sale_id: [],
       bulk_status: "all",
 
       //heading in table
-      heading: "All Order",
+      heading: "All sale",
 
       bulkActionType: "0",
 
-      //for filtaring order
+      //for filtaring sale
       courier_id: "",
     };
   },
   methods: {
-    //get order list
-    ordersList(page = 1) {
+    //get sale list
+    salesList(page = 1) {
       //start progress bar
       this.$Progress.start();
       axios
-        .get("/orders?page=" + page, {
+        .get("/api/showroom/sales/list?page=" + page, {
           params: {
             //send data
             status: this.status,
@@ -305,18 +279,15 @@ export default {
             type: this.type,
             start_date: this.start_date,
             end_date: this.end_date,
-            courier_id: this.courier_id,
+
           },
         })
         .then((resp) => {
-          // console.log(resp);
-
-          //finish progress bar after resp
+          console.log(resp);
           this.$Progress.finish();
-
           //only success resp
           if (resp.data.status == "SUCCESS") {
-            this.orders = resp.data.orders;
+            this.sales = resp.data.sales;
             this.loading = false;
             this.page = this.page + 1;
             this.loading = false;
@@ -331,120 +302,18 @@ export default {
             });
           }
         })
-        .catch((error) => {
-          //finish progress bar after resp
-          this.$Progress.finish();
-          this.$toasted.show("some thing want to wrong", {
-            type: "error",
-            position: "top-center",
-            duration: 4000,
-          });
-        });
+
     },
 
-    //initail others method for get courier list
-    others() {
-      axios.get("/others").then((resp) => {
-        //only success resp
-        console.log(resp);
-        if (resp.data.status == "SUCCESS") {
-          this.couriers = resp.data.couriers;
-          this.comments = resp.data.comments;
-        }
-      });
-    },
 
-    //initial method for order approved
-    approved(order, index) {
-      /////index initial for update order from orderLit or order arrow.
+
+    pending(sale, index) {
+      /////index initial for update sale from saleLit or sale arrow.
 
       //start progress bar
       this.$Progress.start();
       axios
-        .get("/approved/order/" + order.id)
-        .then((resp) => {
-          //end progress bar after resp
-          this.$Progress.finish();
-
-          //if resp success then....
-          if (resp.data.status == "SUCCESS") {
-            this.$toasted.show(resp.data.message, {
-              type: "success",
-              position: "top-center",
-              duration: 2000,
-            });
-            this.orders.data[index].status = 3;
-          }
-
-          //not resp success.....
-          else {
-            this.$toasted.show(resp.data, {
-              type: "error",
-              position: "top-center",
-              duration: 5000,
-            });
-          }
-        })
-        .catch((error) => {
-          //end progress bar after resp
-          this.$toasted.show("some thing want to wrong", {
-            type: "error",
-            position: "top-center",
-            duration: 4000,
-          });
-        });
-    },
-
-    //initial method for order cancel
-
-    cancel(order, index) {
-      /////index initial for update order from orderLit or order arrow.
-
-      //start progress bar
-      this.$Progress.start();
-      axios
-        .get("/cancel/order/" + order.id)
-        .then((resp) => {
-          //end progress bar after resp
-          this.$Progress.finish();
-
-          //only success resp .......
-          if (resp.data.status == "SUCCESS") {
-            this.$toasted.show(resp.data.message, {
-              type: "success",
-              position: "top-center",
-              duration: 2000,
-            });
-            this.orders.data[index].status = 6;
-          }
-          //for any kind of error resp .......
-          else {
-            this.$toasted.show("some thing want to wrong", {
-              type: "error",
-              position: "top-center",
-              duration: 2000,
-            });
-          }
-        })
-        .catch((error) => {
-          //end progress bar after resp
-          this.$toasted.show("some thing want to wrong", {
-            type: "error",
-            position: "top-center",
-            duration: 4000,
-          });
-        });
-    },
-
-    //initial method for order return
-
-    returnOrder(order, index) {
-      /////index initial for update order from orderLit or order arrow.
-
-      //start progress bar
-      this.$Progress.start();
-      axios
-        .get("/return/order/" + order.id)
+        .get("/pending/sale/" + sale.id)
         .then((resp) => {
           console.log(resp);
           //end progress bar after resp
@@ -457,166 +326,7 @@ export default {
               position: "top-center",
               duration: 2000,
             });
-            this.orders.data[index].status = 7;
-          }
-          //for any kind off error resp
-          else {
-            this.$toasted.show("some thing want to wrong", {
-              type: "error",
-              position: "top-center",
-              duration: 2000,
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          this.$toasted.show("some thing want to wrong", {
-            type: "error",
-            position: "top-center",
-            duration: 4000,
-          });
-        });
-    },
-
-    delivered(order, index) {
-
-      Swal.fire({
-        title:'CHECK IT',
-        html:`
-
-            <div class="form-group">
-              <label>Credit Amount</label>
-              <input class="form-control" readonly value="${parseInt(order.total)-parseInt(order.paid)-parseInt(order.discount)+parseInt(order.shipping_cost)}">
-            </div>
-
-              <div class="form-group">
-              <label>Credit In</label>
-              <select class="form-control" id="credit_id">
-                <option value="Cash">Cash</option>
-                <option value="Bkash(personal)">Bkash(personal)</option>
-                <option value="Bkash(merchant)">Bkash(merchant)</option>
-                <option value="Bank">Bank</option>
-              </select>
-            </div>
-
-        `
-      }).then(result=>{
-        if(result.value){
-          let credit_in=document.getElementById('credit_id').value;
-
-               this.$Progress.start();
-      axios.get("/delivered/order/" + order.id,{
-        params:{
-          credit_in
-        }
-      })
-        .then((resp) => {
-          console.log(resp);
-          //end progress bar after resp
-          this.$Progress.finish();
-
-          //only success resp .......
-          if (resp.data.status == "SUCCESS") {
-            this.$toasted.show(resp.data.message, {
-              type: "success",
-              position: "top-center",
-              duration: 2000,
-            });
-            this.orders.data[index].status = 5;
-          }
-          //any kind of error resp
-          else {
-            this.$toasted.show(resp.data, {
-              type: "error",
-              position: "top-center",
-              duration: 2000,
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          this.$toasted.show("some thing want to wrong", {
-            type: "error",
-            position: "top-center",
-            duration: 4000,
-          });
-        });
-
-          console.log(credit_in);
-        }else{
-          console.log('jhgj')
-        }
-      })
-
-      console.log(order);
-      ///index initial for update order from orderLit or order arrow.
-
-      //start progress bar
-
-    },
-
-    shipment(order, index) {
-      /////index initial for update order from orderLit or order arrow.
-
-      //start progress bar
-      this.$Progress.start();
-      axios
-        .get("/shipment/order/" + order.id)
-        .then((resp) => {
-          console.log(resp);
-          //end progress bar after resp
-          this.$Progress.finish();
-
-          //only success resp .......
-          if (resp.data.status == "SUCCESS") {
-            this.$toasted.show(resp.data.message, {
-              type: "success",
-              position: "top-center",
-              duration: 2000,
-            });
-            this.orders.data[index].status = 4;
-          }
-          //any kind of error resp
-          else {
-            this.$Progress.finish();
-
-            this.$toasted.show("some thing want to wrong", {
-              type: "error",
-              position: "top-center",
-              duration: 2000,
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          this.$toasted.show("some thing want to wrong", {
-            type: "error",
-            position: "top-center",
-            duration: 4000,
-          });
-        });
-    },
-
-    pending(order, index) {
-      /////index initial for update order from orderLit or order arrow.
-
-      //start progress bar
-      this.$Progress.start();
-      axios
-        .get("/pending/order/" + order.id)
-        .then((resp) => {
-          console.log(resp);
-          //end progress bar after resp
-          this.$Progress.finish();
-
-          //only success resp .......
-          if (resp.data.status == "SUCCESS") {
-            this.$toasted.show(resp.data.message, {
-              type: "success",
-              position: "top-center",
-              duration: 2000,
-            });
-            this.orders.data[index].status = 2;
+            this.sales.data[index].status = 2;
           }
           //any kibd off error resp
           else {
@@ -639,69 +349,8 @@ export default {
         });
     },
 
-    //method open for open courier modal
-
-    courierModal(order, index) {
-      //set courier list first
-      this.others();
-
-      //set courier -> order id
-      this.courier.order_id = order.id;
-
-      // get courier from couerir order list by the index number
-
-      this.courier.order_index = index;
-
-      if (order.courier_id) {
-        //console.log(order.courier_id)
-        this.courier.courier_id = order.courier_id;
-      }
-
-      //after set all data, open courier modal .........
-      this.$modal.show("example");
-    },
-    OrderCourier() {
-      //start the progress bar
-      this.$Progress.start();
-      let order_index = this.courier.order_index;
-      axios
-        .post("/order/courier/update/" + this.courier.order_id, {
-          courier_id: this.courier.courier_id,
-          memo_no: this.courier.memo_no,
-        })
-        .then((resp) => {
-          //end progressbar after resp...........
-          this.$Progress.finish();
-          if (resp.data.status == "SUCCESS") {
-            this.$modal.hide("example");
-            console.log(resp.data.courier);
-
-            if (resp.data.order.courier_id) {
-              this.orders.data[order_index].courier_id = resp.data.order.courier_id;
-            }
-            if (resp.data.order.memo_no) {
-              this.orders.data[order_index].memo_no = resp.data.order.memo_no;
-            }
-            if (resp.data.courier) {
-              this.orders.data[order_index].courier = resp.data.courier;
-            }
-            this.courier.courier_id = "";
-            (this.courier.memo_no = ""),
-              this.$toasted.show(resp.data.message, {
-                type: "success",
-                position: "top-center",
-                duration: 2000,
-              });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          alert("some thing want wrong");
-        });
-    },
-
-    //method initial for order search
-    orderSearch(page = 1) {
+    //method initial for sale search
+    salesearch(page = 1) {
       //if search lenght minimum 2
       if (this.search.length > 1) {
         //show loader
@@ -709,12 +358,11 @@ export default {
 
         //fetch data
         axios
-          .get("/order/search/" + this.search + "?page=" + page)
-
+          .get("/sale/search/" + this.search + "?page=" + page)
           .then((resp) => {
             //if success resp
             if (resp.data.status == "SUCCESS") {
-              this.orders = resp.data.orders;
+              this.sales = resp.data.sales;
               this.loading = false;
             }
           })
@@ -724,15 +372,15 @@ export default {
             alert("some thing want wrong");
           });
       }
-      //if search lenght smaller then 2, then excute orderist method .......
+      //if search lenght smaller then 2, then excute saleist method .......
       else {
         this.loading = false;
-        this.ordersList();
+        this.salesList();
       }
     },
 
-    //method initial for filter order, data to date, and single data......
-    filterOrder(page = 1) {
+    //method initial for filter sale, data to date, and single data......
+    filtersale(page = 1) {
       //start progressbar
       this.$Progress.start();
 
@@ -741,7 +389,7 @@ export default {
 
       //fetch data
       axios
-        .get("/order/filter?page=" + page, {
+        .get("/sale/filter?page=" + page, {
           //send data
           params: {
             start_date: this.start_date,
@@ -755,7 +403,7 @@ export default {
           this.$Progress.finish();
           this.loading = false;
           if (resp.data.status == "SUCCESS") {
-            this.orders = resp.data.orders;
+            this.sales = resp.data.sales;
             this.loading = false;
           }
         })
@@ -764,7 +412,7 @@ export default {
         });
     },
 
-    //method initial for rest all data, or order arrow
+    //method initial for rest all data, or sale arrow
     resetAll() {
       location.reload();
     },
@@ -794,20 +442,20 @@ export default {
         }
       }
 
-      //at last push order id in selected_order_id arrow....
+      //at last push sale id in selected_sale_id arrow....
       //and agin check selected true or false.....
       if (this.selected == true) {
-        for (let i = 0; i < this.orders.data.length; i++) {
-          this.select_order_id.push(this.orders.data[i].id);
+        for (let i = 0; i < this.sales.data.length; i++) {
+          this.select_sale_id.push(this.sales.data[i].id);
         }
       } else {
-        this.select_order_id = [];
+        this.select_sale_id = [];
       }
     },
 
     //method inital for a bulk action
     selectBulkAction() {
-      if (this.select_order_id.length <= 0) {
+      if (this.select_sale_id.length <= 0) {
         Swal.fire({
           type: "warning",
           text: "Please select at least one row",
@@ -816,15 +464,15 @@ export default {
       }
       let action_type = this.bulkActionType;
       if (action_type == "LABEL PRINT") {
-        window.open("/order/label/print/" + this.select_order_id, "_blank");
+        window.open("/sale/label/print/" + this.select_sale_id, "_blank");
       }
       if (action_type == "INVOICE PRINT") {
-        window.open("/order/invoice/print/" + this.select_order_id, "_blank");
+        window.open("/sale/invoice/print/" + this.select_sale_id, "_blank");
       }
 
       if(action_type=='EXPORT SELECT ITEM'){
-       // alert('export select order');
-         window.open('/export/selected/item/'+this.select_order_id,'_blank')
+       // alert('export select sale');
+         window.open('/export/selected/item/'+this.select_sale_id,'_blank')
       }
     },
 
@@ -832,74 +480,8 @@ export default {
       window.open("", "_self", "width=600,height=600");
     },
 
-    comment(order_id, order_index, comment) {
-      console.log(comment);
-      let options = {};
-      this.comments.forEach((element) => {
-        options[element.name] = element.name;
-      });
 
-      let sSelect = document.getElementsByClassName("swal2-select");
-      Swal.fire({
-        title: comment ? comment : "Select a comment",
-        input: "select",
-        inputOptions: options,
-        inputPlaceholder: "Select or change a comment",
-        showCancelButton: true,
-      }).then((result) => {
-        if (result.value == "others") {
-          Swal.fire({
-            input: "text",
-          }).then((other) => {
-            if (other.value) {
-              axios
-                .get("/api/order/comment", {
-                  params: {
-                    order_id,
-                    comment: other.value,
-                  },
-                })
-                .then((resp) => {
-                  console.log(resp);
-                  if (resp.data.status == "OK") {
-                    location.reload();
-                    this.$toasted.show(resp.data.message, {
-                      type: "success",
-                      duration: 4000,
-                      position: "top-center",
-                    });
-                  }
-                })
-                .catch((e) => {
-                  // console.log
-                  console.log(e);
-                  // console.log(e);
-                });
-            }
-          });
-        }
-
-        if (result.value) {
-          axios
-            .get("/api/order/comment", {
-              params: {
-                order_id,
-                comment: result.value,
-              },
-            })
-            .then((resp) => {
-              console.log(resp);
-            })
-            .catch((e) => {
-              console.log(e);
-            });
-        } else {
-          console.log("Ok");
-        }
-      });
-    },
-
-    exportOrder(){
+    exportsale(){
 
 
       if(!this.courier_id){
@@ -915,7 +497,7 @@ export default {
 
       }
 
-     window.open('/order/export/'+this.status+'/'+this.courier_id);
+     window.open('/sale/export/'+this.status+'/'+this.courier_id);
 
     }
   },
@@ -923,46 +505,46 @@ export default {
   watch: {
     status: function (value) {
       if (value == 1) {
-        this.heading = "New Orders";
+        this.heading = "New sales";
       } else if (value == 2) {
-        this.heading = "Pending Orders";
+        this.heading = "Pending sales";
       } else if (value == 3) {
-        this.heading = "Approved Orders";
+        this.heading = "Approved sales";
       } else if (value == 4) {
-        this.heading = "Shipment Orders";
+        this.heading = "Shipment sales";
       } else if (value == 5) {
-        this.heading = "Delivered Orders";
+        this.heading = "Delivered sales";
       } else if (value == 7) {
-        this.heading = "Return Orders";
+        this.heading = "Return sales";
       } else if (value == 6) {
-        this.heading = "Cancel Orders";
+        this.heading = "Cancel sales";
       } else {
-        this.heading = "All Orders";
+        this.heading = "All sales";
       }
     },
 
     start_date: function (value) {
       if (value.length > 1) {
-        this.ordersList();
+        this.salesList();
       }
     },
     end_date: function (value) {
       if (value.length > 1) {
-        this.ordersList();
+        this.salesList();
       }
     },
     bulkActionType: function (value) {
       this.selectBulkAction();
     },
     courier_id: function (value) {
-      this.ordersList();
+      this.salesList();
     },
   },
 };
 </script>
 
 <style>
-.orders-heading {
+.sales-heading {
   text-align: center;
   text-transform: uppercase;
   border-bottom: 2px solid #000;

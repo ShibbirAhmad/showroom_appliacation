@@ -148,13 +148,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_bootstrap_datetimepicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-bootstrap-datetimepicker */ "./node_modules/vue-bootstrap-datetimepicker/dist/vue-bootstrap-datetimepicker.js");
-/* harmony import */ var vue_bootstrap_datetimepicker__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_bootstrap_datetimepicker__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-loading-overlay */ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js");
-/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
-/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Navbar */ "./resources/js/components/manager/Navbar.vue");
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-loading-overlay */ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js");
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Navbar */ "./resources/js/components/manager/Navbar.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -438,8 +453,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_3___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_2___default.a);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MODULE_1__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_1__["HasError"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -447,14 +461,16 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
   data: function data() {
     return {
       form: new vform__WEBPACK_IMPORTED_MODULE_1__["Form"]({
-        customer_mobile: "",
+        customer_phone: "",
         customer_name: "",
         customer_address: "",
+        sale_type: 1,
         products: [],
-        shipping_cost: 0,
         status: 2,
         total: 0,
         discount: 0,
+        discount_type: 'discount type',
+        due: 0,
         paid: 0,
         order_type: 2,
         paid_by: "Bkash(merchant)"
@@ -468,19 +484,18 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
       product_variants: null,
       product_quantity: 1,
       errors: [],
-      suggested_products: {},
       product_per_page: 10,
       base_link: this.$store.state.image_base_link
     };
   },
   //method initial for submit data
   methods: {
-    add: function add() {
+    addSale: function addSale() {
       var _this = this;
 
       //start progress bar when submit fomr
       this.$Progress.start();
-      this.form.post("/create/order").then(function (resp) {
+      this.form.post("/api/showroom/sale/add").then(function (resp) {
         console.log(resp);
 
         if (resp.data.status == "SUCCESS") {
@@ -488,7 +503,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
           _this.$Progress.finish();
 
           _this.$router.push({
-            name: "order"
+            name: "showroom_sale"
           });
 
           _this.$toasted.show(resp.data.message, {
@@ -517,11 +532,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
       var _this2 = this;
 
       var length = this.product_code.length;
-      console.log(length); //  alert(length)
 
       if (length == 4) {
         this.$Progress.start();
-        axios.get("/search/product/with/code/" + this.product_code).then(function (resp) {
+        axios.get("/api/search/product/with/" + this.product_code).then(function (resp) {
+          console.log(resp);
+
           if (resp.data.status == "SUCCESS") {
             _this2.product_code = "";
             var product = {
@@ -535,21 +551,21 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
             };
 
             for (var _i = 0; _i < resp.data.product.length; _i++) {
-              //check the product stcok availity
-              // if (resp.data.product[i].stock <= 0) {
-              //   return Swal.fire({
-              //     type: "warning",
-              //     title: "Wopps....",
-              //     html: `${resp.data.product[i].name} - <strong> ${resp.data.product[i].product_code} </strong> in <b>stcok not available</b>.`,
-              //   });
-              // }
+              // check the product stcok availity
+              if (resp.data.product[_i].s_stock <= 0) {
+                return Swal.fire({
+                  type: "warning",
+                  title: "Wopps....",
+                  html: "".concat(resp.data.product[_i].name, " - <strong> ").concat(resp.data.product[_i].product_code, " </strong> in <b>stcok not available</b>.")
+                });
+              }
+
               _this2.products.push(resp.data.product[_i]);
 
               product.id = resp.data.product[_i].id;
-              product.price = resp.data.product[_i].price;
-              product.total = resp.data.product[_i].price;
-              product.stock = resp.data.product[_i].stock; //  console.log(resp.data.product)
-              // this.suggested_products.data.unshift(resp.data.product[i])
+              product.price = resp.data.product[_i].s_sale_price;
+              product.total = resp.data.product[_i].s_sale_price;
+              product.stock = resp.data.product[_i].s_stock; //  console.log(resp.data.product)
             }
 
             _this2.form.products.push(product);
@@ -576,22 +592,26 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
     searchCustomer: function searchCustomer() {
       var _this3 = this;
 
-      if (this.form.customer_mobile.length == 11) {
-        axios.get("/search/customer/with/phone/number/" + this.form.customer_mobile).then(function (resp) {
-          //when com data from t resp
-          if (resp.data) {
-            if (resp.data.customer) {
-              _this3.form.customer_name = resp.data.customer.name, _this3.form.customer_address = resp.data.customer.address;
-              _this3.form.city = resp.data.customer.city_id;
-            }
+      if (this.form.customer_phone.length == 11) {
+        axios.get("/api/search/customer/" + this.form.customer_phone).then(function (resp) {
+          console.log(resp);
+
+          if (resp.data.status == "OK") {
+            _this3.form.customer_name = resp.data.customer.name;
+            _this3.form.customer_address = resp.data.customer.address;
 
             _this3.$toasted.show(resp.data.message, {
-              type: "error",
+              type: "success",
               position: "top-center",
-              duration: 4000
+              duration: 2000
+            });
+          } else {
+            _this3.$toasted.show(resp.data.message, {
+              type: "success",
+              position: "top-center",
+              duration: 2000
             });
           }
-        })["catch"](function (error) {//console.log(error);
         });
       }
     },
@@ -605,11 +625,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
     // },
     //when chage qauntity
     quantity: function quantity(index) {
-      // if(parseInt(this.products[index].stock ) < parseInt(this.form.products[index].quantity)){
-      //   alert(`max quantity ${this.form.products[index].stock}`)
-      //   this.form.products[index].quantity=this.form.products[index].stock;
-      //   return;
-      // }
+      if (parseInt(this.products[index].s_stock) < parseInt(this.form.products[index].quantity)) {
+        alert("max quantity ".concat(this.form.products[index].s_stock));
+        this.form.products[index].quantity = this.form.products[index].stock;
+        return;
+      }
+
       this.form.products[index].total = parseInt(this.form.products[index].price) * parseInt(this.form.products[index].quantity);
       this.totalCalculation();
     },
@@ -622,26 +643,17 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
         total += parseInt(products[_i2].price) * parseInt(products[_i2].quantity);
       }
 
-      if (parseInt(this.form.paid) > parseInt(total) + parseInt(this.form.shipping_cost)) {
-        Swal.fire({
-          type: "warning",
-          text: ". why paid amount ".concat(this.form.paid, " bigger this total amount ").concat(total, " ?????")
-        });
-        this.form.paid = total;
-        return;
-      }
-
       if (parseInt(this.form.discount) > parseInt(total) + parseInt(this.form.discount)) {
         Swal.fire({
           type: "warning",
-          text: "why discount amount ".concat(this.form.discount, " bigger this total amount ").concat(total, " ?????")
+          text: "why discount amount ".concat(this.form.discount, " bigger this total amount ").concat(total, " ?")
         });
         this.form.discount = total;
         return;
       }
 
       this.form.total = parseInt(total);
-      this.form.due = this.form.total - parseInt(this.form.discount) - parseInt(this.form.paid) + parseInt(this.form.shipping_cost);
+      this.form.due = this.form.total - (parseInt(this.form.discount) + parseInt(this.form.paid));
       total += parseInt(products[i].price) * parseInt(products[i].quantity);
     },
     remove: function remove(index) {
@@ -650,24 +662,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
       this.form.products.splice(index, 1);
       this.products.splice(index, 1);
       this.totalCalculation();
-    },
-    search_suggested_product: function search_suggested_product() {
-      var _this4 = this;
-
-      if (this.search_product_code.length >= 2) {
-        axios.get("/api/search/seggested/product/for/order/" + this.search_product_code).then(function (resp) {
-          console.log(resp);
-
-          if (resp.data.status == "OK") {
-            _this4.suggested_products = resp.data.products;
-          }
-        });
-      }
     }
   },
   components: {
-    datePicker: vue_bootstrap_datetimepicker__WEBPACK_IMPORTED_MODULE_2___default.a,
-    navbar: _Navbar__WEBPACK_IMPORTED_MODULE_5__["default"]
+    navbar: _Navbar__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }); //Date picker
 
@@ -934,7 +932,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  return _vm.add($event)
+                  return _vm.addSale($event)
                 },
                 keydown: function($event) {
                   return _vm.form.onKeydown($event)
@@ -975,31 +973,31 @@ var render = function() {
                         "div",
                         { staticClass: "form-group" },
                         [
-                          _c("label", [_vm._v("Customer_mobile")]),
+                          _vm._m(2),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.customer_mobile,
-                                expression: "form.customer_mobile"
+                                value: _vm.form.customer_phone,
+                                expression: "form.customer_phone"
                               }
                             ],
                             staticClass: "form-control",
                             class: {
                               "is-invalid": _vm.form.errors.has(
-                                "customer_mobile"
+                                "customer_phone"
                               )
                             },
                             attrs: {
                               type: "text",
-                              name: "customer_mobile",
+                              name: "customer_phone",
                               autocomplete: "off",
-                              placeholder:
-                                "Enter customer 11 digit mobile number"
+                              placeholder: "01xxxxxxxxx",
+                              maxlength: "11"
                             },
-                            domProps: { value: _vm.form.customer_mobile },
+                            domProps: { value: _vm.form.customer_phone },
                             on: {
                               keyup: _vm.searchCustomer,
                               input: function($event) {
@@ -1008,7 +1006,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.form,
-                                  "customer_mobile",
+                                  "customer_phone",
                                   $event.target.value
                                 )
                               }
@@ -1016,7 +1014,7 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("has-error", {
-                            attrs: { form: _vm.form, field: "customer_mobile" }
+                            attrs: { form: _vm.form, field: "customer_phone" }
                           })
                         ],
                         1
@@ -1026,7 +1024,7 @@ var render = function() {
                         "div",
                         { staticClass: "form-group" },
                         [
-                          _c("label", [_vm._v("Name")]),
+                          _vm._m(3),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -1075,7 +1073,7 @@ var render = function() {
                         [
                           _c("label", [_vm._v("Address")]),
                           _vm._v(" "),
-                          _c("input", {
+                          _c("textarea", {
                             directives: [
                               {
                                 name: "model",
@@ -1091,10 +1089,10 @@ var render = function() {
                               )
                             },
                             attrs: {
-                              type: "text",
                               name: "address",
                               autocomplete: "off",
-                              placeholder: "address"
+                              placeholder: "address",
+                              rows: "3"
                             },
                             domProps: { value: _vm.form.customer_address },
                             on: {
@@ -1123,7 +1121,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-lg-8" }, [
                   _c("div", { staticClass: "box box-success" }, [
-                    _vm._m(2),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c("div", { staticClass: "box-body" }, [
                       _c("div", { staticClass: "form-group" }, [
@@ -1143,6 +1141,7 @@ var render = function() {
                             type: "text",
                             name: "name",
                             autofocus: "",
+                            maxlength: "4",
                             autocomplete: "off",
                             placeholder: "Enter Product Code",
                             form: "searchProductform"
@@ -1161,18 +1160,22 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "col-lg-12" }, [
-                          _c("table", { staticClass: "table" }, [
-                            _vm._m(3),
-                            _vm._v(" "),
-                            _vm.products.length > 0
-                              ? _c(
-                                  "tbody",
-                                  [
-                                    _vm._l(
-                                      _vm.products.slice().reverse(),
-                                      function(product, index) {
+                          _c(
+                            "table",
+                            { staticClass: "table table-striped table-hover" },
+                            [
+                              _vm._m(5),
+                              _vm._v(" "),
+                              _vm.products.length > 0
+                                ? _c(
+                                    "tbody",
+                                    [
+                                      _vm._l(_vm.products, function(
+                                        product,
+                                        index
+                                      ) {
                                         return _c("tr", { key: index }, [
-                                          _c("td", [_vm._v(_vm._s(index + 1))]),
+                                          _c("td", [_vm._v(_vm._s(index))]),
                                           _vm._v(" "),
                                           _c("td", [
                                             _vm._v(
@@ -1323,53 +1326,16 @@ var render = function() {
                                                 staticClass:
                                                   "badge badge-danger"
                                               },
-                                              [_vm._v(_vm._s(product.stock))]
+                                              [_vm._v(_vm._s(product.s_stock))]
                                             )
                                           ]),
                                           _vm._v(" "),
                                           _c("td", [
-                                            _vm.form.order_type == 3
-                                              ? _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.form.products[index]
-                                                          .price,
-                                                      expression:
-                                                        "form.products[index].price"
-                                                    }
-                                                  ],
-                                                  domProps: {
-                                                    value:
-                                                      _vm.form.products[index]
-                                                        .price
-                                                  },
-                                                  on: {
-                                                    keyup: function($event) {
-                                                      _vm.totalCalculation &&
-                                                        _vm.quantity(index)
-                                                    },
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form.products[
-                                                          index
-                                                        ],
-                                                        "price",
-                                                        $event.target.value
-                                                      )
-                                                    }
-                                                  }
-                                                })
-                                              : _c("strong", [
-                                                  _vm._v(_vm._s(product.price))
-                                                ])
+                                            _c("strong", [
+                                              _vm._v(
+                                                _vm._s(product.s_sale_price)
+                                              )
+                                            ])
                                           ]),
                                           _vm._v(" "),
                                           _c("td", [
@@ -1400,256 +1366,428 @@ var render = function() {
                                             )
                                           ])
                                         ])
-                                      }
-                                    ),
-                                    _vm._v(" "),
-                                    _vm.products.length > 0
-                                      ? _c("tr", [
-                                          _c("td", { attrs: { colspan: "5" } }),
-                                          _vm._v(" "),
-                                          _c("td", [_vm._v("Total Amount")]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(_vm._s(_vm.form.total))
-                                          ])
-                                        ])
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    _vm.products.length > 0
-                                      ? _c("tr", [
-                                          _c("td", { attrs: { colspan: "5" } }),
-                                          _vm._v(" "),
-                                          _c("td", [_vm._v("Discount")]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "td",
-                                            { staticStyle: { width: "70px" } },
-                                            [
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value: _vm.form.discount,
-                                                    expression: "form.discount"
-                                                  }
-                                                ],
-                                                staticClass: "form-control",
-                                                attrs: { placeholder: "0" },
-                                                domProps: {
-                                                  value: _vm.form.discount
-                                                },
-                                                on: {
-                                                  keyup: _vm.totalCalculation,
-                                                  input: function($event) {
-                                                    if (
-                                                      $event.target.composing
-                                                    ) {
-                                                      return
-                                                    }
-                                                    _vm.$set(
-                                                      _vm.form,
-                                                      "discount",
-                                                      $event.target.value
-                                                    )
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ])
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    _vm.products.length > 0
-                                      ? _c("tr", [
-                                          _c("td", { attrs: { colspan: "5" } }),
-                                          _vm._v(" "),
-                                          _c("td", [_vm._v("Paid")]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _c("input", {
-                                              directives: [
-                                                {
-                                                  name: "model",
-                                                  rawName: "v-model",
-                                                  value: _vm.form.paid,
-                                                  expression: "form.paid"
-                                                }
-                                              ],
-                                              staticClass: "form-control",
-                                              attrs: { placeholder: "0" },
-                                              domProps: {
-                                                value: _vm.form.paid
-                                              },
-                                              on: {
-                                                keyup: _vm.totalCalculation,
-                                                input: function($event) {
-                                                  if ($event.target.composing) {
-                                                    return
-                                                  }
-                                                  _vm.$set(
-                                                    _vm.form,
-                                                    "paid",
-                                                    $event.target.value
-                                                  )
-                                                }
-                                              }
-                                            })
-                                          ])
-                                        ])
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    _c("tr", [
-                                      _c("td", { attrs: { colspan: "5" } }),
+                                      }),
                                       _vm._v(" "),
-                                      _c("td", [_vm._v("Paid By")]),
-                                      _vm._v(" "),
-                                      _c("td", [
-                                        _c(
-                                          "div",
-                                          { staticClass: "form-group" },
-                                          [
+                                      _vm.products.length > 0
+                                        ? _c("tr", [
                                             _c(
-                                              "select",
-                                              {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value: _vm.form.paid_by,
-                                                    expression: "form.paid_by"
-                                                  }
-                                                ],
-                                                staticClass: "form-control",
-                                                class: {
-                                                  "is-invalid": _vm.form.errors.has(
-                                                    "paid_by"
-                                                  )
-                                                },
-                                                attrs: {
-                                                  name: "debit_from",
-                                                  id: ""
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    var $$selectedVal = Array.prototype.filter
-                                                      .call(
-                                                        $event.target.options,
-                                                        function(o) {
-                                                          return o.selected
-                                                        }
-                                                      )
-                                                      .map(function(o) {
-                                                        var val =
-                                                          "_value" in o
-                                                            ? o._value
-                                                            : o.value
-                                                        return val
-                                                      })
-                                                    _vm.$set(
-                                                      _vm.form,
-                                                      "paid_by",
-                                                      $event.target.multiple
-                                                        ? $$selectedVal
-                                                        : $$selectedVal[0]
-                                                    )
-                                                  }
-                                                }
-                                              },
+                                              "td",
+                                              { attrs: { colspan: "3" } },
                                               [
                                                 _c(
-                                                  "option",
-                                                  { attrs: { value: "Cash" } },
-                                                  [_vm._v("Cash")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
+                                                  "select",
                                                   {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.form.sale_type,
+                                                        expression:
+                                                          "form.sale_type"
+                                                      }
+                                                    ],
+                                                    staticClass: "form-control",
                                                     attrs: {
-                                                      value: "Bkash(personal)"
+                                                      name: "sale_type"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "sale_type",
+                                                          $event.target.multiple
+                                                            ? $$selectedVal
+                                                            : $$selectedVal[0]
+                                                        )
+                                                      }
                                                     }
                                                   },
-                                                  [_vm._v("Bkash(personal)")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  {
-                                                    attrs: {
-                                                      value: "Bkash(merchant)"
-                                                    }
-                                                  },
-                                                  [_vm._v("Bkash(merchant)")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "Bank" } },
-                                                  [_vm._v("Bank")]
+                                                  [
+                                                    _c(
+                                                      "option",
+                                                      { attrs: { value: "1" } },
+                                                      [_vm._v("Retail Sale")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "option",
+                                                      { attrs: { value: "2" } },
+                                                      [_vm._v("Whole Sale")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             ),
                                             _vm._v(" "),
-                                            _c("has-error", {
-                                              attrs: {
-                                                form: _vm.form,
-                                                field: "paid_by"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        )
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _vm.products.length > 0
-                                      ? _c("tr", [
-                                          _c("td", { attrs: { colspan: "5" } }),
-                                          _vm._v(" "),
-                                          _c("td", [_vm._v("Shipping_charge")]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(_vm.form.shipping_cost)
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [_vm._v("Total Amount")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [_vm._v(_vm._s(_vm.form.total))]
                                             )
                                           ])
-                                        ])
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    _vm.products.length > 0
-                                      ? _c("tr", [
-                                          _c("td", { attrs: { colspan: "5" } }),
-                                          _vm._v(" "),
-                                          _c("td", [_vm._v("Amoutn due")]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(_vm._s(_vm.form.due))
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm.products.length > 0
+                                        ? _c("tr", [
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "3" } },
+                                              [
+                                                _c(
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.form
+                                                            .discount_type,
+                                                        expression:
+                                                          "form.discount_type"
+                                                      }
+                                                    ],
+                                                    staticClass: "form-control",
+                                                    attrs: {
+                                                      name: "discount_type"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "discount_type",
+                                                          $event.target.multiple
+                                                            ? $$selectedVal
+                                                            : $$selectedVal[0]
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "option",
+                                                      {
+                                                        attrs: { disabled: "" }
+                                                      },
+                                                      [_vm._v("discount type")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "option",
+                                                      {
+                                                        attrs: {
+                                                          value: "percentage"
+                                                        }
+                                                      },
+                                                      [_vm._v("percentage")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "option",
+                                                      {
+                                                        attrs: { value: "flat" }
+                                                      },
+                                                      [_vm._v("flat")]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [_vm._v("Discount")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.form.discount,
+                                                      expression:
+                                                        "form.discount"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: { placeholder: "0" },
+                                                  domProps: {
+                                                    value: _vm.form.discount
+                                                  },
+                                                  on: {
+                                                    keyup: _vm.totalCalculation,
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "discount",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
                                           ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm.products.length > 0
+                                        ? _c("tr", [
+                                            _c("td", {
+                                              attrs: { colspan: "3" }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [_vm._v("Paid")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.form.paid,
+                                                      expression: "form.paid"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: { placeholder: "0" },
+                                                  domProps: {
+                                                    value: _vm.form.paid
+                                                  },
+                                                  on: {
+                                                    keyup: _vm.totalCalculation,
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "paid",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _c("tr", [
+                                        _c("td", { attrs: { colspan: "3" } }),
+                                        _vm._v(" "),
+                                        _c("td", { attrs: { colspan: "2" } }, [
+                                          _vm._v("Paid By")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", { attrs: { colspan: "2" } }, [
+                                          _c(
+                                            "div",
+                                            { staticClass: "form-group" },
+                                            [
+                                              _c(
+                                                "select",
+                                                {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.form.paid_by,
+                                                      expression: "form.paid_by"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  class: {
+                                                    "is-invalid": _vm.form.errors.has(
+                                                      "paid_by"
+                                                    )
+                                                  },
+                                                  attrs: {
+                                                    name: "debit_from",
+                                                    id: ""
+                                                  },
+                                                  on: {
+                                                    change: function($event) {
+                                                      var $$selectedVal = Array.prototype.filter
+                                                        .call(
+                                                          $event.target.options,
+                                                          function(o) {
+                                                            return o.selected
+                                                          }
+                                                        )
+                                                        .map(function(o) {
+                                                          var val =
+                                                            "_value" in o
+                                                              ? o._value
+                                                              : o.value
+                                                          return val
+                                                        })
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "paid_by",
+                                                        $event.target.multiple
+                                                          ? $$selectedVal
+                                                          : $$selectedVal[0]
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "option",
+                                                    {
+                                                      attrs: { value: "Cash" }
+                                                    },
+                                                    [_vm._v("Cash")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "option",
+                                                    {
+                                                      attrs: {
+                                                        value: "Bkash(personal)"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                  Bkash(personal)\n                                "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "option",
+                                                    {
+                                                      attrs: {
+                                                        value: "Bkash(merchant)"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                  Bkash(merchant)\n                                "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "option",
+                                                    {
+                                                      attrs: { value: "Bank" }
+                                                    },
+                                                    [_vm._v("Bank")]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("has-error", {
+                                                attrs: {
+                                                  form: _vm.form,
+                                                  field: "paid_by"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
                                         ])
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-success",
-                                        staticStyle: { "margin-top": "12px" },
-                                        attrs: {
-                                          type: "submit",
-                                          disabled: _vm.form.busy
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                          Submit\n                        "
-                                        )
-                                      ]
-                                    )
-                                  ],
-                                  2
-                                )
-                              : _vm._e()
-                          ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _vm.products.length > 0
+                                        ? _c("tr", [
+                                            _c("td", {
+                                              attrs: { colspan: "3" }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [_vm._v("Amoutn due")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [_vm._v(_vm._s(_vm.form.due))]
+                                            )
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-success",
+                                          staticStyle: { "margin-top": "12px" },
+                                          attrs: {
+                                            type: "submit",
+                                            disabled: _vm.form.busy
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                          Submit\n                        "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    2
+                                  )
+                                : _vm._e()
+                            ]
+                          )
                         ])
                       ])
                     ])
@@ -1686,6 +1824,24 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
       _c("h3", { staticClass: "box-title" }, [_vm._v("Customer information")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _vm._v("Mobile Number"),
+      _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _vm._v("Name "),
+      _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")])
     ])
   },
   function() {

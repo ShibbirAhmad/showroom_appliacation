@@ -53,17 +53,15 @@ const routes = [
 
     },
 
-
     {
-        path: '/showroom/product/menage',
-        component: () => import(/* webpackChunkName: "manager_product_manage" */'./components/manager/product/Menage'),
-        name: 'manager_product_menage',
+        path: '/showroom/products',
+        component: () => import(/* webpackChunkName: "showroom_products" */'./components/manager/product/Index.vue'),
+        name: 'showroom_products',
         meta: {
              authManager:true,
             title: 'Product|Manage'
         }
     },
-
 
     {
         path: '/showroom/sale/add',
@@ -90,7 +88,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "showroom_sale_view" */'./components/manager/sale/View.vue'),
         name: 'showroom_sale_view',
         meta: {
-             authManager: true,
+            authManager: true,
             title: 'sale details info '
         }
 

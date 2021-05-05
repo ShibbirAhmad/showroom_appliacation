@@ -6,5 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShowroomSaleItem extends Model
 {
-    //
+    public function product(){
+
+        return $this->belongsTo('App\Models\Product','product_id');
+
+    }
+
+    public function variant(){
+
+        return $this->belongsTo('App\Models\Variant','variant_id');
+    }
 }

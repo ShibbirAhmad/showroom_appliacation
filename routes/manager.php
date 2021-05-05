@@ -11,8 +11,8 @@ Route::post('api/manager/new/password/set/{phone}','Manager\LoginController@mana
 
 
 Route::group([
-                'middleware' => 'manager',
-                'namespace' => 'Manager'
+             'middleware' => 'manager',
+             'namespace' => 'Manager'
             ],function(){
 
         Route::get('api/product/transaction/list','TransactionController@productTransactions');
@@ -22,6 +22,7 @@ Route::group([
          //route for search product
         Route::get('api/showroom/products','ProductController@index');
         Route::get('api/search/showroom/product/{search}','ProductController@search_products');
+        Route::get('api/search/product/with/{code}','ProductController@searchWithCode');
 
         // route for dashboard data
          Route::get('api/get/manager/dashboard/data','HomeController@get_dashboard_highlight_info');
@@ -34,8 +35,11 @@ Route::group([
         Route::get('api/attribute/wise/variant/{id}', 'AttributeAndVariantController@attributeWiseVariant');
 
         //route for manager order
-        Route::get('api/manager/order','OrderController@get_manager_order');
-        Route::get('api/manager/order/view/{id}','OrderController@manager_order_details');
+        Route::get('api/search/customer/{mobile_no}','SaleController@searchCustomer');
+        Route::post('api/showroom/sale/add','SaleController@storeSale');
+        Route::get('api/showroom/sales/list','SaleController@sales');
+        Route::get('api/sale/details/{id}','SaleController@saleDetails');
+        Route::get('api/manager/order/view/{id}','SaleController@manager_order_details');
 
         Route::get('api/manager/logout','LoginController@logout') ;
         //manager profile route

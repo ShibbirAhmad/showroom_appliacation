@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "chunks/" + ({"Loan":"Loan","LoanDetails":"LoanDetails","SupplierAmount":"SupplierAmount","account_purpose":"account_purpose","admin":"admin","applied_user":"applied_user","city":"city","comment":"comment","company":"company","contact_messgae":"contact_messgae","courier":"courier","credit":"credit","creditDue":"creditDue","customer":"customer","debit":"debit","fabricsSupplier":"fabricsSupplier","factory_list":"factory_list","fondtransfer":"fondtransfer","home_carrier":"home_carrier","manager_dashboard":"manager_dashboard","offer":"offer","paidPayment":"paidPayment","paymentInvoice":"paymentInvoice","paymnetDetails":"paymnetDetails","resellerHome":"resellerHome","role":"role","salaryDetails":"salaryDetails","selling_offer":"selling_offer","sub_city":"sub_city","subscriber_list":"subscriber_list","supplier":"supplier","team_member":"team_member","teamsalary":"teamsalary","unpaidPayment":"unpaidPayment","user":"user","vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39":"vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39","AddSaleExchange":"AddSaleExchange","accoun_purpose_edit":"accoun_purpose_edit","account_purpose_add":"account_purpose_add","addCompany":"addCompany","addCompanySale":"addCompanySale","addFabricsSupplier":"addFabricsSupplier","addLoan":"addLoan","addPurchase":"addPurchase","addPurchasefabrics":"addPurchasefabrics","addSale":"addSale","add_factory":"add_factory","add_selling_offer":"add_selling_offer","add_team_member":"add_team_member","adminAdd":"adminAdd","assign_admin_permission":"assign_admin_permission","assingRoleAdmin":"assingRoleAdmin","attributeAdd":"attributeAdd","buy_one_get_one":"buy_one_get_one","categoryAdd":"categoryAdd","category_slider_add":"category_slider_add","category_slider_edit":"category_slider_edit","categoryedit":"categoryedit","cityAdd":"cityAdd","cityEdit":"cityEdit","commentAdd":"commentAdd","contact_messgae_reply":"contact_messgae_reply","courierAdd":"courierAdd","creditAdd":"creditAdd","creditEdit":"creditEdit","debitEdit":"debitEdit","editAdmin":"editAdmin","editComment":"editComment","editCompany":"editCompany","editCourier":"editCourier","editPermission":"editPermission","edit_factory":"edit_factory","edit_offer":"edit_offer","edit_selling_offer":"edit_selling_offer","edit_sub_city":"edit_sub_city","edit_team_member":"edit_team_member","flash_deals":"flash_deals","fondtransferAdd":"fondtransferAdd","manager_login":"manager_login","manager_password_edit":"manager_password_edit","manager_password_reset":"manager_password_reset","manager_profile":"manager_profile","manager_profile_edit":"manager_profile_edit","occasional_campaign":"occasional_campaign","offerAdd":"offerAdd","orderEdit":"orderEdit","passwordChange":"passwordChange","productStock":"productStock","product_transaction":"product_transaction","product_transaction_details":"product_transaction_details","purchaseEdit":"purchaseEdit","purchaseView":"purchaseView","resellerAdd":"resellerAdd","resellerEdit":"resellerEdit","roleAdd":"roleAdd","seasonal campaign":"seasonal campaign","showroom_sale":"showroom_sale","showroom_sale_view":"showroom_sale_view","slider_add":"slider_add","slider_edit":"slider_edit","sms_campaign":"sms_campaign","sub_category_add":"sub_category_add","sub_category_edit":"sub_category_edit","sub_city_add":"sub_city_add","sub_sub_category_add":"sub_sub_category_add","sub_sub_category_edit":"sub_sub_category_edit","supplierAdd":"supplierAdd","supplierEdit":"supplierEdit","user_password_reset":"user_password_reset","variaantAdd":"variaantAdd","vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f":"vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f","admin_dashboard":"admin_dashboard","AccountReport":"AccountReport","DeliveredOrder":"DeliveredOrder","OrderProfite":"OrderProfite","ReturnOrder":"ReturnOrder","SaleProfite":"SaleProfite","approvedOrder":"approvedOrder","cancelOrder":"cancelOrder","newOrder":"newOrder","officesaleReport":"officesaleReport","order":"order","orderReport":"orderReport","pendingOrder":"pendingOrder","profiteReport":"profiteReport","purchaseReport":"purchaseReport","shipmentOrder":"shipmentOrder","supplier_Report":"supplier_Report","wholesaleOrder":"wholesaleOrder","vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3":"vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3","about_and_contact":"about_and_contact","add_carrier":"add_carrier","edit_carrier":"edit_carrier","footer_setting":"footer_setting","generl setting":"generl setting","order_shipment_return":"order_shipment_return","productAdd":"productAdd","productEdit":"productEdit","show_carrier":"show_carrier","vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add":"vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add","addOrder":"addOrder","addwholesale":"addwholesale","admin_login~manager_code_verified~new_password_manager":"admin_login~manager_code_verified~new_password_manager","admin_login":"admin_login","manager_code_verified":"manager_code_verified","new_password_manager":"new_password_manager","showroom_sale_add":"showroom_sale_add","vendors~debitAdd":"vendors~debitAdd","debitAdd":"debitAdd","vendors~manager_product_manage~product":"vendors~manager_product_manage~product","manager_product_manage":"manager_product_manage","product":"product","viewOrder":"viewOrder","viewSale":"viewSale","attribute":"attribute","category":"category","category_slider":"category_slider","companysale":"companysale","managefabricsPurchase":"managefabricsPurchase","officesale":"officesale","purchase":"purchase","slider":"slider","sub_category":"sub_category","sub_sub_category":"sub_sub_category","variant":"variant"}[chunkId]||chunkId) + ".bundle.js"
+/******/ 		return __webpack_require__.p + "chunks/" + ({"Loan":"Loan","LoanDetails":"LoanDetails","SupplierAmount":"SupplierAmount","account_purpose":"account_purpose","admin":"admin","applied_user":"applied_user","city":"city","comment":"comment","company":"company","contact_messgae":"contact_messgae","courier":"courier","credit":"credit","creditDue":"creditDue","customer":"customer","debit":"debit","fabricsSupplier":"fabricsSupplier","factory_list":"factory_list","fondtransfer":"fondtransfer","home_carrier":"home_carrier","manager_dashboard":"manager_dashboard","offer":"offer","paidPayment":"paidPayment","paymentInvoice":"paymentInvoice","paymnetDetails":"paymnetDetails","resellerHome":"resellerHome","role":"role","salaryDetails":"salaryDetails","selling_offer":"selling_offer","sub_city":"sub_city","subscriber_list":"subscriber_list","supplier":"supplier","team_member":"team_member","teamsalary":"teamsalary","unpaidPayment":"unpaidPayment","user":"user","vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a":"vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a","AddSaleExchange":"AddSaleExchange","accoun_purpose_edit":"accoun_purpose_edit","account_purpose_add":"account_purpose_add","addCompany":"addCompany","addCompanySale":"addCompanySale","addFabricsSupplier":"addFabricsSupplier","addLoan":"addLoan","addPurchase":"addPurchase","addPurchasefabrics":"addPurchasefabrics","addSale":"addSale","add_factory":"add_factory","add_selling_offer":"add_selling_offer","add_team_member":"add_team_member","adminAdd":"adminAdd","assign_admin_permission":"assign_admin_permission","assingRoleAdmin":"assingRoleAdmin","attributeAdd":"attributeAdd","buy_one_get_one":"buy_one_get_one","categoryAdd":"categoryAdd","category_slider_add":"category_slider_add","category_slider_edit":"category_slider_edit","categoryedit":"categoryedit","cityAdd":"cityAdd","cityEdit":"cityEdit","commentAdd":"commentAdd","contact_messgae_reply":"contact_messgae_reply","courierAdd":"courierAdd","creditAdd":"creditAdd","creditEdit":"creditEdit","debitEdit":"debitEdit","editAdmin":"editAdmin","editComment":"editComment","editCompany":"editCompany","editCourier":"editCourier","editPermission":"editPermission","edit_factory":"edit_factory","edit_offer":"edit_offer","edit_selling_offer":"edit_selling_offer","edit_sub_city":"edit_sub_city","edit_team_member":"edit_team_member","flash_deals":"flash_deals","fondtransferAdd":"fondtransferAdd","manager_login":"manager_login","manager_password_edit":"manager_password_edit","manager_password_reset":"manager_password_reset","manager_profile":"manager_profile","manager_profile_edit":"manager_profile_edit","occasional_campaign":"occasional_campaign","offerAdd":"offerAdd","orderEdit":"orderEdit","passwordChange":"passwordChange","productStock":"productStock","product_transaction":"product_transaction","product_transaction_details":"product_transaction_details","purchaseEdit":"purchaseEdit","purchaseView":"purchaseView","resellerAdd":"resellerAdd","resellerEdit":"resellerEdit","roleAdd":"roleAdd","seasonal campaign":"seasonal campaign","showroom_sale":"showroom_sale","showroom_sale_view":"showroom_sale_view","slider_add":"slider_add","slider_edit":"slider_edit","sms_campaign":"sms_campaign","sub_category_add":"sub_category_add","sub_category_edit":"sub_category_edit","sub_city_add":"sub_city_add","sub_sub_category_add":"sub_sub_category_add","sub_sub_category_edit":"sub_sub_category_edit","supplierAdd":"supplierAdd","supplierEdit":"supplierEdit","user_password_reset":"user_password_reset","variaantAdd":"variaantAdd","vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f":"vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f","admin_dashboard":"admin_dashboard","AccountReport":"AccountReport","DeliveredOrder":"DeliveredOrder","OrderProfite":"OrderProfite","ReturnOrder":"ReturnOrder","SaleProfite":"SaleProfite","approvedOrder":"approvedOrder","cancelOrder":"cancelOrder","newOrder":"newOrder","officesaleReport":"officesaleReport","order":"order","orderReport":"orderReport","pendingOrder":"pendingOrder","profiteReport":"profiteReport","purchaseReport":"purchaseReport","shipmentOrder":"shipmentOrder","supplier_Report":"supplier_Report","wholesaleOrder":"wholesaleOrder","vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3":"vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3","about_and_contact":"about_and_contact","add_carrier":"add_carrier","edit_carrier":"edit_carrier","footer_setting":"footer_setting","generl setting":"generl setting","order_shipment_return":"order_shipment_return","productAdd":"productAdd","productEdit":"productEdit","show_carrier":"show_carrier","vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add":"vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add","addOrder":"addOrder","addwholesale":"addwholesale","admin_login~manager_code_verified~new_password_manager":"admin_login~manager_code_verified~new_password_manager","admin_login":"admin_login","manager_code_verified":"manager_code_verified","new_password_manager":"new_password_manager","showroom_sale_add":"showroom_sale_add","vendors~debitAdd":"vendors~debitAdd","debitAdd":"debitAdd","vendors~product~showroom_products":"vendors~product~showroom_products","product":"product","showroom_products":"showroom_products","viewOrder":"viewOrder","viewSale":"viewSale","attribute":"attribute","category":"category","category_slider":"category_slider","companysale":"companysale","managefabricsPurchase":"managefabricsPurchase","officesale":"officesale","purchase":"purchase","slider":"slider","sub_category":"sub_category","sub_sub_category":"sub_sub_category","variant":"variant"}[chunkId]||chunkId) + ".bundle.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -83074,7 +83074,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var routes = [{
   path: '/',
   component: function component() {
-    return Promise.all(/*! import() | manager_login */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("manager_login")]).then(__webpack_require__.bind(null, /*! ./components/manager/Login.vue */ "./resources/js/components/manager/Login.vue"));
+    return Promise.all(/*! import() | manager_login */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("manager_login")]).then(__webpack_require__.bind(null, /*! ./components/manager/Login.vue */ "./resources/js/components/manager/Login.vue"));
   },
   name: 'manager_login',
   props: true,
@@ -83084,7 +83084,7 @@ var routes = [{
 }, {
   path: '/manager/password/reset',
   component: function component() {
-    return Promise.all(/*! import() | manager_password_reset */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("manager_password_reset")]).then(__webpack_require__.bind(null, /*! ./components/manager/PasswordReset */ "./resources/js/components/manager/PasswordReset.vue"));
+    return Promise.all(/*! import() | manager_password_reset */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("manager_password_reset")]).then(__webpack_require__.bind(null, /*! ./components/manager/PasswordReset */ "./resources/js/components/manager/PasswordReset.vue"));
   },
   name: 'manager_password_reset',
   meta: {
@@ -83093,7 +83093,7 @@ var routes = [{
 }, {
   path: '/manager/code/verify/:phone',
   component: function component() {
-    return Promise.all(/*! import() | manager_code_verified */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("admin_login~manager_code_verified~new_password_manager"), __webpack_require__.e("manager_code_verified")]).then(__webpack_require__.bind(null, /*! ./components/manager/CodeVerified */ "./resources/js/components/manager/CodeVerified.vue"));
+    return Promise.all(/*! import() | manager_code_verified */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("admin_login~manager_code_verified~new_password_manager"), __webpack_require__.e("manager_code_verified")]).then(__webpack_require__.bind(null, /*! ./components/manager/CodeVerified */ "./resources/js/components/manager/CodeVerified.vue"));
   },
   name: 'manager_code_verified',
   meta: {
@@ -83102,7 +83102,7 @@ var routes = [{
 }, {
   path: '/manager/reset/new/password/:phone',
   component: function component() {
-    return Promise.all(/*! import() | new_password_manager */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("admin_login~manager_code_verified~new_password_manager"), __webpack_require__.e("new_password_manager")]).then(__webpack_require__.bind(null, /*! ./components/manager/NewPassword */ "./resources/js/components/manager/NewPassword.vue"));
+    return Promise.all(/*! import() | new_password_manager */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("admin_login~manager_code_verified~new_password_manager"), __webpack_require__.e("new_password_manager")]).then(__webpack_require__.bind(null, /*! ./components/manager/NewPassword */ "./resources/js/components/manager/NewPassword.vue"));
   },
   name: 'new_password_manager',
   meta: {
@@ -83119,11 +83119,11 @@ var routes = [{
     title: 'manager|Dashboard'
   }
 }, {
-  path: '/showroom/product/menage',
+  path: '/showroom/products',
   component: function component() {
-    return Promise.all(/*! import() | manager_product_manage */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~manager_product_manage~product"), __webpack_require__.e("manager_product_manage")]).then(__webpack_require__.bind(null, /*! ./components/manager/product/Menage */ "./resources/js/components/manager/product/Menage.vue"));
+    return Promise.all(/*! import() | showroom_products */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~product~showroom_products"), __webpack_require__.e("showroom_products")]).then(__webpack_require__.bind(null, /*! ./components/manager/product/Index.vue */ "./resources/js/components/manager/product/Index.vue"));
   },
-  name: 'manager_product_menage',
+  name: 'showroom_products',
   meta: {
     authManager: true,
     title: 'Product|Manage'
@@ -83131,7 +83131,7 @@ var routes = [{
 }, {
   path: '/showroom/sale/add',
   component: function component() {
-    return Promise.all(/*! import() | showroom_sale_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("showroom_sale_add")]).then(__webpack_require__.bind(null, /*! ./components/manager/sale/Add.vue */ "./resources/js/components/manager/sale/Add.vue"));
+    return Promise.all(/*! import() | showroom_sale_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("showroom_sale_add")]).then(__webpack_require__.bind(null, /*! ./components/manager/sale/Add.vue */ "./resources/js/components/manager/sale/Add.vue"));
   },
   name: 'showroom_sale_add',
   meta: {
@@ -83141,7 +83141,7 @@ var routes = [{
 }, {
   path: '/showroom/sale',
   component: function component() {
-    return Promise.all(/*! import() | showroom_sale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("showroom_sale")]).then(__webpack_require__.bind(null, /*! ./components/manager/sale/Index.vue */ "./resources/js/components/manager/sale/Index.vue"));
+    return Promise.all(/*! import() | showroom_sale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("showroom_sale")]).then(__webpack_require__.bind(null, /*! ./components/manager/sale/Index.vue */ "./resources/js/components/manager/sale/Index.vue"));
   },
   name: 'showroom_sale',
   meta: {
@@ -83151,7 +83151,7 @@ var routes = [{
 }, {
   path: '/showroom/sale/view/:id',
   component: function component() {
-    return Promise.all(/*! import() | showroom_sale_view */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("showroom_sale_view")]).then(__webpack_require__.bind(null, /*! ./components/manager/sale/View.vue */ "./resources/js/components/manager/sale/View.vue"));
+    return Promise.all(/*! import() | showroom_sale_view */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("showroom_sale_view")]).then(__webpack_require__.bind(null, /*! ./components/manager/sale/View.vue */ "./resources/js/components/manager/sale/View.vue"));
   },
   name: 'showroom_sale_view',
   meta: {
@@ -83161,7 +83161,7 @@ var routes = [{
 }, {
   path: '/manager/profile',
   component: function component() {
-    return Promise.all(/*! import() | manager_profile */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("manager_profile")]).then(__webpack_require__.bind(null, /*! ./components/manager/profile/Profile */ "./resources/js/components/manager/profile/Profile.vue"));
+    return Promise.all(/*! import() | manager_profile */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("manager_profile")]).then(__webpack_require__.bind(null, /*! ./components/manager/profile/Profile */ "./resources/js/components/manager/profile/Profile.vue"));
   },
   name: 'manager_profile',
   meta: {
@@ -83170,7 +83170,7 @@ var routes = [{
 }, {
   path: '/manager/profile/edit',
   component: function component() {
-    return Promise.all(/*! import() | manager_profile_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("manager_profile_edit")]).then(__webpack_require__.bind(null, /*! ./components/manager/profile/Change_profile */ "./resources/js/components/manager/profile/Change_profile.vue"));
+    return Promise.all(/*! import() | manager_profile_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("manager_profile_edit")]).then(__webpack_require__.bind(null, /*! ./components/manager/profile/Change_profile */ "./resources/js/components/manager/profile/Change_profile.vue"));
   },
   name: 'manager_profile_edit',
   meta: {
@@ -83179,7 +83179,7 @@ var routes = [{
 }, {
   path: '/manager/security/edit',
   component: function component() {
-    return Promise.all(/*! import() | manager_password_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("manager_password_edit")]).then(__webpack_require__.bind(null, /*! ./components/manager/profile/Change_password.vue */ "./resources/js/components/manager/profile/Change_password.vue"));
+    return Promise.all(/*! import() | manager_password_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("manager_password_edit")]).then(__webpack_require__.bind(null, /*! ./components/manager/profile/Change_password.vue */ "./resources/js/components/manager/profile/Change_password.vue"));
   },
   name: 'manager_password_edit',
   meta: {
@@ -83189,7 +83189,7 @@ var routes = [{
   path: '/product/transaction',
   name: 'product_transaction',
   component: function component() {
-    return Promise.all(/*! import() | product_transaction */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("product_transaction")]).then(__webpack_require__.bind(null, /*! ./components/manager/product_transaction/Index.vue */ "./resources/js/components/manager/product_transaction/Index.vue"));
+    return Promise.all(/*! import() | product_transaction */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("product_transaction")]).then(__webpack_require__.bind(null, /*! ./components/manager/product_transaction/Index.vue */ "./resources/js/components/manager/product_transaction/Index.vue"));
   },
   meta: {
     authManager: true,
@@ -83199,7 +83199,7 @@ var routes = [{
   path: '/product/transaction/details/:id',
   name: 'product_transaction_details',
   component: function component() {
-    return Promise.all(/*! import() | product_transaction_details */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("product_transaction_details")]).then(__webpack_require__.bind(null, /*! ./components/manager/product_transaction/Details.vue */ "./resources/js/components/manager/product_transaction/Details.vue"));
+    return Promise.all(/*! import() | product_transaction_details */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("product_transaction_details")]).then(__webpack_require__.bind(null, /*! ./components/manager/product_transaction/Details.vue */ "./resources/js/components/manager/product_transaction/Details.vue"));
   },
   meta: {
     authManager: true,
@@ -83228,7 +83228,7 @@ var routes = [{
 }, {
   path: '/backend/categoryEdit/:categoryId',
   component: function component() {
-    return Promise.all(/*! import() | categoryedit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("categoryedit")]).then(__webpack_require__.bind(null, /*! ./components/admin/category/Edit */ "./resources/js/components/admin/category/Edit.vue"));
+    return Promise.all(/*! import() | categoryedit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("categoryedit")]).then(__webpack_require__.bind(null, /*! ./components/admin/category/Edit */ "./resources/js/components/admin/category/Edit.vue"));
   },
   name: "CategoryEdit",
   meta: {
@@ -83238,7 +83238,7 @@ var routes = [{
 }, {
   path: '/backend/categoryAdd',
   component: function component() {
-    return Promise.all(/*! import() | categoryAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("categoryAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/category/Add */ "./resources/js/components/admin/category/Add.vue"));
+    return Promise.all(/*! import() | categoryAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("categoryAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/category/Add */ "./resources/js/components/admin/category/Add.vue"));
   },
   name: "categoryAdd",
   meta: {
@@ -83258,7 +83258,7 @@ var routes = [{
 }, {
   path: '/backend/subcategoryAdd',
   component: function component() {
-    return Promise.all(/*! import() | sub_category_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("sub_category_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/subCategory/Add */ "./resources/js/components/admin/subCategory/Add.vue"));
+    return Promise.all(/*! import() | sub_category_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("sub_category_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/subCategory/Add */ "./resources/js/components/admin/subCategory/Add.vue"));
   },
   name: "subcategoryAdd",
   meta: {
@@ -83268,7 +83268,7 @@ var routes = [{
 }, {
   path: '/backend/subcategoryEdit/:id',
   component: function component() {
-    return Promise.all(/*! import() | sub_category_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("sub_category_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/subCategory/Edit */ "./resources/js/components/admin/subCategory/Edit.vue"));
+    return Promise.all(/*! import() | sub_category_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("sub_category_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/subCategory/Edit */ "./resources/js/components/admin/subCategory/Edit.vue"));
   },
   name: "subcategoryEdit",
   meta: {
@@ -83288,7 +83288,7 @@ var routes = [{
 }, {
   path: '/backend/subSubCategoryAdd',
   component: function component() {
-    return Promise.all(/*! import() | sub_sub_category_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("sub_sub_category_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/subSubCategory/Add */ "./resources/js/components/admin/subSubCategory/Add.vue"));
+    return Promise.all(/*! import() | sub_sub_category_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("sub_sub_category_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/subSubCategory/Add */ "./resources/js/components/admin/subSubCategory/Add.vue"));
   },
   name: "subSubCategoryAdd",
   meta: {
@@ -83298,7 +83298,7 @@ var routes = [{
 }, {
   path: '/backend/subSubCategoryEdit/:id',
   component: function component() {
-    return Promise.all(/*! import() | sub_sub_category_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("sub_sub_category_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/subSubCategory/Edit */ "./resources/js/components/admin/subSubCategory/Edit.vue"));
+    return Promise.all(/*! import() | sub_sub_category_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("sub_sub_category_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/subSubCategory/Edit */ "./resources/js/components/admin/subSubCategory/Edit.vue"));
   },
   name: "subSubCategoryEdit",
   meta: {
@@ -83318,7 +83318,7 @@ var routes = [{
 }, {
   path: '/backend/sliderAdd',
   component: function component() {
-    return Promise.all(/*! import() | slider_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("slider_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/slider/Add */ "./resources/js/components/admin/slider/Add.vue"));
+    return Promise.all(/*! import() | slider_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("slider_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/slider/Add */ "./resources/js/components/admin/slider/Add.vue"));
   },
   name: "sliderAdd",
   meta: {
@@ -83328,7 +83328,7 @@ var routes = [{
 }, {
   path: '/backend/sliderEdit/:id',
   component: function component() {
-    return Promise.all(/*! import() | slider_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("slider_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/slider/Edit */ "./resources/js/components/admin/slider/Edit.vue"));
+    return Promise.all(/*! import() | slider_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("slider_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/slider/Edit */ "./resources/js/components/admin/slider/Edit.vue"));
   },
   name: 'sliderEdit',
   meta: {
@@ -83348,7 +83348,7 @@ var routes = [{
 }, {
   path: '/backend/category/slider/add',
   component: function component() {
-    return Promise.all(/*! import() | category_slider_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("category_slider_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/Category_slider/Add */ "./resources/js/components/admin/Category_slider/Add.vue"));
+    return Promise.all(/*! import() | category_slider_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("category_slider_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/Category_slider/Add */ "./resources/js/components/admin/Category_slider/Add.vue"));
   },
   name: "category_slider_add",
   meta: {
@@ -83358,7 +83358,7 @@ var routes = [{
 }, {
   path: '/backend/category/slider/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | category_slider_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("category_slider_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/Category_slider/Edit */ "./resources/js/components/admin/Category_slider/Edit.vue"));
+    return Promise.all(/*! import() | category_slider_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("category_slider_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/Category_slider/Edit */ "./resources/js/components/admin/Category_slider/Edit.vue"));
   },
   name: 'category_slider_edit',
   meta: {
@@ -83378,7 +83378,7 @@ var routes = [{
 }, {
   path: '/backend/attributeAdd',
   component: function component() {
-    return Promise.all(/*! import() | attributeAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("attributeAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/attribute/Add */ "./resources/js/components/admin/attribute/Add.vue"));
+    return Promise.all(/*! import() | attributeAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("attributeAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/attribute/Add */ "./resources/js/components/admin/attribute/Add.vue"));
   },
   name: "attributeAdd",
   meta: {
@@ -83399,7 +83399,7 @@ var routes = [{
 }, {
   path: '/backend/reseller/add',
   component: function component() {
-    return Promise.all(/*! import() | resellerAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("resellerAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/reseller/Add */ "./resources/js/components/admin/reseller/Add.vue"));
+    return Promise.all(/*! import() | resellerAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("resellerAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/reseller/Add */ "./resources/js/components/admin/reseller/Add.vue"));
   },
   name: 'resellerAdd',
   props: true,
@@ -83410,7 +83410,7 @@ var routes = [{
 }, {
   path: '/backend/reseller/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | resellerEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("resellerEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/reseller/Edit */ "./resources/js/components/admin/reseller/Edit.vue"));
+    return Promise.all(/*! import() | resellerEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("resellerEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/reseller/Edit */ "./resources/js/components/admin/reseller/Edit.vue"));
   },
   name: 'resellerEdit',
   meta: {
@@ -83494,7 +83494,7 @@ var routes = [{
 }, {
   path: '/backend/variantAdd',
   component: function component() {
-    return Promise.all(/*! import() | variaantAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("variaantAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/variant/Add */ "./resources/js/components/admin/variant/Add.vue"));
+    return Promise.all(/*! import() | variaantAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("variaantAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/variant/Add */ "./resources/js/components/admin/variant/Add.vue"));
   },
   name: "variantAdd",
   meta: {
@@ -83504,7 +83504,7 @@ var routes = [{
 }, {
   path: '/backend/adminLogin',
   component: function component() {
-    return Promise.all(/*! import() | admin_login */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("admin_login~manager_code_verified~new_password_manager"), __webpack_require__.e("admin_login")]).then(__webpack_require__.bind(null, /*! ./components/admin/Login.vue */ "./resources/js/components/admin/Login.vue"));
+    return Promise.all(/*! import() | admin_login */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("admin_login~manager_code_verified~new_password_manager"), __webpack_require__.e("admin_login")]).then(__webpack_require__.bind(null, /*! ./components/admin/Login.vue */ "./resources/js/components/admin/Login.vue"));
   },
   name: 'adminLogin',
   meta: {
@@ -83523,7 +83523,7 @@ var routes = [{
 }, {
   path: '/backend/fabrics/add/supplier/',
   component: function component() {
-    return Promise.all(/*! import() | addFabricsSupplier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("addFabricsSupplier")]).then(__webpack_require__.bind(null, /*! ./components/admin/supplier/AddFabricsSupplier */ "./resources/js/components/admin/supplier/AddFabricsSupplier.vue"));
+    return Promise.all(/*! import() | addFabricsSupplier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("addFabricsSupplier")]).then(__webpack_require__.bind(null, /*! ./components/admin/supplier/AddFabricsSupplier */ "./resources/js/components/admin/supplier/AddFabricsSupplier.vue"));
   },
   name: 'AddFabricsSupplier',
   meta: {
@@ -83553,7 +83553,7 @@ var routes = [{
 }, {
   path: '/backend/Supplier/Add',
   component: function component() {
-    return Promise.all(/*! import() | supplierAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("supplierAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/supplier/Add */ "./resources/js/components/admin/supplier/Add.vue"));
+    return Promise.all(/*! import() | supplierAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("supplierAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/supplier/Add */ "./resources/js/components/admin/supplier/Add.vue"));
   },
   name: 'supllierAdd',
   meta: {
@@ -83563,7 +83563,7 @@ var routes = [{
 }, {
   path: '/backend/edit/supplier/:id',
   component: function component() {
-    return Promise.all(/*! import() | supplierEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("supplierEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/supplier/Edit */ "./resources/js/components/admin/supplier/Edit.vue"));
+    return Promise.all(/*! import() | supplierEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("supplierEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/supplier/Edit */ "./resources/js/components/admin/supplier/Edit.vue"));
   },
   name: 'supplierEdit',
   meta: {
@@ -83593,7 +83593,7 @@ var routes = [{
 }, {
   path: '/backend/credit/add',
   component: function component() {
-    return Promise.all(/*! import() | creditAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("creditAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/credit/Add */ "./resources/js/components/admin/credit/Add.vue"));
+    return Promise.all(/*! import() | creditAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("creditAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/credit/Add */ "./resources/js/components/admin/credit/Add.vue"));
   },
   name: 'creditAdd',
   meta: {
@@ -83603,7 +83603,7 @@ var routes = [{
 }, {
   path: '/backend/credit/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | creditEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("creditEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/credit/Edit */ "./resources/js/components/admin/credit/Edit.vue"));
+    return Promise.all(/*! import() | creditEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("creditEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/credit/Edit */ "./resources/js/components/admin/credit/Edit.vue"));
   },
   name: 'creditEdit',
   meta: {
@@ -83623,7 +83623,7 @@ var routes = [{
 }, {
   path: '/backend/debit/add',
   component: function component() {
-    return Promise.all(/*! import() | debitAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~debitAdd"), __webpack_require__.e("debitAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/debit/Add */ "./resources/js/components/admin/debit/Add.vue"));
+    return Promise.all(/*! import() | debitAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~debitAdd"), __webpack_require__.e("debitAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/debit/Add */ "./resources/js/components/admin/debit/Add.vue"));
   },
   name: 'debitAdd',
   meta: {
@@ -83633,7 +83633,7 @@ var routes = [{
 }, {
   path: '/backend/debit/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | debitEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("debitEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/debit/Edit */ "./resources/js/components/admin/debit/Edit.vue"));
+    return Promise.all(/*! import() | debitEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("debitEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/debit/Edit */ "./resources/js/components/admin/debit/Edit.vue"));
   },
   name: 'debitEdit',
   meta: {
@@ -83663,7 +83663,7 @@ var routes = [{
 }, {
   path: '/backend/add/sub/city',
   component: function component() {
-    return Promise.all(/*! import() | sub_city_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("sub_city_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/sub_city/Add.vue */ "./resources/js/components/admin/sub_city/Add.vue"));
+    return Promise.all(/*! import() | sub_city_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("sub_city_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/sub_city/Add.vue */ "./resources/js/components/admin/sub_city/Add.vue"));
   },
   name: 'add_sub_city',
   meta: {
@@ -83673,7 +83673,7 @@ var routes = [{
 }, {
   path: '/backend/edit/sub/city/:id',
   component: function component() {
-    return Promise.all(/*! import() | edit_sub_city */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("edit_sub_city")]).then(__webpack_require__.bind(null, /*! ./components/admin/sub_city/Edit.vue */ "./resources/js/components/admin/sub_city/Edit.vue"));
+    return Promise.all(/*! import() | edit_sub_city */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("edit_sub_city")]).then(__webpack_require__.bind(null, /*! ./components/admin/sub_city/Edit.vue */ "./resources/js/components/admin/sub_city/Edit.vue"));
   },
   name: 'edit_sub_city',
   meta: {
@@ -83693,7 +83693,7 @@ var routes = [{
 }, {
   path: '/backend/role/add',
   component: function component() {
-    return Promise.all(/*! import() | roleAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("roleAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/role/Add */ "./resources/js/components/admin/role/Add.vue"));
+    return Promise.all(/*! import() | roleAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("roleAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/role/Add */ "./resources/js/components/admin/role/Add.vue"));
   },
   name: 'roleAdd',
   meta: {
@@ -83703,7 +83703,7 @@ var routes = [{
 }, {
   path: '/backend/permissions/edit/role/:id',
   component: function component() {
-    return Promise.all(/*! import() | editPermission */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("editPermission")]).then(__webpack_require__.bind(null, /*! ./components/admin/role/Permissions */ "./resources/js/components/admin/role/Permissions.vue"));
+    return Promise.all(/*! import() | editPermission */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("editPermission")]).then(__webpack_require__.bind(null, /*! ./components/admin/role/Permissions */ "./resources/js/components/admin/role/Permissions.vue"));
   },
   name: 'EditPermissions',
   meta: {
@@ -83713,7 +83713,7 @@ var routes = [{
 }, {
   path: '/backend/addCity',
   component: function component() {
-    return Promise.all(/*! import() | cityAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("cityAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/city/Add */ "./resources/js/components/admin/city/Add.vue"));
+    return Promise.all(/*! import() | cityAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("cityAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/city/Add */ "./resources/js/components/admin/city/Add.vue"));
   },
   name: 'cityAdd',
   meta: {
@@ -83723,7 +83723,7 @@ var routes = [{
 }, {
   path: '/backend/editCity/:id',
   component: function component() {
-    return Promise.all(/*! import() | cityEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("cityEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/city/Edit */ "./resources/js/components/admin/city/Edit.vue"));
+    return Promise.all(/*! import() | cityEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("cityEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/city/Edit */ "./resources/js/components/admin/city/Edit.vue"));
   },
   name: 'editCity',
   meta: {
@@ -83743,7 +83743,7 @@ var routes = [{
 }, {
   path: '/backend/add/company',
   component: function component() {
-    return Promise.all(/*! import() | addCompany */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("addCompany")]).then(__webpack_require__.bind(null, /*! ./components/admin/company/Add */ "./resources/js/components/admin/company/Add.vue"));
+    return Promise.all(/*! import() | addCompany */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("addCompany")]).then(__webpack_require__.bind(null, /*! ./components/admin/company/Add */ "./resources/js/components/admin/company/Add.vue"));
   },
   name: 'addCompany',
   meta: {
@@ -83753,7 +83753,7 @@ var routes = [{
 }, {
   path: '/backend/edit/company/:id',
   component: function component() {
-    return Promise.all(/*! import() | editCompany */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("editCompany")]).then(__webpack_require__.bind(null, /*! ./components/admin/company/Edit */ "./resources/js/components/admin/company/Edit.vue"));
+    return Promise.all(/*! import() | editCompany */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("editCompany")]).then(__webpack_require__.bind(null, /*! ./components/admin/company/Edit */ "./resources/js/components/admin/company/Edit.vue"));
   },
   name: 'editCompany',
   meta: {
@@ -83773,7 +83773,7 @@ var routes = [{
 }, {
   path: '/backend/found/transaction/add',
   component: function component() {
-    return Promise.all(/*! import() | fondtransferAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("fondtransferAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/fondtransfer/Add */ "./resources/js/components/admin/fondtransfer/Add.vue"));
+    return Promise.all(/*! import() | fondtransferAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("fondtransferAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/fondtransfer/Add */ "./resources/js/components/admin/fondtransfer/Add.vue"));
   },
   name: 'fondtransferAdd',
   meta: {
@@ -83793,7 +83793,7 @@ var routes = [{
 }, {
   path: '/backend/add',
   component: function component() {
-    return Promise.all(/*! import() | offerAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("offerAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/offer/Add */ "./resources/js/components/admin/offer/Add.vue"));
+    return Promise.all(/*! import() | offerAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("offerAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/offer/Add */ "./resources/js/components/admin/offer/Add.vue"));
   },
   name: 'offerAdd',
   meta: {
@@ -83803,7 +83803,7 @@ var routes = [{
 }, {
   path: '/backend/edit/Offer/:id',
   component: function component() {
-    return Promise.all(/*! import() | edit_offer */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("edit_offer")]).then(__webpack_require__.bind(null, /*! ./components/admin/offer/Edit */ "./resources/js/components/admin/offer/Edit.vue"));
+    return Promise.all(/*! import() | edit_offer */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("edit_offer")]).then(__webpack_require__.bind(null, /*! ./components/admin/offer/Edit */ "./resources/js/components/admin/offer/Edit.vue"));
   },
   name: 'edit_offer',
   meta: {
@@ -83823,7 +83823,7 @@ var routes = [{
 }, {
   path: '/backend/addCourier',
   component: function component() {
-    return Promise.all(/*! import() | courierAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("courierAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/courier/Add */ "./resources/js/components/admin/courier/Add.vue"));
+    return Promise.all(/*! import() | courierAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("courierAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/courier/Add */ "./resources/js/components/admin/courier/Add.vue"));
   },
   name: 'courierAdd',
   meta: {
@@ -83833,7 +83833,7 @@ var routes = [{
 }, {
   path: '/backend/editCourier/:id',
   component: function component() {
-    return Promise.all(/*! import() | editCourier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("editCourier")]).then(__webpack_require__.bind(null, /*! ./components/admin/courier/Edit */ "./resources/js/components/admin/courier/Edit.vue"));
+    return Promise.all(/*! import() | editCourier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("editCourier")]).then(__webpack_require__.bind(null, /*! ./components/admin/courier/Edit */ "./resources/js/components/admin/courier/Edit.vue"));
   },
   name: 'editCourier',
   meta: {
@@ -83853,7 +83853,7 @@ var routes = [{
 }, {
   path: '/backend/addComment',
   component: function component() {
-    return Promise.all(/*! import() | commentAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("commentAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/comment/Add */ "./resources/js/components/admin/comment/Add.vue"));
+    return Promise.all(/*! import() | commentAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("commentAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/comment/Add */ "./resources/js/components/admin/comment/Add.vue"));
   },
   name: 'commentAdd',
   meta: {
@@ -83863,7 +83863,7 @@ var routes = [{
 }, {
   path: '/backend/editComment/:id',
   component: function component() {
-    return Promise.all(/*! import() | editComment */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("editComment")]).then(__webpack_require__.bind(null, /*! ./components/admin/comment/Edit */ "./resources/js/components/admin/comment/Edit.vue"));
+    return Promise.all(/*! import() | editComment */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("editComment")]).then(__webpack_require__.bind(null, /*! ./components/admin/comment/Edit */ "./resources/js/components/admin/comment/Edit.vue"));
   },
   name: 'editComment',
   meta: {
@@ -83883,7 +83883,7 @@ var routes = [{
 }, {
   path: '/backend/factory/add',
   component: function component() {
-    return Promise.all(/*! import() | add_factory */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("add_factory")]).then(__webpack_require__.bind(null, /*! ./components/admin/factory/Add */ "./resources/js/components/admin/factory/Add.vue"));
+    return Promise.all(/*! import() | add_factory */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("add_factory")]).then(__webpack_require__.bind(null, /*! ./components/admin/factory/Add */ "./resources/js/components/admin/factory/Add.vue"));
   },
   name: 'add_factory',
   meta: {
@@ -83893,7 +83893,7 @@ var routes = [{
 }, {
   path: '/backend/edit/factory/:id',
   component: function component() {
-    return Promise.all(/*! import() | edit_factory */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("edit_factory")]).then(__webpack_require__.bind(null, /*! ./components/admin/factory/Edit */ "./resources/js/components/admin/factory/Edit.vue"));
+    return Promise.all(/*! import() | edit_factory */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("edit_factory")]).then(__webpack_require__.bind(null, /*! ./components/admin/factory/Edit */ "./resources/js/components/admin/factory/Edit.vue"));
   },
   name: 'edit_factory',
   meta: {
@@ -83903,7 +83903,7 @@ var routes = [{
 }, {
   path: '/backend/product',
   component: function component() {
-    return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~manager_product_manage~product"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! ./components/admin/product/Product */ "./resources/js/components/admin/product/Product.vue"));
+    return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~product~showroom_products"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! ./components/admin/product/Product */ "./resources/js/components/admin/product/Product.vue"));
   },
   name: 'product',
   meta: {
@@ -83913,7 +83913,7 @@ var routes = [{
 }, {
   path: '/backend/report/product/stock',
   component: function component() {
-    return Promise.all(/*! import() | productStock */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("productStock")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/ProductStock */ "./resources/js/components/admin/Report/ProductStock.vue"));
+    return Promise.all(/*! import() | productStock */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("productStock")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/ProductStock */ "./resources/js/components/admin/Report/ProductStock.vue"));
   },
   name: 'productStcok',
   meta: {
@@ -83923,7 +83923,7 @@ var routes = [{
 }, {
   path: '/backend/addProduct',
   component: function component() {
-    return Promise.all(/*! import() | productAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("productAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/product/Add */ "./resources/js/components/admin/product/Add.vue"));
+    return Promise.all(/*! import() | productAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("productAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/product/Add */ "./resources/js/components/admin/product/Add.vue"));
   },
   name: 'productAdd',
   meta: {
@@ -83933,7 +83933,7 @@ var routes = [{
 }, {
   path: '/backend/product/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | productEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("productEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/product/Edit */ "./resources/js/components/admin/product/Edit.vue"));
+    return Promise.all(/*! import() | productEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("productEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/product/Edit */ "./resources/js/components/admin/product/Edit.vue"));
   },
   name: 'productEdit',
   meta: {
@@ -83953,7 +83953,7 @@ var routes = [{
 }, {
   path: '/backend/addPurchase',
   component: function component() {
-    return Promise.all(/*! import() | addPurchase */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("addPurchase")]).then(__webpack_require__.bind(null, /*! ./components/admin/purchase/Add */ "./resources/js/components/admin/purchase/Add.vue"));
+    return Promise.all(/*! import() | addPurchase */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("addPurchase")]).then(__webpack_require__.bind(null, /*! ./components/admin/purchase/Add */ "./resources/js/components/admin/purchase/Add.vue"));
   },
   name: 'addPurchase',
   meta: {
@@ -83963,7 +83963,7 @@ var routes = [{
 }, {
   path: '/backend/addPurchase/fabrics',
   component: function component() {
-    return Promise.all(/*! import() | addPurchasefabrics */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("addPurchasefabrics")]).then(__webpack_require__.bind(null, /*! ./components/admin/purchase/AddFabricsPurchase */ "./resources/js/components/admin/purchase/AddFabricsPurchase.vue"));
+    return Promise.all(/*! import() | addPurchasefabrics */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("addPurchasefabrics")]).then(__webpack_require__.bind(null, /*! ./components/admin/purchase/AddFabricsPurchase */ "./resources/js/components/admin/purchase/AddFabricsPurchase.vue"));
   },
   name: 'AddPurchaseFabrics',
   meta: {
@@ -83983,7 +83983,7 @@ var routes = [{
 }, {
   path: '/backend/purchaseEdit/:id',
   component: function component() {
-    return Promise.all(/*! import() | purchaseEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("purchaseEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/purchase/Edit */ "./resources/js/components/admin/purchase/Edit.vue"));
+    return Promise.all(/*! import() | purchaseEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("purchaseEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/purchase/Edit */ "./resources/js/components/admin/purchase/Edit.vue"));
   },
   name: 'purchaseEdit',
   meta: {
@@ -83993,7 +83993,7 @@ var routes = [{
 }, {
   path: '/backend/order',
   component: function component() {
-    return Promise.all(/*! import() | order */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("order")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Order */ "./resources/js/components/admin/order/Order.vue"));
+    return Promise.all(/*! import() | order */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("order")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Order */ "./resources/js/components/admin/order/Order.vue"));
   },
   name: 'order',
   meta: {
@@ -84003,7 +84003,7 @@ var routes = [{
 }, {
   path: '/backend/new/order',
   component: function component() {
-    return Promise.all(/*! import() | newOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("newOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/New */ "./resources/js/components/admin/order/New.vue"));
+    return Promise.all(/*! import() | newOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("newOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/New */ "./resources/js/components/admin/order/New.vue"));
   },
   name: 'NewOrder',
   meta: {
@@ -84013,7 +84013,7 @@ var routes = [{
 }, {
   path: '/backend/order/pending',
   component: function component() {
-    return Promise.all(/*! import() | pendingOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("pendingOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Pending */ "./resources/js/components/admin/order/Pending.vue"));
+    return Promise.all(/*! import() | pendingOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("pendingOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Pending */ "./resources/js/components/admin/order/Pending.vue"));
   },
   name: 'PendingOrder',
   meta: {
@@ -84023,7 +84023,7 @@ var routes = [{
 }, {
   path: '/backend/order/approved',
   component: function component() {
-    return Promise.all(/*! import() | approvedOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("approvedOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Approved */ "./resources/js/components/admin/order/Approved.vue"));
+    return Promise.all(/*! import() | approvedOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("approvedOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Approved */ "./resources/js/components/admin/order/Approved.vue"));
   },
   name: 'ApprovedOrder',
   meta: {
@@ -84033,7 +84033,7 @@ var routes = [{
 }, {
   path: '/backend/order/shipment',
   component: function component() {
-    return Promise.all(/*! import() | shipmentOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("shipmentOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Shipment */ "./resources/js/components/admin/order/Shipment.vue"));
+    return Promise.all(/*! import() | shipmentOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("shipmentOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Shipment */ "./resources/js/components/admin/order/Shipment.vue"));
   },
   name: 'ShipmentOrder',
   meta: {
@@ -84043,7 +84043,7 @@ var routes = [{
 }, {
   path: '/backend/order/delivered',
   component: function component() {
-    return Promise.all(/*! import() | DeliveredOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("DeliveredOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Delivered */ "./resources/js/components/admin/order/Delivered.vue"));
+    return Promise.all(/*! import() | DeliveredOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("DeliveredOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Delivered */ "./resources/js/components/admin/order/Delivered.vue"));
   },
   name: 'DeliveredOrder',
   meta: {
@@ -84053,7 +84053,7 @@ var routes = [{
 }, {
   path: '/backend/order/return',
   component: function component() {
-    return Promise.all(/*! import() | ReturnOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("ReturnOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Return */ "./resources/js/components/admin/order/Return.vue"));
+    return Promise.all(/*! import() | ReturnOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("ReturnOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Return */ "./resources/js/components/admin/order/Return.vue"));
   },
   name: 'ReturnOrder',
   meta: {
@@ -84063,7 +84063,7 @@ var routes = [{
 }, {
   path: '/backend/order/cancel',
   component: function component() {
-    return Promise.all(/*! import() | cancelOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("cancelOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Cancel */ "./resources/js/components/admin/order/Cancel.vue"));
+    return Promise.all(/*! import() | cancelOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("cancelOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Cancel */ "./resources/js/components/admin/order/Cancel.vue"));
   },
   name: 'CancelOrder',
   meta: {
@@ -84073,7 +84073,7 @@ var routes = [{
 }, {
   path: '/backend/order/wholesale',
   component: function component() {
-    return Promise.all(/*! import() | wholesaleOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("wholesaleOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Wholesale */ "./resources/js/components/admin/order/Wholesale.vue"));
+    return Promise.all(/*! import() | wholesaleOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("wholesaleOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Wholesale */ "./resources/js/components/admin/order/Wholesale.vue"));
   },
   name: 'WholeSaleOrder',
   meta: {
@@ -84083,7 +84083,7 @@ var routes = [{
 }, {
   path: '/backend/addOrder',
   component: function component() {
-    return Promise.all(/*! import() | addOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("addOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Add */ "./resources/js/components/admin/order/Add.vue"));
+    return Promise.all(/*! import() | addOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("addOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Add */ "./resources/js/components/admin/order/Add.vue"));
   },
   name: 'addOrder',
   meta: {
@@ -84093,7 +84093,7 @@ var routes = [{
 }, {
   path: '/backend/add/wholesale',
   component: function component() {
-    return Promise.all(/*! import() | addwholesale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("addwholesale")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/AddWholeSale */ "./resources/js/components/admin/order/AddWholeSale.vue"));
+    return Promise.all(/*! import() | addwholesale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~addOrder~addwholesale~admin_login~manager_code_verified~new_password_manager~showroom_sale_add"), __webpack_require__.e("addwholesale")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/AddWholeSale */ "./resources/js/components/admin/order/AddWholeSale.vue"));
   },
   name: 'addWholeSale',
   meta: {
@@ -84103,7 +84103,7 @@ var routes = [{
 }, {
   path: '/backend/view/order/:id',
   component: function component() {
-    return Promise.all(/*! import() | viewOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("viewOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/View */ "./resources/js/components/admin/order/View.vue"));
+    return Promise.all(/*! import() | viewOrder */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("viewOrder")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/View */ "./resources/js/components/admin/order/View.vue"));
   },
   name: 'viewOrder',
   meta: {
@@ -84113,7 +84113,7 @@ var routes = [{
 }, {
   path: '/backend/orderEdit/:id',
   component: function component() {
-    return Promise.all(/*! import() | orderEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("orderEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Edit */ "./resources/js/components/admin/order/Edit.vue"));
+    return Promise.all(/*! import() | orderEdit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("orderEdit")]).then(__webpack_require__.bind(null, /*! ./components/admin/order/Edit */ "./resources/js/components/admin/order/Edit.vue"));
   },
   name: 'orderEdit',
   meta: {
@@ -84123,7 +84123,7 @@ var routes = [{
 }, {
   path: '/backend/purchaseView/:id',
   component: function component() {
-    return Promise.all(/*! import() | purchaseView */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("purchaseView")]).then(__webpack_require__.bind(null, /*! ./components/admin/purchase/View */ "./resources/js/components/admin/purchase/View.vue"));
+    return Promise.all(/*! import() | purchaseView */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("purchaseView")]).then(__webpack_require__.bind(null, /*! ./components/admin/purchase/View */ "./resources/js/components/admin/purchase/View.vue"));
   },
   name: 'purchaseView',
   meta: {
@@ -84163,7 +84163,7 @@ var routes = [{
 }, {
   path: '/backend/selling/offer/add',
   component: function component() {
-    return Promise.all(/*! import() | add_selling_offer */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("add_selling_offer")]).then(__webpack_require__.bind(null, /*! ./components/admin/selling_offer/Add */ "./resources/js/components/admin/selling_offer/Add.vue"));
+    return Promise.all(/*! import() | add_selling_offer */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("add_selling_offer")]).then(__webpack_require__.bind(null, /*! ./components/admin/selling_offer/Add */ "./resources/js/components/admin/selling_offer/Add.vue"));
   },
   name: 'add_selling_offer',
   meta: {
@@ -84183,7 +84183,7 @@ var routes = [{
 }, {
   path: '/backend/carrier/add',
   component: function component() {
-    return Promise.all(/*! import() | add_carrier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("add_carrier")]).then(__webpack_require__.bind(null, /*! ./components/admin/carrier/Add */ "./resources/js/components/admin/carrier/Add.vue"));
+    return Promise.all(/*! import() | add_carrier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("add_carrier")]).then(__webpack_require__.bind(null, /*! ./components/admin/carrier/Add */ "./resources/js/components/admin/carrier/Add.vue"));
   },
   name: 'add_carrier',
   meta: {
@@ -84193,7 +84193,7 @@ var routes = [{
 }, {
   path: '/backend/carrier/show/:id',
   component: function component() {
-    return Promise.all(/*! import() | show_carrier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("show_carrier")]).then(__webpack_require__.bind(null, /*! ./components/admin/carrier/Show */ "./resources/js/components/admin/carrier/Show.vue"));
+    return Promise.all(/*! import() | show_carrier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("show_carrier")]).then(__webpack_require__.bind(null, /*! ./components/admin/carrier/Show */ "./resources/js/components/admin/carrier/Show.vue"));
   },
   name: 'show_carrier',
   meta: {
@@ -84203,7 +84203,7 @@ var routes = [{
 }, {
   path: '/backend/carrier/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | edit_carrier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("edit_carrier")]).then(__webpack_require__.bind(null, /*! ./components/admin/carrier/Edit */ "./resources/js/components/admin/carrier/Edit.vue"));
+    return Promise.all(/*! import() | edit_carrier */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("edit_carrier")]).then(__webpack_require__.bind(null, /*! ./components/admin/carrier/Edit */ "./resources/js/components/admin/carrier/Edit.vue"));
   },
   name: 'edit_carrier',
   meta: {
@@ -84223,7 +84223,7 @@ var routes = [{
 }, {
   path: '/backend/selling/offer/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | edit_selling_offer */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("edit_selling_offer")]).then(__webpack_require__.bind(null, /*! ./components/admin/selling_offer/Edit */ "./resources/js/components/admin/selling_offer/Edit.vue"));
+    return Promise.all(/*! import() | edit_selling_offer */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("edit_selling_offer")]).then(__webpack_require__.bind(null, /*! ./components/admin/selling_offer/Edit */ "./resources/js/components/admin/selling_offer/Edit.vue"));
   },
   name: 'edit_selling_offer',
   meta: {
@@ -84243,7 +84243,7 @@ var routes = [{
 }, {
   path: '/backend/account/purpose/add',
   component: function component() {
-    return Promise.all(/*! import() | account_purpose_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("account_purpose_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/account/Add */ "./resources/js/components/admin/account/Add.vue"));
+    return Promise.all(/*! import() | account_purpose_add */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("account_purpose_add")]).then(__webpack_require__.bind(null, /*! ./components/admin/account/Add */ "./resources/js/components/admin/account/Add.vue"));
   },
   name: 'account_purpose_add',
   meta: {
@@ -84253,7 +84253,7 @@ var routes = [{
 }, {
   path: '/backend/account/purpose/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | accoun_purpose_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("accoun_purpose_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/account/Edit */ "./resources/js/components/admin/account/Edit.vue"));
+    return Promise.all(/*! import() | accoun_purpose_edit */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("accoun_purpose_edit")]).then(__webpack_require__.bind(null, /*! ./components/admin/account/Edit */ "./resources/js/components/admin/account/Edit.vue"));
   },
   name: 'account_purpose_edit',
   meta: {
@@ -84273,7 +84273,7 @@ var routes = [{
 }, {
   path: '/backend/team/member/add',
   component: function component() {
-    return Promise.all(/*! import() | add_team_member */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("add_team_member")]).then(__webpack_require__.bind(null, /*! ./components/admin/team/Add */ "./resources/js/components/admin/team/Add.vue"));
+    return Promise.all(/*! import() | add_team_member */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("add_team_member")]).then(__webpack_require__.bind(null, /*! ./components/admin/team/Add */ "./resources/js/components/admin/team/Add.vue"));
   },
   name: 'add_team_member',
   meta: {
@@ -84283,7 +84283,7 @@ var routes = [{
 }, {
   path: '/backend/team/member/edit/:id',
   component: function component() {
-    return Promise.all(/*! import() | edit_team_member */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("edit_team_member")]).then(__webpack_require__.bind(null, /*! ./components/admin/team/Edit */ "./resources/js/components/admin/team/Edit.vue"));
+    return Promise.all(/*! import() | edit_team_member */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("edit_team_member")]).then(__webpack_require__.bind(null, /*! ./components/admin/team/Edit */ "./resources/js/components/admin/team/Edit.vue"));
   },
   name: 'edit_team_member',
   meta: {
@@ -84313,7 +84313,7 @@ var routes = [{
 }, {
   path: '/backend/sale/add',
   component: function component() {
-    return Promise.all(/*! import() | addSale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("addSale")]).then(__webpack_require__.bind(null, /*! ./components/admin/sale/Add */ "./resources/js/components/admin/sale/Add.vue"));
+    return Promise.all(/*! import() | addSale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("addSale")]).then(__webpack_require__.bind(null, /*! ./components/admin/sale/Add */ "./resources/js/components/admin/sale/Add.vue"));
   },
   name: 'AddSale',
   meta: {
@@ -84323,7 +84323,7 @@ var routes = [{
 }, {
   path: '/backend/sale/exchnage/add',
   component: function component() {
-    return Promise.all(/*! import() | AddSaleExchange */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("AddSaleExchange")]).then(__webpack_require__.bind(null, /*! ./components/admin/sale/Exchange */ "./resources/js/components/admin/sale/Exchange.vue"));
+    return Promise.all(/*! import() | AddSaleExchange */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("AddSaleExchange")]).then(__webpack_require__.bind(null, /*! ./components/admin/sale/Exchange */ "./resources/js/components/admin/sale/Exchange.vue"));
   },
   name: 'AddSaleExchange',
   meta: {
@@ -84333,7 +84333,7 @@ var routes = [{
 }, {
   path: '/backend/sale/add/company',
   component: function component() {
-    return Promise.all(/*! import() | addCompanySale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("addCompanySale")]).then(__webpack_require__.bind(null, /*! ./components/admin/sale/AddCompanySale */ "./resources/js/components/admin/sale/AddCompanySale.vue"));
+    return Promise.all(/*! import() | addCompanySale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("addCompanySale")]).then(__webpack_require__.bind(null, /*! ./components/admin/sale/AddCompanySale */ "./resources/js/components/admin/sale/AddCompanySale.vue"));
   },
   name: 'AddCompanySale',
   meta: {
@@ -84343,7 +84343,7 @@ var routes = [{
 }, {
   path: '/backend/sale/view/:id',
   component: function component() {
-    return Promise.all(/*! import() | viewSale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("viewSale")]).then(__webpack_require__.bind(null, /*! ./components/admin/sale/View */ "./resources/js/components/admin/sale/View.vue"));
+    return Promise.all(/*! import() | viewSale */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("viewSale")]).then(__webpack_require__.bind(null, /*! ./components/admin/sale/View */ "./resources/js/components/admin/sale/View.vue"));
   },
   name: 'ViewSale',
   meta: {
@@ -84353,7 +84353,7 @@ var routes = [{
 }, {
   path: '/backend/order/report',
   component: function component() {
-    return Promise.all(/*! import() | orderReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("orderReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/OrderReport */ "./resources/js/components/admin/Report/OrderReport.vue"));
+    return Promise.all(/*! import() | orderReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("orderReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/OrderReport */ "./resources/js/components/admin/Report/OrderReport.vue"));
   },
   name: 'OrderReport',
   meta: {
@@ -84363,7 +84363,7 @@ var routes = [{
 }, {
   path: '/backend/office/sale/report',
   component: function component() {
-    return Promise.all(/*! import() | officesaleReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("officesaleReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/OfficeSale */ "./resources/js/components/admin/Report/OfficeSale.vue"));
+    return Promise.all(/*! import() | officesaleReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("officesaleReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/OfficeSale */ "./resources/js/components/admin/Report/OfficeSale.vue"));
   },
   name: 'OfficeSaleReport',
   meta: {
@@ -84373,7 +84373,7 @@ var routes = [{
 }, {
   path: '/backend/purchase/report',
   component: function component() {
-    return Promise.all(/*! import() | purchaseReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("purchaseReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/Purchase */ "./resources/js/components/admin/Report/Purchase.vue"));
+    return Promise.all(/*! import() | purchaseReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("purchaseReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/Purchase */ "./resources/js/components/admin/Report/Purchase.vue"));
   },
   name: 'PurchaseReport',
   meta: {
@@ -84383,7 +84383,7 @@ var routes = [{
 }, {
   path: '/backend/supplier/report',
   component: function component() {
-    return Promise.all(/*! import() | supplier_Report */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("supplier_Report")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/SupplierReport */ "./resources/js/components/admin/Report/SupplierReport.vue"));
+    return Promise.all(/*! import() | supplier_Report */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("supplier_Report")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/SupplierReport */ "./resources/js/components/admin/Report/SupplierReport.vue"));
   },
   name: 'SupplierReport',
   meta: {
@@ -84393,7 +84393,7 @@ var routes = [{
 }, {
   path: '/backend/profite/report',
   component: function component() {
-    return Promise.all(/*! import() | profiteReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("profiteReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/Profite */ "./resources/js/components/admin/Report/Profite.vue"));
+    return Promise.all(/*! import() | profiteReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("profiteReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/Profite */ "./resources/js/components/admin/Report/Profite.vue"));
   },
   name: 'ProfiteReport',
   meta: {
@@ -84403,7 +84403,7 @@ var routes = [{
 }, {
   path: '/backend/sale/profite/report',
   component: function component() {
-    return Promise.all(/*! import() | SaleProfite */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("SaleProfite")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/SaleProfite */ "./resources/js/components/admin/Report/SaleProfite.vue"));
+    return Promise.all(/*! import() | SaleProfite */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("SaleProfite")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/SaleProfite */ "./resources/js/components/admin/Report/SaleProfite.vue"));
   },
   name: 'SaleProfite',
   meta: {
@@ -84413,7 +84413,7 @@ var routes = [{
 }, {
   path: '/backend/order/profite/report',
   component: function component() {
-    return Promise.all(/*! import() | OrderProfite */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("OrderProfite")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/OrderProfite */ "./resources/js/components/admin/Report/OrderProfite.vue"));
+    return Promise.all(/*! import() | OrderProfite */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("OrderProfite")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/OrderProfite */ "./resources/js/components/admin/Report/OrderProfite.vue"));
   },
   name: 'OrderProfite',
   meta: {
@@ -84423,7 +84423,7 @@ var routes = [{
 }, {
   path: '/backend/account/report',
   component: function component() {
-    return Promise.all(/*! import() | AccountReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("AccountReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/Account */ "./resources/js/components/admin/Report/Account.vue"));
+    return Promise.all(/*! import() | AccountReport */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~AccountReport~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~admin_dashboard~approvedOr~ee85355f"), __webpack_require__.e("admin_dashboard"), __webpack_require__.e("AccountReport")]).then(__webpack_require__.bind(null, /*! ./components/admin/Report/Account */ "./resources/js/components/admin/Report/Account.vue"));
   },
   name: 'AccountReport',
   meta: {
@@ -84442,7 +84442,7 @@ var routes = [{
 }, {
   path: '/backend/admin/profile',
   component: function component() {
-    return Promise.all(/*! import() | adminProfile */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("adminAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Add */ "./resources/js/components/admin/admin/Add.vue"));
+    return Promise.all(/*! import() | adminProfile */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("adminAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Add */ "./resources/js/components/admin/admin/Add.vue"));
   },
   name: 'adminProfile',
   meta: {
@@ -84452,7 +84452,7 @@ var routes = [{
 }, {
   path: '/backend/addAdmin',
   component: function component() {
-    return Promise.all(/*! import() | adminAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("adminAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Add */ "./resources/js/components/admin/admin/Add.vue"));
+    return Promise.all(/*! import() | adminAdd */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("adminAdd")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Add */ "./resources/js/components/admin/admin/Add.vue"));
   },
   name: 'adminAdd',
   meta: {
@@ -84461,7 +84461,7 @@ var routes = [{
 }, {
   path: '/backend/editAdmin/:adminId',
   component: function component() {
-    return Promise.all(/*! import() | editAdmin */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("editAdmin")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Edit */ "./resources/js/components/admin/admin/Edit.vue"));
+    return Promise.all(/*! import() | editAdmin */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("editAdmin")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Edit */ "./resources/js/components/admin/admin/Edit.vue"));
   },
   name: 'editAdmin',
   meta: {
@@ -84470,7 +84470,7 @@ var routes = [{
 }, {
   path: '/backend/assign/role/admin/:id',
   component: function component() {
-    return Promise.all(/*! import() | assingRoleAdmin */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("assingRoleAdmin")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Role */ "./resources/js/components/admin/admin/Role.vue"));
+    return Promise.all(/*! import() | assingRoleAdmin */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("assingRoleAdmin")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Role */ "./resources/js/components/admin/admin/Role.vue"));
   },
   name: 'AssignRoleAdmin',
   meta: {
@@ -84479,7 +84479,7 @@ var routes = [{
 }, {
   path: '/backend/assign/admin/permission/:id',
   component: function component() {
-    return Promise.all(/*! import() | assign_admin_permission */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("assign_admin_permission")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/AdminPermission */ "./resources/js/components/admin/admin/AdminPermission.vue"));
+    return Promise.all(/*! import() | assign_admin_permission */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("assign_admin_permission")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/AdminPermission */ "./resources/js/components/admin/admin/AdminPermission.vue"));
   },
   name: 'assign_admin_permission',
   meta: {
@@ -84488,7 +84488,7 @@ var routes = [{
 }, {
   path: '/backend/admin/password/:id',
   component: function component() {
-    return Promise.all(/*! import() | passwordChange */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("passwordChange")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Password */ "./resources/js/components/admin/admin/Password.vue"));
+    return Promise.all(/*! import() | passwordChange */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("passwordChange")]).then(__webpack_require__.bind(null, /*! ./components/admin/admin/Password */ "./resources/js/components/admin/admin/Password.vue"));
   },
   name: 'passwordChange',
   meta: {
@@ -84497,7 +84497,7 @@ var routes = [{
 }, {
   path: '/backend/sms/campaign',
   component: function component() {
-    return Promise.all(/*! import() | sms_campaign */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("sms_campaign")]).then(__webpack_require__.bind(null, /*! ./components/admin/sms/Send */ "./resources/js/components/admin/sms/Send.vue"));
+    return Promise.all(/*! import() | sms_campaign */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("sms_campaign")]).then(__webpack_require__.bind(null, /*! ./components/admin/sms/Send */ "./resources/js/components/admin/sms/Send.vue"));
   },
   name: 'sms_campaign',
   meta: {
@@ -84524,7 +84524,7 @@ var routes = [{
 }, {
   path: '/backend/contact/message/reply/:id',
   component: function component() {
-    return Promise.all(/*! import() | contact_messgae_reply */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("contact_messgae_reply")]).then(__webpack_require__.bind(null, /*! ./components/admin/contact/Reply */ "./resources/js/components/admin/contact/Reply.vue"));
+    return Promise.all(/*! import() | contact_messgae_reply */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("contact_messgae_reply")]).then(__webpack_require__.bind(null, /*! ./components/admin/contact/Reply */ "./resources/js/components/admin/contact/Reply.vue"));
   },
   name: 'contact_message_reply',
   meta: {
@@ -84533,7 +84533,7 @@ var routes = [{
 }, {
   path: '/backend/loan/add',
   component: function component() {
-    return Promise.all(/*! import() | addLoan */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("addLoan")]).then(__webpack_require__.bind(null, /*! ./components/admin/loan/Add */ "./resources/js/components/admin/loan/Add.vue"));
+    return Promise.all(/*! import() | addLoan */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("addLoan")]).then(__webpack_require__.bind(null, /*! ./components/admin/loan/Add */ "./resources/js/components/admin/loan/Add.vue"));
   },
   name: 'loanAdd',
   meta: {
@@ -84560,7 +84560,7 @@ var routes = [{
 }, {
   path: '/public/user/new/set/password',
   component: function component() {
-    return Promise.all(/*! import() | user_password_reset */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("user_password_reset")]).then(__webpack_require__.bind(null, /*! ./components/public/user/SetNewPassword */ "./resources/js/components/public/user/SetNewPassword.vue"));
+    return Promise.all(/*! import() | user_password_reset */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("user_password_reset")]).then(__webpack_require__.bind(null, /*! ./components/public/user/SetNewPassword */ "./resources/js/components/public/user/SetNewPassword.vue"));
   },
   name: 'user_new_password_set',
   meta: {
@@ -84570,7 +84570,7 @@ var routes = [{
 }, {
   path: '/backend/general/setting',
   component: function component() {
-    return Promise.all(/*! import() | generl setting */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("generl setting")]).then(__webpack_require__.bind(null, /*! ./components/admin/general_setting/General.vue */ "./resources/js/components/admin/general_setting/General.vue"));
+    return Promise.all(/*! import() | generl setting */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("generl setting")]).then(__webpack_require__.bind(null, /*! ./components/admin/general_setting/General.vue */ "./resources/js/components/admin/general_setting/General.vue"));
   },
   name: 'general_setting',
   meta: {
@@ -84580,7 +84580,7 @@ var routes = [{
   path: '/backend/footer/info',
   name: 'footer_setting',
   component: function component() {
-    return Promise.all(/*! import() | footer_setting */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("footer_setting")]).then(__webpack_require__.bind(null, /*! ./components/admin/footer_setting/Index.vue */ "./resources/js/components/admin/footer_setting/Index.vue"));
+    return Promise.all(/*! import() | footer_setting */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("footer_setting")]).then(__webpack_require__.bind(null, /*! ./components/admin/footer_setting/Index.vue */ "./resources/js/components/admin/footer_setting/Index.vue"));
   },
   meta: {
     requiresAuthAdmin: true
@@ -84589,7 +84589,7 @@ var routes = [{
   path: '/backend/about/contact/info',
   name: 'about_and_contact',
   component: function component() {
-    return Promise.all(/*! import() | about_and_contact */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("about_and_contact")]).then(__webpack_require__.bind(null, /*! ./components/admin/page_info/AboutContact.vue */ "./resources/js/components/admin/page_info/AboutContact.vue"));
+    return Promise.all(/*! import() | about_and_contact */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("about_and_contact")]).then(__webpack_require__.bind(null, /*! ./components/admin/page_info/AboutContact.vue */ "./resources/js/components/admin/page_info/AboutContact.vue"));
   },
   meta: {
     requiresAuthAdmin: true
@@ -84598,7 +84598,7 @@ var routes = [{
   path: '/backend/order/return/shipment/info',
   name: 'order_shipment_return',
   component: function component() {
-    return Promise.all(/*! import() | order_shipment_return */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("order_shipment_return")]).then(__webpack_require__.bind(null, /*! ./components/admin/page_info/OrderShipmentReturn.vue */ "./resources/js/components/admin/page_info/OrderShipmentReturn.vue"));
+    return Promise.all(/*! import() | order_shipment_return */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("vendors~about_and_contact~add_carrier~edit_carrier~footer_setting~generl setting~order_shipment_retu~74b625a3"), __webpack_require__.e("order_shipment_return")]).then(__webpack_require__.bind(null, /*! ./components/admin/page_info/OrderShipmentReturn.vue */ "./resources/js/components/admin/page_info/OrderShipmentReturn.vue"));
   },
   meta: {
     requiresAuthAdmin: true
@@ -84607,7 +84607,7 @@ var routes = [{
   path: '/backend/flash/deals',
   name: 'flash_deals',
   component: function component() {
-    return Promise.all(/*! import() | flash_deals */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("flash_deals")]).then(__webpack_require__.bind(null, /*! ./components/admin/flash_deals/FlashDeals.vue */ "./resources/js/components/admin/flash_deals/FlashDeals.vue"));
+    return Promise.all(/*! import() | flash_deals */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("flash_deals")]).then(__webpack_require__.bind(null, /*! ./components/admin/flash_deals/FlashDeals.vue */ "./resources/js/components/admin/flash_deals/FlashDeals.vue"));
   },
   meta: {
     requiresAuthAdmin: true
@@ -84616,7 +84616,7 @@ var routes = [{
   path: '/backend/seasional/campaign/menage',
   name: 'seasonal_campaign',
   component: function component() {
-    return Promise.all(/*! import() | seasonal campaign */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("seasonal campaign")]).then(__webpack_require__.bind(null, /*! ./components/admin/seasonal/Index.vue */ "./resources/js/components/admin/seasonal/Index.vue"));
+    return Promise.all(/*! import() | seasonal campaign */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("seasonal campaign")]).then(__webpack_require__.bind(null, /*! ./components/admin/seasonal/Index.vue */ "./resources/js/components/admin/seasonal/Index.vue"));
   },
   meta: {
     requiresAuthAdmin: true
@@ -84625,7 +84625,7 @@ var routes = [{
   path: '/backend/occasional/campaign/menage',
   name: 'occasional_campaign',
   component: function component() {
-    return Promise.all(/*! import() | occasional_campaign */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("occasional_campaign")]).then(__webpack_require__.bind(null, /*! ./components/admin/occasional/Index.vue */ "./resources/js/components/admin/occasional/Index.vue"));
+    return Promise.all(/*! import() | occasional_campaign */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("occasional_campaign")]).then(__webpack_require__.bind(null, /*! ./components/admin/occasional/Index.vue */ "./resources/js/components/admin/occasional/Index.vue"));
   },
   meta: {
     requiresAuthAdmin: true
@@ -84634,7 +84634,7 @@ var routes = [{
   path: '/backend/buy/one/get/one/campaign',
   name: 'buy_one_get_one',
   component: function component() {
-    return Promise.all(/*! import() | buy_one_get_one */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~cf0d8a39"), __webpack_require__.e("buy_one_get_one")]).then(__webpack_require__.bind(null, /*! ./components/admin/buy_one_get_one/Index.vue */ "./resources/js/components/admin/buy_one_get_one/Index.vue"));
+    return Promise.all(/*! import() | buy_one_get_one */[__webpack_require__.e("vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"), __webpack_require__.e("buy_one_get_one")]).then(__webpack_require__.bind(null, /*! ./components/admin/buy_one_get_one/Index.vue */ "./resources/js/components/admin/buy_one_get_one/Index.vue"));
   },
   meta: {
     requiresAuthAdmin: true

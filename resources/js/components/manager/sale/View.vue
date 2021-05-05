@@ -2,75 +2,59 @@
   <div>
        <navbar></navbar>
     <div class="content-wrapper">
-      <loading :active.sync="isLoading" :can-cancel="true" :is-full-page="fullPage"></loading>
-
       <section class="content-header"></section>
       <section class="content">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-11">
+          <div class="row">
+            <div class="col-lg-10">
               <div class="box box-primary">
                 <div class="box-header"></div>
                 <div class="box-body">
                     <div class="row print_info_container">
-                    <div class="col-md-1 col-sm-1"> </div>
                     <div class="col-md-3 col-sm-3 description">
                     <div>
                        <p
-                      >Name: {{order.customer.name}}  </p>
+                      >Name: {{sale.customer_name}}  </p>
                       <p >
-                        Mobile No: <strong> {{order.cutomer_phone}} </strong>
+                        Mobile No: <strong> {{sale.customer_phone}} </strong>
                       </p>
                       <p class="address_line" >
                         Address:
 
                         <span>
-                          {{ order.customer.address }}
+                          {{ sale.customer_address?sale.customer_address : 'no address'  }}
                         </span>
-                        <span v-if="order.sub_city">{{','+order.sub_city.name}}</span>
-
-                         <strong>
-                           {{','+order.city.name}}
-                         </strong>
 
                       </p>
-                      <p >Invoice No: <strong> {{order.invoice_no}} </strong> </p>
-
+                      <p >Invoice No: <strong> {{sale.invoice_no}} </strong> </p>
 
                     </div>
 
                    </div>
 
-                    <!-- <div class="col-md-3 col-sm-3 logo"> <img :src="base_url +'images/mohasagor_logo.png'" class="m_logo" alt="logo">
+                    <div class="col-md-3 col-sm-3 logo"> <img :src="base_url +'images/mohasagor_logo.png'" class="m_logo" alt="logo">
                            <p class="m_title"> Trusted Onlinde Shopping In Bangladesh </p>
-                     </div> -->
+                     </div>
                     <div style="margin-left:27px" class="col-md-4 col-sm-4 address">
-                        <!-- <p class="address_line" >Office: Houes:02, Lane:11,Block:A, Banarosi Polli, <br/>
+                        <p class="address_line" >Office: Houes:02, Lane:11,Block:A, Banarosi Polli, <br/>
                           section-10, Mirpur,Dhaka.</p>
-                        <p>Email: support@mohasagor.com</p>
+                        <p>Email: supportshowroom.com</p>
                         <p>Hot Line: <strong> 09636 203040</strong>  </p>
                         <p >
-                        Date: {{formateDate( order.created_at) }}
-                      </p> -->
+                        Date: {{formateDate( sale.created_at) }}
+                      </p>
 
-                      <div class="form-group" v-if="order.order_type==4 && Object.keys(order.reseller_order_details).length">
-                        <label for="">Reseller Commision</label>
-                        <div style="display:flex;">
-                          <input type="text" id="reseller_order_commision" :value="order.reseller_order_details.total_amount" class="form-control" >
-                          <button class="btn btn-primary text-uppercase" @click="updateResellerCommision">update</button>
-                        </div>
-                      </div>
                     </div>
                     <div class="col-md-1 col-sm-1"> </div>
                   </div>
 
 
-                  <div class="row">
-                    <div class="col-lg-1"></div>
-                    <h1 v-if="isLoading">
+
+
+                    <h1 v-if="loading">
                       <i class="fa fa-spin fa-spinner"></i>
                     </h1>
-                    <div class="col-lg-10" v-else>
+
                       <table class="table">
                         <thead>
                           <tr>
@@ -82,7 +66,7 @@
                             <th>Qty</th>
                             <th>Price</th>
                             <th>Total</th>
-                            <th  v-if="order.status==4"></th>
+                            <th  v-if="sale.status==4"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -92,7 +76,7 @@
                             </td>
                             <td>
                               {{ item.product.name}}
-                               <div  v-if="order.status==4 || order.status==5">
+                               <div  v-if="sale.status==4 || sale.status==5">
                                 <small   v-if="item.status==2"   class="badge badge-danger">Returned</small>
                               <!-- <small   v-else   class="badge badge-success">Delivered</small> -->
 
@@ -112,8 +96,8 @@
                             <td>{{ item.product.product_code }}</td>
                             <td>{{item.quantity}}</td>
                             <td>{{item.price}}</td>
-                            <td>{{item.quantity*item.price}}</td>
-                            <td v-if="order.status==4 && item.status==1"><span class="badge badge-danger" style="cursor: pointer;" @click="itemReturn(item.id)">Return</span></td>
+                            <td>{{item.total }}</td>
+                            <td v-if="sale.status==4 && item.status==1"><span class="badge badge-danger" style="cursor: pointer;" @click="itemReturn(item.id)">Return</span></td>
                           </tr>
 
                           <tr>
@@ -122,7 +106,7 @@
                               <b>Sub Total</b>
                             </td>
                             <td>
-                              <b>{{order.total}}</b>
+                              <b>{{sale.total}}</b>
                             </td>
                           </tr>
                           <tr>
@@ -131,7 +115,7 @@
                               <b>Discount</b>
                             </td>
                             <td>
-                              <b>{{order.discount}}</b>
+                              <b>{{sale.discount}}</b>
                             </td>
                           </tr>
                           <tr>
@@ -140,16 +124,7 @@
                               <b>Paid</b>
                             </td>
                             <td>
-                              <b>{{order.paid}}</b>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colspan="6"></td>
-                            <td>
-                              <b>Shiiping_cost</b>
-                            </td>
-                            <td>
-                              <b>{{order.shipping_cost}}</b>
+                              <b>{{sale.paid}}</b>
                             </td>
                           </tr>
 
@@ -159,35 +134,33 @@
                               <b>Amount Due</b>
                             </td>
                             <td>
-                              <b>{{parseInt(order.total)-(parseInt(order.discount)+parseInt(order.paid))+parseInt(order.shipping_cost)}}</b>
+                              <b>{{  parseInt(sale.due_amount) }}</b>
 
                             </td>
                           </tr>
                         </tbody>
                       </table>
-                    </div>
-                  </div>
 
                   <div class="row">
                     <div class="col-lg-2" style="margin-left:27px;text-align:center;">
                       <h6
                         style="margin-bottom:0;"
-                        v-if="order.approved_by != null"
-                      >{{order.approved_by.name}}</h6>
-                      <h5 style="border-top:2px dotted #000;margin-top:25;">
+                        v-if="sale.approved_by != null"
+                      >{{sale.approved_by.name}}</h6>
+                      <h5 style="bsale-top:2px dotted #000;margin-top:25;">
                         <strong>Approved By</strong>
                       </h5>
                     </div>
                   </div>
 
                   <div class="row bottomBtn">
-                    <button class="btn btn-success print"  @click="print(order.id)">
+                    <button class="btn btn-success print"  @click="print(sale.id)">
                       <i class="fa fa-print"></i>
                     </button>
-                    <button class="btn btn-warning back" @click="back">
-                      <i class="fa fa-arrow-circle-right" ></i>
-                    </button>
-                     <router-link class="btn btn-success back" :to="{name:'orderEdit',params:{id:order.id}}" v-if="order.status!=5 && order.status!=4">
+                    <router-link :to="{name:'showroom_sale' }" class="btn btn-warning back" >
+                      <i class="fa fa-arrow-circle-left" ></i>
+                    </router-link>
+                     <router-link class="btn btn-success back" :to="{name:'saleEdit',params:{id:sale.id}}" v-if="sale.status!=5 && sale.status!=4">
                       <i class="fa fa-edit" ></i>
                     </router-link>
                   </div>
@@ -215,26 +188,24 @@ export default {
   },
   data() {
     return {
-      order: "",
+      sale: "",
       items: "",
       loading: true,
-     base_url: this.$store.state.image_base_link,
-      isLoading: true,
-      fullPage: true,
-
+      base_url: this.$store.state.image_base_link,
+      loading: true,
     };
   },
 
   methods: {
     getDetails() {
       axios
-        .get("/order/view/" + this.$route.params.id)
+        .get("/api/sale/details/"+this.$route.params.id)
         .then((resp) => {
           console.log(resp);
           if (resp.data.status == "SUCCESS") {
-            this.order = resp.data.order;
-            this.items = resp.data.items;
-            this.isLoading=false;
+            this.sale = resp.data.sale;
+            this.items = resp.data.sale_items;
+            this.loading=false;
           } else {
             this.$toasted.show("some thing want to wrong", {
               type: "error",
@@ -243,26 +214,15 @@ export default {
             });
           }
         })
-        .catch((error) => {
-          console.log(error);
-          this.$toasted.show("some thing want to wrong", {
-            type: "error",
-            position: "top-center",
-            duration: 4000,
-          });
-        });
     },
-    print(order_id) {
-
-     window.open('/order/invoice/print/'+order_id,'_SELF')
+    showroom_sale_price(){
 
     },
-    back() {
-      //   console.log(window.history);
-      window.history.back();
+    print(sale_id) {
+     window.open('/sale/invoice/print/'+sale_id,'_SELF')
     },
+
     formateDate(date){
-
       let d=new Date(date);
       let month = d.getMonth();
       let day = d.getDate();
@@ -271,59 +231,7 @@ export default {
       return output;
 
     },
-    updateResellerCommision(){
 
-      let commission=document.getElementById('reseller_order_commision').value;
-      if(parseInt(commission)<=0){
-        console.log(commission);
-        alert('Commison can not be equal or smaller 0');
-        return;
-      }
-      axios.get('/update/commision/reseller/order/'+this.order.id,{
-        params:{
-          commission
-        }
-      }).then(resp=>{
-        if(resp.data){
-          this.$toasted.show(resp.data, {
-              type: "info",
-              position: "top-center",
-              duration: 5000,
-            });
-        }
-      })
-
-
-
-    },
-    itemReturn(item_id){
-
-      if(confirm("are you confirm")){
-        this.isLoading=true;
-       axios.get('/order/return/item/'+item_id)
-       .then(resp=>{
-         console.log(resp)
-         if(resp.data.success=="OK"){
-             this.$toasted.show(resp.data.message, {
-              type: "info",
-              position: "top-center",
-              duration: 5000,
-            });
-            this.getDetails();
-         }else{
-             this.$toasted.show(resp.data, {
-              type: "error",
-              position: "top-center",
-              duration: 5000,
-            });
-         }
-       })
-       .catch(e=>{
-         this.isLoading=false;
-       })
-      }
-
-    }
   },
 components:{
   Loading,

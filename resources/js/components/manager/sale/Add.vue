@@ -4,7 +4,10 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          <router-link :to="{ name: 'showroom_sale' }" class="btn btn-primary btn-sm">
+          <router-link
+            :to="{ name: 'showroom_sale' }"
+            class="btn btn-primary btn-sm"
+          >
             <i class="fa fa-arrow-left"></i>
           </router-link>
         </h1>
@@ -17,7 +20,7 @@
       </section>
       <section class="content">
         <form @submit.prevent="searchProduct" id="searchProductform"></form>
-        <form @submit.prevent="add" @keydown="form.onKeydown($event)">
+        <form @submit.prevent="addSale" @keydown="form.onKeydown($event)">
           <div class="row justify-content-center">
             <div
               class="alert alert-danger alert-dismissible"
@@ -38,24 +41,27 @@
                 </div>
                 <div class="box-body">
                   <div class="form-group">
-                    <label>Customer_mobile</label>
+                    <label
+                      >Mobile Number<span style="color: red">*</span>
+                    </label>
                     <input
                       type="text"
-                      name="customer_mobile"
+                      name="customer_phone"
                       class="form-control"
                       autocomplete="off"
-                      placeholder="Enter customer 11 digit mobile number"
-                      v-model="form.customer_mobile"
+                      placeholder="01xxxxxxxxx"
+                      maxlength="11"
+                      v-model="form.customer_phone"
                       @keyup="searchCustomer"
                       :class="{
-                        'is-invalid': form.errors.has('customer_mobile'),
+                        'is-invalid': form.errors.has('customer_phone'),
                       }"
                     />
-                    <has-error :form="form" field="customer_mobile"></has-error>
+                    <has-error :form="form" field="customer_phone"></has-error>
                   </div>
 
                   <div class="form-group">
-                    <label>Name</label>
+                    <label>Name <span style="color: red">*</span></label>
                     <input
                       type="text"
                       name="name"
@@ -72,8 +78,7 @@
 
                   <div class="form-group">
                     <label>Address</label>
-                    <input
-                      type="text"
+                    <textarea
                       name="address"
                       class="form-control"
                       autocomplete="off"
@@ -82,10 +87,14 @@
                       :class="{
                         'is-invalid': form.errors.has('customer_address'),
                       }"
-                    />
-                    <has-error :form="form" field="customer_address"></has-error>
+                      rows="3"
+                    >
+                    </textarea>
+                    <has-error
+                      :form="form"
+                      field="customer_address"
+                    ></has-error>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -103,6 +112,7 @@
                       name="name"
                       class="form-control"
                       autofocus
+                      maxlength="4"
                       autocomplete="off"
                       placeholder="Enter Product Code"
                       form="searchProductform"
@@ -112,12 +122,11 @@
 
                   <div class="row">
                     <div class="col-lg-12">
-                      <table class="table">
+                      <table class="table table-striped table-hover">
                         <thead>
                           <tr>
                             <th>#</th>
                             <th>Product</th>
-                            <!-- <th>Attribute</th> -->
                             <th>Variant</th>
                             <th>Quantity</th>
                             <th>Price</th>
@@ -126,40 +135,30 @@
                           </tr>
                         </thead>
                         <tbody v-if="products.length > 0">
-                          <tr v-for="(product, index) in products.slice().reverse()" :key="index">
-                            <td>{{ index + 1 }}</td>
+                          <tr
+                            v-for="(
+                              product, index
+                            ) in products"
+                            :key="index"
+                          >
+                            <td>{{ index }}</td>
                             <td>
                               {{ product.name + "-" + product.product_code }}
                               <input type="hidden" :value="product.id" />
                             </td>
-                            <!-- <td>
-                              <select
-                                class="form-control"
-                                v-model="form.products[index].attribute_id"
-                              >
-                                <option value>select attribute</option>
-                                <option
-                                  v-if="product.attributes"
-                                  v-for="(product_attribute,
-                                  index) in product.attributes"
-                                  :key="index"
-                                  :value="product_attribute.attribute.id"
-                                >
-                                  {{ product_attribute.attribute.name }}
-                                </option>
-                              </select>
-                            </td> -->
-                            <td >
-                              <select
 
+                            <td>
+                              <select
                                 class="form-control"
                                 v-model="form.products[index].variant_id"
-                                style="width:70px;"
+                                style="width: 70px"
                               >
                                 <option value>select variant</option>
                                 <option
                                   v-if="product.variants"
-                                  v-for="(product_variant, index) in product.variants"
+                                  v-for="(
+                                    product_variant, index
+                                  ) in product.variants"
                                   :key="index"
                                   :value="product_variant.variant.id"
                                 >
@@ -175,32 +174,46 @@
                                 @change="quantity(index)"
                                 style="width: 40px"
                               />
-                              <span class="badge badge-danger">{{ product.stock }}</span>
+                              <span class="badge badge-danger">{{
+                                product.s_stock
+                              }}</span>
                             </td>
                             <td>
-                              <input
-                                v-model="form.products[index].price"
-                                @keyup="totalCalculation && quantity(index)"
-                                v-if="form.order_type == 3"
-                              />
-                              <strong v-else>{{ product.price }}</strong>
+                              <strong>{{ product.s_sale_price }}</strong>
                             </td>
                             <td>{{ form.products[index].total }}</td>
                             <td>
-                              <a class="btn btn-danger btn-sm" @click="remove(index)"
+                              <a
+                                class="btn btn-danger btn-sm"
+                                @click="remove(index)"
                                 ><i class="fa fa-trash"></i
                               ></a>
                             </td>
                           </tr>
                           <tr v-if="products.length > 0">
-                            <td colspan="5"></td>
-                            <td>Total Amount</td>
-                            <td>{{ form.total }}</td>
+                            <td colspan="3">
+                              <select name="sale_type"
+                               class="form-control"
+                               v-model="form.sale_type">
+                                <option value="1">Retail Sale</option>
+                                <option value="2">Whole Sale</option>
+                              </select>
+                            </td>
+                            <td colspan="2">Total Amount</td>
+                            <td colspan="2">{{ form.total }}</td>
                           </tr>
                           <tr v-if="products.length > 0">
-                            <td colspan="5"></td>
-                            <td>Discount</td>
-                            <td style="width: 70px">
+                            <td colspan="3">
+                               <select name="discount_type"
+                               class="form-control"
+                               v-model="form.discount_type">
+                                <option disabled>discount type</option>
+                                <option value="percentage">percentage</option>
+                                <option value="flat">flat</option>
+                              </select>
+                            </td>
+                            <td colspan="2" >Discount</td>
+                            <td colspan="2" >
                               <input
                                 class="form-control"
                                 @keyup="totalCalculation"
@@ -210,9 +223,9 @@
                             </td>
                           </tr>
                           <tr v-if="products.length > 0">
-                            <td colspan="5"></td>
-                            <td>Paid</td>
-                            <td>
+                            <td colspan="3"></td>
+                            <td colspan="2" >Paid</td>
+                            <td colspan="2">
                               <input
                                 v-model="form.paid"
                                 @keyup="totalCalculation"
@@ -222,36 +235,41 @@
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="5"></td>
+                            <td colspan="3"></td>
 
-                            <td>Paid By</td>
-                            <td>
+                            <td colspan="2" >Paid By</td>
+                            <td colspan="2">
                               <div class="form-group">
                                 <select
                                   name="debit_from"
                                   id=""
                                   class="form-control"
                                   v-model="form.paid_by"
-                                  :class="{ 'is-invalid': form.errors.has('paid_by') }"
+                                  :class="{
+                                    'is-invalid': form.errors.has('paid_by'),
+                                  }"
                                 >
                                   <option value="Cash">Cash</option>
-                                  <option value="Bkash(personal)">Bkash(personal)</option>
-                                  <option value="Bkash(merchant)">Bkash(merchant)</option>
+                                  <option value="Bkash(personal)">
+                                    Bkash(personal)
+                                  </option>
+                                  <option value="Bkash(merchant)">
+                                    Bkash(merchant)
+                                  </option>
                                   <option value="Bank">Bank</option>
                                 </select>
-                                <has-error :form="form" field="paid_by"></has-error>
+                                <has-error
+                                  :form="form"
+                                  field="paid_by"
+                                ></has-error>
                               </div>
                             </td>
                           </tr>
+
                           <tr v-if="products.length > 0">
-                            <td colspan="5"></td>
-                            <td>Shipping_charge</td>
-                            <td>{{ form.shipping_cost }}</td>
-                          </tr>
-                          <tr v-if="products.length > 0">
-                            <td colspan="5"></td>
-                            <td>Amoutn due</td>
-                            <td>{{ form.due }}</td>
+                            <td colspan="3"></td>
+                            <td colspan="2" >Amoutn due</td>
+                            <td colspan="2">{{ form.due }}</td>
                           </tr>
 
                           <button
@@ -271,7 +289,6 @@
             </div>
           </div>
         </form>
-
       </section>
     </div>
   </div>
@@ -280,7 +297,6 @@
 <script>
 import Vue from "vue";
 import { Form, HasError, AlertError } from "vform";
-import datePicker from "vue-bootstrap-datetimepicker";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 Vue.use(Loading);
@@ -288,19 +304,20 @@ import navbar from "../Navbar";
 Vue.component(HasError.name, HasError);
 
 export default {
-  created() {
-  },
+  created() {},
   data() {
     return {
       form: new Form({
-        customer_mobile: "",
+        customer_phone: "",
         customer_name: "",
         customer_address: "",
+        sale_type:1,
         products: [],
-        shipping_cost: 0,
         status: 2,
         total: 0,
         discount: 0,
+        discount_type:'discount type',
+        due: 0,
         paid: 0,
         order_type: 2,
         paid_by: "Bkash(merchant)",
@@ -314,7 +331,6 @@ export default {
       product_variants: null,
       product_quantity: 1,
       errors: [],
-      suggested_products: {},
       product_per_page: 10,
       base_link: this.$store.state.image_base_link,
     };
@@ -322,18 +338,17 @@ export default {
 
   //method initial for submit data
   methods: {
-    add() {
+    addSale() {
       //start progress bar when submit fomr
       this.$Progress.start();
       this.form
-        .post("/create/order")
+        .post("/api/showroom/sale/add")
         .then((resp) => {
           console.log(resp);
           if (resp.data.status == "SUCCESS") {
             //end progress bar when success resp
             this.$Progress.finish();
-
-            this.$router.push({ name: "order" });
+            this.$router.push({ name: "showroom_sale" });
             this.$toasted.show(resp.data.message, {
               type: "success",
               position: "top-center",
@@ -355,19 +370,15 @@ export default {
         });
     },
 
-
     //method initial for search product
     searchProduct() {
       let length = this.product_code.length;
-      console.log(length);
-      //  alert(length)
-
       if (length == 4) {
         this.$Progress.start();
         axios
-          .get("/search/product/with/code/" + this.product_code)
-
+          .get("/api/search/product/with/"+this.product_code)
           .then((resp) => {
+            console.log(resp);
             if (resp.data.status == "SUCCESS") {
               this.product_code = "";
               let product = {
@@ -380,33 +391,35 @@ export default {
                 stock: "",
               };
               for (let i = 0; i < resp.data.product.length; i++) {
-                //check the product stcok availity
-                // if (resp.data.product[i].stock <= 0) {
-                //   return Swal.fire({
-                //     type: "warning",
-                //     title: "Wopps....",
-                //     html: `${resp.data.product[i].name} - <strong> ${resp.data.product[i].product_code} </strong> in <b>stcok not available</b>.`,
-                //   });
-                // }
+               // check the product stcok availity
+                if (resp.data.product[i].s_stock <= 0) {
+                  return Swal.fire({
+                    type: "warning",
+                    title: "Wopps....",
+                    html: `${resp.data.product[i].name} - <strong> ${resp.data.product[i].product_code} </strong> in <b>stcok not available</b>.`,
+                  });
+                }
 
                 this.products.push(resp.data.product[i]);
                 product.id = resp.data.product[i].id;
-                product.price = resp.data.product[i].price;
-                product.total = resp.data.product[i].price;
-                product.stock = resp.data.product[i].stock;
+                product.price = resp.data.product[i].s_sale_price;
+                product.total = resp.data.product[i].s_sale_price;
+                product.stock = resp.data.product[i].s_stock;
                 //  console.log(resp.data.product)
-                // this.suggested_products.data.unshift(resp.data.product[i])
               }
               this.form.products.push(product);
               this.totalCalculation();
             }
             //when not resp success
             else {
-              this.$toasted.show("Product not found with " + this.product_code, {
-                position: "top-center",
-                type: "danger",
-                duration: 2000,
-              });
+              this.$toasted.show(
+                "Product not found with " + this.product_code,
+                {
+                  position: "top-center",
+                  type: "danger",
+                  duration: 2000,
+                }
+              );
             }
             this.$Progress.finish();
           })
@@ -419,26 +432,26 @@ export default {
 
     //method initial search customer
     searchCustomer() {
-      if (this.form.customer_mobile.length == 11) {
+      if (this.form.customer_phone.length == 11) {
         axios
-          .get("/search/customer/with/phone/number/" + this.form.customer_mobile)
+          .get("/api/search/customer/" + this.form.customer_phone)
           .then((resp) => {
-            //when com data from t resp
-            if (resp.data) {
-              if (resp.data.customer) {
-                (this.form.customer_name = resp.data.customer.name),
-                  (this.form.customer_address = resp.data.customer.address);
-                this.form.city = resp.data.customer.city_id;
-              }
+            console.log(resp);
+            if (resp.data.status == "OK") {
+              this.form.customer_name = resp.data.customer.name;
+              this.form.customer_address = resp.data.customer.address;
               this.$toasted.show(resp.data.message, {
-                type: "error",
+                type: "success",
                 position: "top-center",
-                duration: 4000,
+                duration: 2000,
+              });
+            } else {
+              this.$toasted.show(resp.data.message, {
+                type: "success",
+                position: "top-center",
+                duration: 2000,
               });
             }
-          })
-          .catch((error) => {
-            //console.log(error);
           });
       }
     },
@@ -453,16 +466,15 @@ export default {
     // },
     //when chage qauntity
     quantity(index) {
-      // if(parseInt(this.products[index].stock ) < parseInt(this.form.products[index].quantity)){
-      //   alert(`max quantity ${this.form.products[index].stock}`)
-      //   this.form.products[index].quantity=this.form.products[index].stock;
-      //   return;
-      // }
+      if(parseInt(this.products[index].s_stock ) < parseInt(this.form.products[index].quantity)){
+        alert(`max quantity ${this.form.products[index].s_stock}`)
+        this.form.products[index].quantity=this.form.products[index].stock;
+        return;
+      }
       this.form.products[index].total =
         parseInt(this.form.products[index].price) *
         parseInt(this.form.products[index].quantity);
-
-      this.totalCalculation();
+        this.totalCalculation();
     },
 
     //total amount calculation
@@ -473,21 +485,14 @@ export default {
         total += parseInt(products[i].price) * parseInt(products[i].quantity);
       }
 
+
       if (
-        parseInt(this.form.paid) >
-        parseInt(total) + parseInt(this.form.shipping_cost)
+        parseInt(this.form.discount) >
+        parseInt(total) + parseInt(this.form.discount)
       ) {
         Swal.fire({
           type: "warning",
-          text: `. why paid amount ${this.form.paid} bigger this total amount ${total} ?????`,
-        });
-        this.form.paid = total;
-        return;
-      }
-      if (parseInt(this.form.discount) > parseInt(total) + parseInt(this.form.discount)) {
-        Swal.fire({
-          type: "warning",
-          text: `why discount amount ${this.form.discount} bigger this total amount ${total} ?????`,
+          text: `why discount amount ${this.form.discount} bigger this total amount ${total} ?`,
         });
         this.form.discount = total;
         return;
@@ -496,13 +501,10 @@ export default {
 
       this.form.due =
         this.form.total -
-        parseInt(this.form.discount) -
-        parseInt(this.form.paid) +
-        parseInt(this.form.shipping_cost);
-
-      total += parseInt(products[i].price) * parseInt(products[i].quantity);
+        (parseInt(this.form.discount)+
+        parseInt(this.form.paid));
+        total += parseInt(products[i].price) * parseInt(products[i].quantity);
     },
-
 
     remove(index) {
       // console.log(index);
@@ -511,23 +513,10 @@ export default {
       this.products.splice(index, 1);
       this.totalCalculation();
     },
-    search_suggested_product() {
-      if (this.search_product_code.length >= 2) {
-        axios
-          .get("/api/search/seggested/product/for/order/" + this.search_product_code)
-          .then((resp) => {
-            console.log(resp);
-            if (resp.data.status == "OK") {
-              this.suggested_products = resp.data.products;
-            }
-          });
-      }
-    },
 
   },
 
   components: {
-    datePicker,
     navbar,
   },
 };

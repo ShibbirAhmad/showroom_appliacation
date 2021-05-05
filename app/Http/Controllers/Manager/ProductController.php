@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Purchaseitem;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Picqer;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -28,7 +28,11 @@ class ProductController extends Controller
         $paginate = $request->item ?? 20;
         $showroom_id=session()->get('manager')['showroom_id'];
         $showroom_products_id=ShowroomProduct::where('showroom_id',$showroom_id)->select('product_id')->get();
-        $products = Product::whereIn('id',$showroom_products_id)->orderBy('id', 'DESC')->with(['productImage', 'productBarcode'])->paginate($paginate);
+        $products = Product::join('showroom_products','products.id','=','showroom_products.product_id')
+        ->whereIn('products.id',$showroom_products_id)
+        ->select('products.*','showroom_products.purchase_price as s_purchase_price','showroom_products.sale_price as s_sale_price','showroom_products.stock as s_stock')
+        ->with(['productImage','productBarcode'])
+        ->paginate($paginate);
         return response()->json([
             'status' => 'SUCCESS',
             'products' => $products
@@ -41,14 +45,46 @@ class ProductController extends Controller
     {
         $showroom_id=session()->get('manager')['showroom_id'];
         $showroom_products_id=ShowroomProduct::where('showroom_id',$showroom_id)->select('product_id')->get();
-        $products = Product::whereIn('id',$showroom_products_id)->Where('product_code',$search)->with(['productImage', 'productBarcode'])->paginate(20);
-            return response()->json([
-                'status' => 'SUCCESS',
-                'products' => $products
-            ]);
+        $products = Product::join('showroom_products','products.id','=','showroom_products.product_id')
+        ->whereIn('products.id',$showroom_products_id)
+        ->where('products.product_code',$search)
+        ->select('products.*','showroom_products.purchase_price as s_purchase_price','showroom_products.sale_price as s_sale_price','showroom_products.stock as s_stock')
+        ->with(['productImage','productBarcode'])
+        ->paginate(20);
+        return response()->json([
+            'status' => 'SUCCESS',
+            'products' => $products
+        ]);
 
     }
 
+
+    public function searchWithCode($code){
+
+        $showroom_id=session()->get('manager')['showroom_id'];
+        $showroom_products_id=ShowroomProduct::where('showroom_id',$showroom_id)->select('product_id')->get();
+        $product = Product::join('showroom_products','products.id','=','showroom_products.product_id')
+        ->whereIn('products.id',$showroom_products_id)
+        ->where('products.product_code',$code)
+        ->select('products.*','showroom_products.sale_price as s_sale_price','showroom_products.stock as s_stock')
+        ->first();
+
+        if (!empty($product)) {
+
+            $product_attributes=ProductAttribute::where('product_id',$product->id)->with('attribute')->get();
+            $product_variants=ProductVariant::where('product_id',$product->id)->with('variant')->get();
+            $data[] = array_merge($product->toArray(),['attributes' => $product_attributes, 'variants' =>$product_variants]);
+
+            return response()->json([
+                'status'=>'SUCCESS',
+                'product'=>$data
+                ]);
+        }
+
+
+
+
+    }
 
 
 

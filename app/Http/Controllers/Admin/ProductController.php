@@ -38,7 +38,7 @@ class ProductController extends Controller
           }
         else{
             $products = Product::orderBy('id', 'DESC')->with(['productImage', 'productBarcode'])->where('status',$request->status)->paginate($paginate);
- 
+
         }
         return response()->json([
            // 'status' => 'SUCCESS',
@@ -47,7 +47,7 @@ class ProductController extends Controller
     }
 
 
-    
+
 
 
 
@@ -72,7 +72,7 @@ class ProductController extends Controller
             'price' => 'required',
             'details' => 'required',
             'image' => 'required',
-            
+
 
         ]);
 
@@ -100,7 +100,7 @@ class ProductController extends Controller
         $product->details = $request->details;
         $product->product_placement = $request->product_placement ?? 0;
         $product->product_position = $request->product_position ?? 0;
-      
+
         if ($product->save()) {
 
             //if product save then generate product barcode
@@ -130,7 +130,7 @@ class ProductController extends Controller
                     $product_attribute->product_id = $product->id;
                     $product_attribute->attribute_id = $request->attribute;
                     $product_attribute->save();
-                
+
 
             }
             if (isset($request->variant) && !empty($request->variant)) {
@@ -196,10 +196,7 @@ class ProductController extends Controller
 
     public function search($search)
     {
-
-      //  $products = Product::where('name', 'like', '%' . $search . '%')->orWhere('product_code', 'like', '%' . $search . '%')->orderBy('id', 'DESC')->with(['productImage', 'productBarcode'])->paginate(110);
-
-        $products = Product::where('product_code',$search)->with(['productImage', 'productBarcode'])->paginate(110);
+      $products = Product::where('product_code',$search)->with(['productImage', 'productBarcode'])->paginate(110);
         return response()->json([
             'status' => 'SUCCESS',
             'products' => $products
@@ -338,9 +335,9 @@ class ProductController extends Controller
                          $product_attribute->product_id = $id;
                         $product_attribute->save();
                      }
-                   
+
               }
-             
+
               //find product old variant
             $product_old_variants = ProductVariant::whereIn('product_id', [$id])->get();
 
@@ -410,25 +407,25 @@ class ProductController extends Controller
                 'product'=>$data
                ]);
         }
-     
+
 
     }
 
     public function productStock(Request $request){
-    
+
           $item=$request->item??20;
           $products=Product::where('status',1)->where('stock','>',0)->with('purchaseItem')->paginate($item);
           return response()->json($products);
 
 
-     
+
 
 
 }
 
     public function printBarcode($id,$howmany){
-        
-    
+
+
         $product_barcode=ProductBarcode::where('product_id',$id)->first();
         $pdf=PDF::loadView('admin.pdf.barcode',compact('product_barcode','howmany'));
   //      return $pdf->stream();
@@ -440,12 +437,12 @@ class ProductController extends Controller
         if(!$request->ajax()){
             return \abort(404);
         }
-           
+
        $customer=Customer::where('phone',$number)->first();
 
       if(!empty($customer)){
         $customer_order=Order::where('customer_id',$customer->id)->orderBy('id','DESC')->first();
-     
+
        return \response()->json([
              'message'=>"customer al ready register.",
             'customer'=>$customer
@@ -454,14 +451,14 @@ class ProductController extends Controller
       }else{
         return \response()->json([
             'message'=>"new customer for us",
-            
+
           ]);
       }
 
     }
     public function get_suggested_product(Request $request){
 
-        $paginate_item= $request->item ?? 10 ; 
+        $paginate_item= $request->item ?? 10 ;
         $products=Product::orderBy('id','DESC')->where('status', 1)->where('stock', '>=', 1 )->with(['productImage'])->paginate($paginate_item);
         return response()->json([
                'status' => "OK",
@@ -481,7 +478,7 @@ class ProductController extends Controller
 
  public function search_suggested_product_code_name($data){
 
-   
+
     $products=Product::where('product_code', 'like', '%'.$data.'%')
                         ->orWhere('name', 'like', '%'.$data.'%')
                         ->with(['productImage','purchaseItem','productBarcode'])
@@ -500,11 +497,11 @@ class ProductController extends Controller
     }
 
 
-     
+
     public function stock_report_pdf(){
-        
+
             $stock_items = Purchaseitem::orderBy('id','DESC')->with('product')->get();
-                   $pdf = PDF::loadView('admin.pdf.product_stock_report',compact('stock_items')); 
+                   $pdf = PDF::loadView('admin.pdf.product_stock_report',compact('stock_items'));
            return  $pdf->stream();
 
     }

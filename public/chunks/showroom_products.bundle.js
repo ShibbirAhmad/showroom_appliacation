@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["manager_product_manage"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["showroom_products"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/manager/Navbar.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
@@ -687,115 +687,126 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "box-body" }, [
-                    _c("table", { staticClass: "table" }, [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        [
-                          _vm.loading
-                            ? _c("h1", { staticClass: "text-center" }, [
-                                _c("i", {
-                                  staticClass: "fa fa-spin fa-spinner"
-                                })
-                              ])
-                            : _vm._l(_vm.products.data, function(
-                                product,
-                                index
-                              ) {
-                                return _c("tr", { key: index }, [
-                                  _c("td", { attrs: { scope: "row" } }, [
-                                    _vm._v(_vm._s(index + 1))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(product.name))]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    { staticStyle: { width: "100px" } },
-                                    [
-                                      _c("p", {
-                                        staticClass: "barcode",
-                                        domProps: {
-                                          innerHTML: _vm._s(
-                                            product.product_barcode.barcode
-                                          )
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        { staticClass: "barcode-number" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              product.product_barcode
-                                                .barcode_number
-                                            )
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _vm._v(_vm._s(product.product_code))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    product.product_image.length > 0
-                                      ? _c("img", {
-                                          staticClass: "table-image",
-                                          attrs: {
-                                            src:
-                                              _vm.basePath +
-                                              product.product_image[0]
-                                                .product_image,
-                                            alt: "product image"
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _vm._v(
-                                      "৳ " + _vm._s(product.s_purchase_price)
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _vm._v("৳ " + _vm._s(product.s_sale_price))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    product.stock <= 5
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "badge badge-danger" },
-                                          [
-                                            _vm._v(
-                                              " " + _vm._s(product.s_stock)
-                                            )
-                                          ]
-                                        )
-                                      : _c(
-                                          "span",
-                                          {
-                                            staticClass: "badge badge-success"
-                                          },
-                                          [
-                                            _vm._v(
-                                              " " + _vm._s(product.s_stock)
-                                            )
-                                          ]
-                                        )
-                                  ])
+                    _c(
+                      "table",
+                      {
+                        staticClass:
+                          "table table-striped table-bordered table-hover"
+                      },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          [
+                            _vm.loading
+                              ? _c("h1", { staticClass: "text-center" }, [
+                                  _c("i", {
+                                    staticClass: "fa fa-spin fa-spinner"
+                                  })
                                 ])
-                              })
-                        ],
-                        2
-                      )
-                    ])
+                              : _vm._l(_vm.products.data, function(
+                                  product,
+                                  index
+                                ) {
+                                  return _c("tr", { key: index }, [
+                                    _c("td", { attrs: { scope: "row" } }, [
+                                      _vm._v(_vm._s(index + 1))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(product.name))]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      { staticStyle: { width: "100px" } },
+                                      [
+                                        _c("p", {
+                                          staticClass: "barcode",
+                                          domProps: {
+                                            innerHTML: _vm._s(
+                                              product.product_barcode.barcode
+                                            )
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          { staticClass: "barcode-number" },
+                                          [
+                                            _vm._v(
+                                              _vm._s(
+                                                product.product_barcode
+                                                  .barcode_number
+                                              )
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(product.product_code))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      product.product_image.length > 0
+                                        ? _c("img", {
+                                            staticClass: "table-image",
+                                            attrs: {
+                                              src:
+                                                _vm.basePath +
+                                                product.product_image[0]
+                                                  .product_image,
+                                              alt: "product image"
+                                            }
+                                          })
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "৳ " + _vm._s(product.s_purchase_price)
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "৳ " + _vm._s(product.s_sale_price)
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      product.stock <= 5
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-danger"
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " + _vm._s(product.s_stock)
+                                              )
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-success"
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " + _vm._s(product.s_stock)
+                                              )
+                                            ]
+                                          )
+                                    ])
+                                  ])
+                                })
+                          ],
+                          2
+                        )
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "box-footer" }, [

@@ -4,12 +4,6 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          <router-link
-            :to="{ name: 'manager_product_add' }"
-            class="btn btn-primary"
-          >
-            <i class="fa fa-plus"></i>
-          </router-link>
         </h1>
         <ol class="breadcrumb">
           <li>
@@ -52,7 +46,7 @@
                   </div>
                 </div>
                 <div class="box-body">
-                  <table class="table">
+                  <table class="table table-striped table-bordered table-hover">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -60,8 +54,8 @@
                         <th scope="col">Barcode</th>
                         <th scope="col">P_code</th>
                         <th scope="col">Image</th>
-                        <th scope="col">Purchase_price</th>
-                        <th scope="col">Sale_price</th>
+                        <th width="5%" scope="col">Purchase price</th>
+                        <th width="7%" scope="col">Sale price</th>
                         <th scope="col">Stock</th>
 
                       </tr>
@@ -96,18 +90,18 @@
                             alt="product image"
                           />
                         </td>
-                        <td>{{ product.sale_price }}</td>
+                        <td>&#2547; {{ product.s_purchase_price }}</td>
 
-                        <td>{{ product.price }}</td>
+                        <td>&#2547; {{ product.s_sale_price }}</td>
 
                         <td>
                           <span
                             v-if="product.stock <= 5"
                             class="badge badge-danger"
-                            >{{ product.stock }}</span
+                            > {{ product.s_stock }}</span
                           >
-                          <span v-else class="badge badge-success">{{
-                            product.stock
+                          <span v-else class="badge badge-success"> {{
+                            product.s_stock
                           }}</span>
                         </td>
 
