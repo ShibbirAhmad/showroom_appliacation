@@ -15,6 +15,19 @@ Route::group([
              'namespace' => 'Manager'
             ],function(){
 
+        //accounts routes
+        Route::get('api/showroom/credits','AccountController@credits');
+        Route::post('api/showroom/credit/add','AccountController@creditStore');
+        Route::get('api/showroom/credit/edit/{id}','AccountController@creditItem');
+        Route::get('api/showroom/credit/delte/{id}','AccountController@creditDelete');
+        Route::post('api/showroom/credit/update/{id}','AccountController@creditUpdate');
+
+        Route::get('api/showroom/debits','AccountController@debits');
+        Route::post('api/showroom/debit/add','AccountController@debitStore');
+        Route::get('api/showroom/debit/edit/{id}','AccountController@debitItem');
+        Route::get('api/showroom/debit/delete/{id}','AccountController@debitDelete');
+        Route::post('api/showroom/debit/update/{id}','AccountController@debitUpdate');
+
         Route::get('api/product/transaction/list','TransactionController@productTransactions');
         Route::get('api/get/product/transaction/details/{id}','TransactionController@transactionDetails');
         Route::get('api/approved/product/transaction/{transfer_id}','TransactionController@approvedTransaction');
@@ -25,7 +38,8 @@ Route::group([
         Route::get('api/search/product/with/{code}','ProductController@searchWithCode');
 
         // route for dashboard data
-         Route::get('api/get/manager/dashboard/data','HomeController@get_dashboard_highlight_info');
+         Route::get('api/get/dashboard/data','DashboardController@dashboardData');
+
         //start the others  route . to load other data of products
         Route::get('api/product/others', 'OthersController@others');
 
@@ -40,6 +54,7 @@ Route::group([
         Route::get('api/showroom/sales/list','SaleController@sales');
         Route::get('api/sale/details/{id}','SaleController@saleDetails');
         Route::get('api/manager/order/view/{id}','SaleController@manager_order_details');
+        Route::get('api/showroom/sale/invoice/print/{id}','SaleController@invoicePrint');
 
         Route::get('api/manager/logout','LoginController@logout') ;
         //manager profile route

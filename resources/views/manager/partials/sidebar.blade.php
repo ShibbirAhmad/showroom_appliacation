@@ -31,6 +31,30 @@
           </ul>
         </li>
 
+          <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-money"></i> <span>Accounts</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                            <li>
+                                <router-link :to="{ name: 'showroom_credit'}"><i class="fa fa-eye"></i> Credit</router-link>
+                            </li>
+
+                            <li>
+                                <router-link :to="{ name: 'showroom_debit'}"><i class="fa fa-eye"></i>Debit</router-link>
+                            </li>
+
+                            <li>
+                                <router-link :to="{ name: 'showroom_due'}"><i class="fa fa-eye"></i>Due</router-link>
+                            </li>
+
+
+                    </ul>
+                </li>
+
         <li class="treeview">
              <router-link :to="{ name : 'showroom_products'}"><i class="fa fa-list "> </i> Products </router-link>
         </li>
@@ -38,6 +62,7 @@
         <li class="treeview">
          <router-link :to="{ name : 'product_transaction'}"> <i class="fa fa-exchange"></i> Products Transaction </router-link>
         </li>
+
 
         <li class="treeview">
           <a href="#">

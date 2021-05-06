@@ -363,6 +363,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -595,12 +598,8 @@ __webpack_require__.r(__webpack_exports__);
 
       var action_type = this.bulkActionType;
 
-      if (action_type == "LABEL PRINT") {
-        window.open("/sale/label/print/" + this.select_sale_id, "_blank");
-      }
-
       if (action_type == "INVOICE PRINT") {
-        window.open("/sale/invoice/print/" + this.select_sale_id, "_blank");
+        window.open("/api/showroom/sale/invoice/print/" + this.select_sale_id, "_blank");
       }
 
       if (action_type == 'EXPORT SELECT ITEM') {
@@ -1005,12 +1004,6 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "option",
-                                { attrs: { value: "LABEL PRINT" } },
-                                [_vm._v("Label Print")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
                                 { attrs: { value: "INVOICE PRINT" } },
                                 [_vm._v("Invoice Print")]
                               )
@@ -1087,7 +1080,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-2" }, [
+                      _c("div", { staticClass: "col-lg-3" }, [
                         _c("input", {
                           directives: [
                             {
@@ -1127,7 +1120,7 @@ var render = function() {
                             _c("div", { staticClass: "row" }, [
                               _c(
                                 "div",
-                                { staticClass: "col-lg-4" },
+                                { staticClass: "col-lg-6" },
                                 [
                                   _c("date-picker", {
                                     attrs: {
@@ -1150,7 +1143,7 @@ var render = function() {
                               _c(
                                 "div",
                                 {
-                                  staticClass: "col-lg-4",
+                                  staticClass: "col-lg-6",
                                   staticStyle: { "margin-left": "-20px" }
                                 },
                                 [
@@ -1189,7 +1182,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-1" }, [
+                      _c("div", { staticClass: "col-lg-2" }, [
                         _vm.start_date.length > 0
                           ? _c(
                               "select",
@@ -1309,7 +1302,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("th", { attrs: { scope: "col" } }, [
-                              _vm._v("customer_name")
+                              _vm._v("customer Name")
                             ]),
                             _vm._v(" "),
                             _c("th", { attrs: { scope: "col" } }, [
@@ -1322,6 +1315,10 @@ var render = function() {
                             _vm._v(" "),
                             _c("th", { attrs: { scope: "col" } }, [
                               _vm._v("Invoice")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", { attrs: { scope: "col" } }, [
+                              _vm._v("Sale Type")
                             ]),
                             _vm._v(" "),
                             _c("th", { attrs: { scope: "col" } }, [
@@ -1415,8 +1412,8 @@ var render = function() {
                                       _vm._v(
                                         "\n                        " +
                                           _vm._s(
-                                            sale.customer
-                                              ? sale.customer.address
+                                            sale.customer_address
+                                              ? sale.customer_address
                                               : ""
                                           ) +
                                           "\n                      "
@@ -1424,6 +1421,26 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [_vm._v(_vm._s(sale.invoice_no))]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      sale.sale_type == 1
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "badge badge-primary "
+                                            },
+                                            [_vm._v(" retail sale  ")]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "badge badge-success "
+                                            },
+                                            [_vm._v(" whole sale ")]
+                                          )
+                                    ]),
                                     _vm._v(" "),
                                     _c("td", [
                                       _vm._v(
@@ -1436,9 +1453,11 @@ var render = function() {
                                             "  "
                                         )
                                       ]),
-                                      _vm._v("  ৳ "),
+                                      _vm._v(" "),
                                       _c("br"),
-                                      _vm._v("\n                          P: "),
+                                      _vm._v(
+                                        "\n                          Paid: "
+                                      ),
                                       _c("strong", [
                                         _vm._v(
                                           " " +
@@ -1447,7 +1466,7 @@ var render = function() {
                                         )
                                       ]),
                                       _vm._v(
-                                        " ৳\n                          D:  "
+                                        "\n                          Due:  "
                                       ),
                                       _c("strong", [
                                         _vm._v(
@@ -1455,8 +1474,7 @@ var render = function() {
                                             _vm._s(parseInt(sale.due_amount)) +
                                             " "
                                         )
-                                      ]),
-                                      _vm._v("  ৳\n                      ")
+                                      ])
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [_vm._v(_vm._s(sale.created_at))]),

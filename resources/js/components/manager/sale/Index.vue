@@ -39,8 +39,6 @@
                     <div class="col-lg-3">
                       <select name="" id="" v-model="bulkActionType" class="form-control">
                         <option value="0" selected disabled>Select Action</option>
-
-                        <option value="LABEL PRINT">Label Print</option>
                         <option value="INVOICE PRINT">Invoice Print</option>
                          <!-- <option value="EXPORT SELECT ITEM">Export Selected</option> -->
                       </select>
@@ -59,7 +57,7 @@
                         <option value="6">Cancel</option>
                       </select>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                       <input
                         class="form-control"
                         @keyup="salesearch"
@@ -70,7 +68,7 @@
                     <div class="col-lg-4">
                       <form @submit.prevent="filtersale">
                         <div class="row">
-                          <div class="col-lg-4">
+                          <div class="col-lg-6">
                             <date-picker
                               autocomplete="off"
                               v-model="start_date"
@@ -78,7 +76,7 @@
                               :config="options"
                             ></date-picker>
                           </div>
-                          <div class="col-lg-4" style="margin-left: -20px">
+                          <div class="col-lg-6" style="margin-left: -20px">
                             <date-picker
                               autocomplete="off"
                               v-model="end_date"
@@ -101,7 +99,7 @@
                       </button>
                     </div>
 
-                    <div class="col-lg-1">
+                    <div class="col-lg-2">
                       <select
                         class="form-control"
                         v-model="item"
@@ -132,10 +130,11 @@
                         <th scope="col">
                           <input type="checkbox" @click="selectAll" />
                         </th>
-                        <th scope="col">customer_name</th>
+                        <th scope="col">customer Name</th>
                         <th scope="col">C_phone</th>
                         <th scope="col">C_address</th>
                         <th scope="col">Invoice</th>
+                        <th scope="col">Sale Type</th>
                         <th scope="col">Total</th>
                         <th>sale_date</th>
 
@@ -164,13 +163,17 @@
                           {{ sale.customer_phone }}
                         </td>
                         <td >
-                          {{ sale.customer ? sale.customer.address : "" }}
+                          {{ sale.customer_address ? sale.customer_address : "" }}
                         </td>
                         <td >{{ sale.invoice_no }}</td>
+                        <td>
+                             <span v-if="sale.sale_type==1" class="badge badge-primary "> retail sale  </span>
+                             <span v-else class="badge badge-success "> whole sale </span>
+                           </td>
                         <td >
-                           Total: <strong> {{ parseInt( sale.total)  }}  </strong>  &#2547; <br>
-                            P: <strong> {{ parseInt(sale.paid) }}  </strong> &#2547;
-                            D:  <strong>  {{ parseInt(sale.due_amount) }} </strong>  &#2547;
+                           Total: <strong> {{ parseInt( sale.total)  }}  </strong>   <br>
+                            Paid: <strong> {{ parseInt(sale.paid) }}  </strong>
+                            Due:  <strong>  {{ parseInt(sale.due_amount) }} </strong>
                         </td>
 
                         <td >{{ sale.created_at }}</td>
@@ -463,11 +466,8 @@ export default {
         return;
       }
       let action_type = this.bulkActionType;
-      if (action_type == "LABEL PRINT") {
-        window.open("/sale/label/print/" + this.select_sale_id, "_blank");
-      }
       if (action_type == "INVOICE PRINT") {
-        window.open("/sale/invoice/print/" + this.select_sale_id, "_blank");
+        window.open("/api/showroom/sale/invoice/print/"+this.select_sale_id,"_blank");
       }
 
       if(action_type=='EXPORT SELECT ITEM'){

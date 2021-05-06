@@ -13,6 +13,7 @@ use App\Models\ShowroomProduct;
 use App\Models\ShowroomCredit;
 use App\Models\ShowroomDebit;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 
@@ -82,16 +83,17 @@ class SaleController extends Controller
 
             //firstly check customer and if not exist then save customr data
             $customer=Customer::where('phone',$request->customer_phone)->first();
-            if(!$customer){
+            if($customer){
+                $customer->name=$request->customer_name ;
+                $customer->address=$request->customer_address ?? null ;
+                $customer->save();
+            }else{
                 $customer=new Customer();
                 $customer->name=$request->customer_name;
                 $customer->phone=$request->customer_phone;
                 $customer->address=$request->customer_address ?? 'Dhaka';
                 $customer->city_id= 2;
              //   $customer->customer_type= 1;
-                $customer->save();
-            }else{
-                $customer->address=$request->customer_address ?? null ;
                 $customer->save();
             }
             //inserting sale
@@ -105,6 +107,7 @@ class SaleController extends Controller
             $sale->paid=$request->paid ?? 0;
             $sale->paid_by=$request->paid_by;
             $sale->discount=$request->discount ;
+            $sale->discount_type=$request->discount_type ;
             $sale->due_amount=$request->due ?? 0 ;
             $sale->total=$request->total ;
             $sale->save();
@@ -138,16 +141,17 @@ class SaleController extends Controller
             }
 
             //create a credit.......
-            $credit = new ShowroomCredit();
-            $credit->showroom_id = $showroom_id;
-            $credit->purpose = "showroom sale";
-            $credit->amount = $sale->paid;
-            $credit->credit_in=$sale->paid_by;
-            $credit->comment ='showroom Sale. Invoice No  S-'.$sale->id;
-            $credit->date = date('Y-m-d');
-            $credit->insert_manager_id=session()->get('manager')['id'];
-            $credit->save();
-
+           if ($sale->paid > 0) {
+                $credit = new ShowroomCredit();
+                $credit->showroom_id = $showroom_id;
+                $credit->purpose = "showroom sale";
+                $credit->amount = $sale->paid;
+                $credit->credit_in=$sale->paid_by;
+                $credit->comment ='sale invoice no. s-'.$sale->id;
+                $credit->date = date('Y-m-d');
+                $credit->insert_manager_id=session()->get('manager')['id'];
+                $credit->save();
+           }
 
 
     });
@@ -159,6 +163,14 @@ class SaleController extends Controller
 
     }
 
+
+    public function invoicePrint($id){
+        $showroom_id=session()->get('manager')['showroom_id'];
+        $sale=ShowroomSale::where('showroom_id',$showroom_id)->where('id',$id)->first();
+        $sale_items=ShowroomSaleItem::where('showroom_sale_id',$sale->id)->with('product.productImage','variant')->get();
+
+      return view('manager.pdf.print.invoicePrint', compact('sale','sale_items'));
+    }
 
 
 

@@ -368,7 +368,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     showroom_sale_price: function showroom_sale_price() {},
     print: function print(sale_id) {
-      window.open('/sale/invoice/print/' + sale_id, '_SELF');
+      window.open('/api/showroom/sale/invoice/print/' + sale_id, '_SELF');
     },
     formateDate: function formateDate(date) {
       var d = new Date(date);

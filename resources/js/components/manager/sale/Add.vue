@@ -206,6 +206,7 @@
                             <td colspan="3">
                                <select name="discount_type"
                                class="form-control"
+                               @change="calculateDiscount"
                                v-model="form.discount_type">
                                 <option disabled>discount type</option>
                                 <option value="percentage">percentage</option>
@@ -475,6 +476,15 @@ export default {
         parseInt(this.form.products[index].price) *
         parseInt(this.form.products[index].quantity);
         this.totalCalculation();
+    },
+
+    calculateDiscount(){
+        if (this.form.discount_type=="flat") {
+           this.form.discount=parseInt(this.form.discount) ;
+       }else{
+          this.form.discount= (parseInt(this.form.total)*parseInt(this.form.discount)/100).toFixed(0) ;
+       }
+           this.totalCalculation();
     },
 
     //total amount calculation

@@ -219,7 +219,7 @@ export default {
 
     },
     print(sale_id) {
-     window.open('/sale/invoice/print/'+sale_id,'_SELF')
+     window.open('/api/showroom/sale/invoice/print/'+sale_id,'_SELF')
     },
 
     formateDate(date){

@@ -140,7 +140,7 @@
                 <h4>
                   In Bank: <strong>{{ parseInt(balance.today_credit_bank) }}</strong>
                 </h4>
-               
+
                 <h4>
                   Total: <strong>{{ parseInt(balance.today_credit) }}</strong>
                 </h4>
@@ -168,7 +168,7 @@
                 <h4>
                   In Bank: <strong>{{ parseInt(balance.today_debit_bank) }}</strong>
                 </h4>
-              
+
                 <h4>
                   Total: <strong>{{ parseInt(balance.today_debit) }}</strong>
                 </h4>
@@ -179,55 +179,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="col-lg-3">
-            <div class="custom-box">
-              <div class="custom-box-body">
-                  <h4>In Cash: <strong>{{parseInt(balance.total_credit_cash)}}</strong></h4>
-                  <h4>In Bkash(personal): <strong>{{ parseInt(balance.total_credit_bkash_personal) }}</strong></h4>
-                  <h4>In Bkash(merchant): <strong>{{ parseInt(balance.total_credit_bkash_merchant) }}</strong></h4>
-                   <h4>In Bank: <strong>{{parseInt(balance.total_credit_bank)}}</strong></h4>
-                     <h4>Total: <strong>{{parseInt(balance.total_credit)}}</strong></h4>
-
-              </div>
-             
-              <div class="custom-box-footer">
-                <h3 class="text-center text-uppercase">total credit</h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="custom-box">
-              <div class="custom-box-body">
-                  <h4>In Cash: <strong>{{parseInt(balance.total_debitt_cash)}}</strong></h4>
-                  <h4>In Bkash(personal): <strong>{{ parseInt(balance.total_debit_bkash_personal) }}</strong></h4>
-                  <h4>In Bkash(merchant): <strong>{{ parseInt(balance.total_debit_bkash_merchant) }}</strong></h4>
-                   <h4>In Bank: <strong>{{parseInt(balance.total_debit_bank)}}</strong></h4>
-                  <h4>Total: <strong>{{parseInt(balance.total_debit)}}</strong></h4>
-
-              </div>
-             
-              <div class="custom-box-footer">
-                <h3 class="text-center text-uppercase">total debit</h3>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-3">
-            <div class="custom-box">
-              <div class="custom-box-body">
-                  <h4>In Cash: <strong>{{parseInt(balance.today_credit_cash)-parseInt(balance.today_debitt_cash)}}</strong></h4>
-                  <h4>In Bkash(personal): <strong>{{ parseInt(balance.today_credit_bkash_personal)- parseInt(balance.today_debit_bkash_personal)}}</strong></h4>
-                  <h4>In Bkash(merchant): <strong>{{ parseInt(balance.today_credit_bkash_merchant)-parseInt(balance.today_debit_bkash_merchant) }}</strong></h4>
-                   <h4>In Bank: <strong>{{parseInt(balance.today_credit_bank)-parseInt(balance.today_debit_bank)}}</strong></h4>
-                   <h4>Total: <strong>{{parseInt(balance.today_credit)-parseInt(balance.today_debit)}}</strong></h4>
-
-              </div>
-             
-              <div class="custom-box-footer">
-                <h3 class="text-center text-uppercase">today balance</h3>
-              </div>
-            </div>
-          </div> -->
 
           <div class="col-lg-3">
             <div class="custom-box">
@@ -260,7 +211,7 @@
                     parseInt(balance.total_debit_bank)
                   }}</strong>
                 </h4>
-                
+
                 <h4>
                   Total:
                   <strong>{{
@@ -378,7 +329,7 @@
                         <tr v-for="(item,index) in analysis" :key="index">
                           <td>{{index}}</td>
                           <td>
-                            
+
                                 <span v-if="analysisshow == 1">
                                   {{item.today.order_quantity}}
                                 </span>
@@ -388,10 +339,10 @@
                                  <span v-if="analysisshow == 3">
                                   {{item.this_month.order_quantity}}
                                 </span>
-                            
+
                             </td>
                              <td>
-                            
+
                                 <span v-if="analysisshow == 1">
                                   {{item.today.product_quanity}}
                                 </span>
@@ -401,10 +352,10 @@
                                  <span v-if="analysisshow == 3">
                                   {{item.this_month.product_quanity}}
                                 </span>
-                            
+
                             </td>
                              <td>
-                            
+
                                 <span v-if="analysisshow == 1">
                                   {{item.today.amount}}
                                 </span>
@@ -414,9 +365,9 @@
                                  <span v-if="analysisshow == 3">
                                   {{item.this_month.amount}}
                                 </span>
-                            
+
                             </td>
-                          
+
                         </tr>
                          <tr>
 
@@ -453,7 +404,7 @@
                                   : 0)}}
 
                                     </b>
-                              
+
                               </span>
                           </td>
                              <td>
@@ -487,7 +438,7 @@
                                   : 0)}}
 
                                     </b>
-                              
+
                               </span>
                           </td>
                               <td>
@@ -521,13 +472,13 @@
                                   : 0)}}
 
                                     </b>
-                              
+
                               </span>
                           </td>
-                         
+
                         </tr>
 
-                      
+
                         <!-- <tr>
                           <td>OfficeSale</td>
 
@@ -791,7 +742,7 @@
                                   : 0)}}
 
                                     </b>
-                              
+
                               </span>
                           </td>
                              <td>
@@ -825,7 +776,7 @@
                                   : 0)}}
 
                                     </b>
-                              
+
                               </span>
                           </td>
                               <td>
@@ -859,10 +810,10 @@
                                   : 0)}}
 
                                     </b>
-                              
+
                               </span>
                           </td>
-                         
+
                         </tr> -->
                       </tbody>
                     </table>
@@ -1019,7 +970,7 @@
               </div>
             </div>
           </div>
-      
+
       </section>
     </div>
   </div>
@@ -1107,7 +1058,7 @@ export default {
   box-shadow: 3px 3px 3px #ddd;
   border-radius: 6px;
   margin-bottom: 10px;
- 
+
 }
 .custom-box-body strong {
   position: absolute;

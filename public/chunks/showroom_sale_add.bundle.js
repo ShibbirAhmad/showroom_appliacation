@@ -449,6 +449,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -632,6 +633,15 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
       }
 
       this.form.products[index].total = parseInt(this.form.products[index].price) * parseInt(this.form.products[index].quantity);
+      this.totalCalculation();
+    },
+    calculateDiscount: function calculateDiscount() {
+      if (this.form.discount_type == "flat") {
+        this.form.discount = parseInt(this.form.discount);
+      } else {
+        this.form.discount = (parseInt(this.form.total) * parseInt(this.form.discount) / 100).toFixed(0);
+      }
+
       this.totalCalculation();
     },
     //total amount calculation
@@ -1474,30 +1484,34 @@ var render = function() {
                                                       name: "discount_type"
                                                     },
                                                     on: {
-                                                      change: function($event) {
-                                                        var $$selectedVal = Array.prototype.filter
-                                                          .call(
+                                                      change: [
+                                                        function($event) {
+                                                          var $$selectedVal = Array.prototype.filter
+                                                            .call(
+                                                              $event.target
+                                                                .options,
+                                                              function(o) {
+                                                                return o.selected
+                                                              }
+                                                            )
+                                                            .map(function(o) {
+                                                              var val =
+                                                                "_value" in o
+                                                                  ? o._value
+                                                                  : o.value
+                                                              return val
+                                                            })
+                                                          _vm.$set(
+                                                            _vm.form,
+                                                            "discount_type",
                                                             $event.target
-                                                              .options,
-                                                            function(o) {
-                                                              return o.selected
-                                                            }
+                                                              .multiple
+                                                              ? $$selectedVal
+                                                              : $$selectedVal[0]
                                                           )
-                                                          .map(function(o) {
-                                                            var val =
-                                                              "_value" in o
-                                                                ? o._value
-                                                                : o.value
-                                                            return val
-                                                          })
-                                                        _vm.$set(
-                                                          _vm.form,
-                                                          "discount_type",
-                                                          $event.target.multiple
-                                                            ? $$selectedVal
-                                                            : $$selectedVal[0]
-                                                        )
-                                                      }
+                                                        },
+                                                        _vm.calculateDiscount
+                                                      ]
                                                     }
                                                   },
                                                   [

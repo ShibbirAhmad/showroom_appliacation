@@ -6,20 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\session;
 use App\Models\ShowroomManager;
-use App\Models\OrderItem ;
+use App\Models\ShowroomSale ;
+use App\Models\ShowroomSaleItem ;
+use Carbon\Carbon;
 use App\Models\Product ;
 use App\Models\Order ;
-use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
-
-      public  function index(){
-
-           return view ('manager.index');
-      }
-
-
 
 
       public function  get_manager(){
@@ -31,9 +26,7 @@ class HomeController extends Controller
                        'manager' => $manager ,
                  ]);
             }
-
       }
-
 
 
       public function  manager_update(Request $request){
@@ -65,39 +58,6 @@ class HomeController extends Controller
       }
 
 
-
-      public function  get_dashboard_highlight_info(){
-
-              $manager_id = session()->get('manager')['id'];
-              $products=array();
-              $products['product_total']=Product::where('manager_id',$manager_id)->count() ;
-              $products['product_approved']=Product::where('manager_id',$manager_id)->where('status',1)->count() ;
-              $products['product_pending']=Product::where('manager_id',$manager_id)->where('status',2)->count() ;
-
-              $orders=array();
-              $product_id=Product::where('manager_id',session()->get('manager')['id'])->select('id')->pluck('id');
-              $order_id=OrderItem::whereIn('product_id',$product_id)->select('order_id')->pluck('order_id');
-              //total order items counter
-              $orders['total_order_items']=$order_id->count();
-              $order = Order::whereIn('id',$order_id)->with(['customer'])->get();
-              //total order counter
-              $orders['total_order']=$order->count();
-              //today order counter
-              $orders['today_order']=$order->where('created_at', '>=', Carbon::today()->startOfDay())
-                                            ->where('created_at', '<=', Carbon::today()->endOfDay())->count();
-              //cancel order counter
-              $orders['cancel_order']=$order->where('status',6)->count();
-              $orders['total_delivered_order']=$order->where('status',5)->count();
-
-
-
-              return response()->json([
-                     "status" => "OK",
-                     'products' => $products ,
-                     'orders' => $orders ,
-              ]);
-
-      }
 
 
 

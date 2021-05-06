@@ -43,15 +43,87 @@ const routes = [
     },
 
     {
-        path: '/manager/backend/home',
+        path: '/showroom/backend/home',
         component: () => import(/* webpackChunkName: "manager_dashboard" */'./components/manager/Dashboard'),
         name: 'manager_dashboard',
         meta: {
             authManager:true,
-            title: 'manager|Dashboard'
+            title: 'Showroom Dashboard'
         }
 
     },
+
+     {
+        path: '/showroom/credit',
+        component: () => import(/* webpackChunkName: "showroom_credit" */'./components/manager/credit/Index.vue'),
+        name: 'showroom_credit',
+        meta: {
+             authManager:true,
+            title: 'Crdit Manage'
+        }
+    },
+     {
+        path: '/showroom/credit/add',
+        component: () => import(/* webpackChunkName: "showroom_credit_add" */'./components/manager/credit/Add.vue'),
+        name: 'showroom_credit_add',
+        meta: {
+             authManager:true,
+            title: 'Crdit Add'
+        }
+    },
+
+     {
+        path: '/showroom/credit/edit/:id',
+        component: () => import(/* webpackChunkName: "showroom_credit_edit" */'./components/manager/credit/Edit.vue'),
+        name: 'showroom_credit_edit',
+        meta: {
+             authManager:true,
+            title: 'Crdit Edit'
+        }
+    },
+    {
+        path: '/showroom/due',
+        component: () => import(/* webpackChunkName: "showroom_due" */'./components/manager/credit/Due.vue'),
+        name: 'showroom_due',
+        meta: {
+             authManager:true,
+            title: 'Crdit due'
+        }
+    },
+
+
+     {
+        path: '/showroom/debit',
+        component: () => import(/* webpackChunkName: "showroom_debit" */'./components/manager/debit/Index.vue'),
+        name: 'showroom_debit',
+        meta: {
+             authManager:true,
+            title: 'debit '
+        }
+    },
+
+     {
+        path: '/showroom/debit/add',
+        component: () => import(/* webpackChunkName: "showroom_debit_add" */'./components/manager/debit/Add.vue'),
+        name: 'showroom_debit_add',
+        meta: {
+             authManager:true,
+            title: 'debit Add'
+        }
+    },
+
+    {
+        path: '/showroom/debit/edit/:id',
+        component: () => import(/* webpackChunkName: "showroom_debit_edit" */'./components/manager/debit/Edit.vue'),
+        name: 'showroom_debit_edit',
+        meta: {
+             authManager:true,
+            title: 'debit edit'
+        }
+    },
+
+
+
 
     {
         path: '/showroom/products',
