@@ -2,23 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Exception ;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 class ShowroomManager  extends Authenticatable
 {
     use Notifiable;
     protected $guard = 'manager';
 
 
-    public static function SendMerchantPasswordResetCode($contacts,$code){
+    public static function SendmanagerPasswordResetCode($contacts,$code){
 
 
-        $api_key = "C20047545e16e1c02a1b38.69878796";
-        $senderid = '8809601000740';
+        $api_key = "C20080926059d38fab0643.83594698 ";
+        $senderid = '8809612446756';
 
-        $sms = "Your password reset code is ".$code.' Thanks by mohasagor.com';   // put here your dynamic message text here
+        $sms = "Your password reset code is ".$code.' Thanks by madinafashion.com.bd';   // put here your dynamic message text here
         $URL = "http://bulk.fmsms.biz/smsapi?api_key=" . urlencode($api_key) . "&type=text&contacts=" . urlencode($contacts) . "&senderid=" . urlencode($senderid) . "&msg=" . urlencode($sms);
 
         $ch = curl_init();

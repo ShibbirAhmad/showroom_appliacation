@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link
+      base_url: this.$store.state.image_base_url
     };
   },
   methods: {
@@ -450,6 +450,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -470,12 +478,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
         status: 2,
         total: 0,
         discount: 0,
-        discount_type: 'discount type',
+        discount_type: 'select discount type',
         due: 0,
         paid: 0,
         order_type: 2,
         paid_by: "Bkash(merchant)"
       }),
+      discount_value: 0,
       search_product_code: "",
       attribute_id: "",
       variant_id: "",
@@ -637,9 +646,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
     },
     calculateDiscount: function calculateDiscount() {
       if (this.form.discount_type == "flat") {
-        this.form.discount = parseInt(this.form.discount);
+        this.form.discount = parseInt(this.discount_value);
       } else {
-        this.form.discount = (parseInt(this.form.total) * parseInt(this.form.discount) / 100).toFixed(0);
+        this.form.discount = (parseInt(this.form.total) * parseInt(this.discount_value) / 100).toFixed(0);
       }
 
       this.totalCalculation();
@@ -862,7 +871,7 @@ var staticRenderFns = [
         _vm._v("LT")
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("showroom")])])
+      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("Outlet")])])
     ])
   },
   function() {
@@ -1003,6 +1012,7 @@ var render = function() {
                             attrs: {
                               type: "text",
                               name: "customer_phone",
+                              autofocus: "",
                               autocomplete: "off",
                               placeholder: "01xxxxxxxxx",
                               maxlength: "11"
@@ -1053,7 +1063,8 @@ var render = function() {
                               type: "text",
                               name: "name",
                               autocomplete: "off",
-                              placeholder: "Name"
+                              placeholder: "Name",
+                              autofocus: ""
                             },
                             domProps: { value: _vm.form.customer_name },
                             on: {
@@ -1219,7 +1230,7 @@ var render = function() {
                                                   }
                                                 ],
                                                 staticClass: "form-control",
-                                                staticStyle: { width: "70px" },
+                                                staticStyle: { width: "100px" },
                                                 on: {
                                                   change: function($event) {
                                                     var $$selectedVal = Array.prototype.filter
@@ -1340,41 +1351,53 @@ var render = function() {
                                             )
                                           ]),
                                           _vm._v(" "),
-                                          _c("td", [
-                                            _c("strong", [
+                                          _c(
+                                            "td",
+                                            { staticStyle: { width: "20px" } },
+                                            [
+                                              _c("strong", [
+                                                _vm._v(
+                                                  _vm._s(product.s_sale_price)
+                                                )
+                                              ])
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "td",
+                                            { staticStyle: { width: "20px" } },
+                                            [
                                               _vm._v(
-                                                _vm._s(product.s_sale_price)
+                                                _vm._s(
+                                                  _vm.form.products[index].total
+                                                )
                                               )
-                                            ])
-                                          ]),
+                                            ]
+                                          ),
                                           _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.form.products[index].total
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _c(
-                                              "a",
-                                              {
-                                                staticClass:
-                                                  "btn btn-danger btn-sm",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.remove(index)
+                                          _c(
+                                            "td",
+                                            { staticStyle: { width: "15px" } },
+                                            [
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-danger btn-sm",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.remove(index)
+                                                    }
                                                   }
-                                                }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "fa fa-trash"
-                                                })
-                                              ]
-                                            )
-                                          ])
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass: "fa fa-trash"
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
                                         ])
                                       }),
                                       _vm._v(" "),
@@ -1518,9 +1541,17 @@ var render = function() {
                                                     _c(
                                                       "option",
                                                       {
-                                                        attrs: { disabled: "" }
+                                                        attrs: {
+                                                          value:
+                                                            "select discount type",
+                                                          disabled: ""
+                                                        }
                                                       },
-                                                      [_vm._v("discount type")]
+                                                      [
+                                                        _vm._v(
+                                                          "select discount type"
+                                                        )
+                                                      ]
                                                     ),
                                                     _vm._v(" "),
                                                     _c(
@@ -1566,12 +1597,14 @@ var render = function() {
                                                     }
                                                   ],
                                                   staticClass: "form-control",
-                                                  attrs: { placeholder: "0" },
+                                                  attrs: {
+                                                    disabled: "",
+                                                    placeholder: "0"
+                                                  },
                                                   domProps: {
                                                     value: _vm.form.discount
                                                   },
                                                   on: {
-                                                    keyup: _vm.totalCalculation,
                                                     input: function($event) {
                                                       if (
                                                         $event.target.composing
@@ -1593,9 +1626,51 @@ var render = function() {
                                       _vm._v(" "),
                                       _vm.products.length > 0
                                         ? _c("tr", [
-                                            _c("td", {
-                                              attrs: { colspan: "3" }
-                                            }),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "3" } },
+                                              [
+                                                _vm.form.discount_type ==
+                                                  "percentage" ||
+                                                _vm.form.discount_type == "flat"
+                                                  ? _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.discount_value,
+                                                          expression:
+                                                            "discount_value"
+                                                        }
+                                                      ],
+                                                      staticClass:
+                                                        "form-control",
+                                                      attrs: { type: "number" },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.discount_value
+                                                      },
+                                                      on: {
+                                                        keyup:
+                                                          _vm.calculateDiscount,
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.discount_value =
+                                                            $event.target.value
+                                                        }
+                                                      }
+                                                    })
+                                                  : _vm._e()
+                                              ]
+                                            ),
                                             _vm._v(" "),
                                             _c(
                                               "td",

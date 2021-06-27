@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Manager;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Models\ShowroomCredit ;
+use App\Models\ShowroomCustomerDue ;
 use App\Models\ShowroomDebit ;
 use Maatwebsite\Excel\Facades\Excel ;
 use App\Exports\CreditExport ;
@@ -259,15 +261,54 @@ class AccountController extends Controller
 
 
 
-    public   function export_credit(){
 
-        return   Excel::download(new CreditExport(),'credit.xlsx') ;
+
+
+
+
+
+
+    public function getCustomerDue(Request $request)
+    {
+          $paginate_item=$request->item ?? 20 ;
+          $showroom_id=session()->get('manager')['showroom_id'];
+          $due_customers=ShowroomCustomerDue::where('showroom_id',$showroom_id)->orderBy('id','desc')->where('amount','>',0)->with('sale')->paginate($paginate_item);
+          return response()->json([
+                "status" => "OK",
+                "due_customers" => $due_customers ,
+          ]);
     }
 
-    public   function export_debit(){
 
-        return Excel::download(new DebitExport(),'debit.xlsx') ;
+    public function  duePaid(Request $request,$id){
+
+        $customer_due=ShowroomCustomerDue::findOrFail($id);
+
+        if($request->amount > $customer_due->amount){
+            return response()->json('Due Amount '.$customer_due->amount.' But Request Amount '. $request->amount);
+        }
+
+        $customer_due->amount=$customer_due->amount-$request->amount;
+        if($customer_due->save()){
+
+          //create a credit.......
+        $credit = new ShowroomCredit();
+        $credit->purpose ="Due amount, Paid....";
+        $credit->amount =$request->amount;
+        $credit->comment ="customer due amount paid.... Extra Hint(Paid Amount: ". $request->amount.' Due Amount: '.($customer_due->amount+$request->amount);
+        $credit->date =  date('Y-m-d');
+        $credit->credit_in=$request->paid_by;
+        $credit->showroom_id = session()->get('manager')['showroom_id'];
+        $credit->insert_manager_id=session()->get('manager')['id'];
+        $credit->save();
+         return response()->json([
+                'status' => 'SUCCESS',
+                'message' => 'paid successfully',
+                'due'=>$customer_due
+            ]);
+        }
     }
+
 
 
 

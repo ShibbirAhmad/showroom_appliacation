@@ -4,14 +4,15 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          <router-link :to="{ name: 'creditAdd' }" class="btn btn-primary"
+          <router-link :to="{ name: 'showroom_credit_add' }" class="btn btn-primary"
             ><i class="fa fa-plus"></i
           ></router-link>
 
-          <router-link :to="{ name: 'debit' }" class="btn btn-info"
-            >Debit</router-link
+          <router-link :to="{ name: 'showroom_credit' }" class="btn btn-info"
+            >Credit</router-link
           >
         </h1>
+
         <ol class="breadcrumb">
           <li>
             <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
@@ -39,7 +40,7 @@
                         <th>Date</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Mobile No</th>
-                        <th>Memo Number</th>
+                        <th>Order Invoice</th>
 
                         <th scope="col">Amount</th>
 
@@ -54,23 +55,20 @@
                         <td scope="row">{{ index + 1 }}</td>
                         <td>{{ due.created_at }}</td>
 
-                        <td>{{ due.customer_name }}</td>
-                        <td>{{ due.customer_mobile_no }}</td>
+                        <td>{{ due.sale.customer_name }}</td>
+                        <td>{{ due.sale.customer_phone }}</td>
+
                         <td>
 
                             <router-link
-                            :to="{
-                              name: 'ViewSale',
-                              params: { id: due.memo_no},
-                            }">
+                            :to="{name:'showroom_sale_view',params:{id:due.sale.id}}">
 
-                          {{ "S-" }} {{ due.memo_no ? due.memo_no : ""   }}
+                           {{ "S-"+due.sale.invoice_no   }}
 
                             </router-link>
                           </td>
 
-                        <td>{{ due.amount }}</td>
-                        <!-- <td><strong v-if="due.order_invoice_no">{{ due.order_invoice_no }}</strong></td> -->
+                        <td> &#2547; {{ due.amount }}</td>
 
                         <td>
                           <a
@@ -131,35 +129,30 @@ export default {
       item: 20,
       search: "",
       status: "all",
-
       //for date picker
-      options: {
+       options: {
         format: "YYYY-MM-DD",
         useCurrent: false,
       },
-
       start_date: "",
       end_date: "",
     };
   },
   methods: {
-    getPaid() {},
 
     dueList(page = 1) {
       this.loading = true;
       axios
-        .get("/api/credit/due?page=" + page, {
+        .get("/api/showroom/credit/due?page=" + page, {
           params: {
             item: this.item,
           },
         })
         .then((resp) => {
-          this.credit_dues = resp.data;
+          console.log(resp);
+          this.credit_dues = resp.data.due_customers;
           this.loading = false;
         })
-        .catch((error) => {
-          console.log(error);
-        });
     },
 
     searchCredit() {
@@ -196,7 +189,7 @@ export default {
           if (amount > 0 && amount.length > 0 && paid_by.length > 0) {
             //send a request
             axios
-              .get("/api/due/to/paid/" + id, {
+              .get("/api/showroom/due/to/paid/" + id, {
                 params: {
                   paid_by: paid_by,
                   amount: amount,
@@ -213,8 +206,8 @@ export default {
                   //if amount full paid
                   //remove form dom
                   //else update amount
-                  if (resp.data.due.status == 1) {
-                    this.credit_dues.data.splice(index, 1);
+                  if (resp.data.status == 'SUCCESS') {
+                    this.dueList();
                   } else {
                     console.log(this.credit_dues.data[index].amount);
                     this.credit_dues.data[index].amount = resp.data.due.amount;
@@ -226,9 +219,6 @@ export default {
                   });
                 }
               })
-              .catch((e) => {
-                console.log(e);
-              });
           }
         }
         console.log(result);

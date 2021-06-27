@@ -6,7 +6,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>showroom</b></span>
+      <span class="logo-lg"><b>Outlet</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -89,7 +89,7 @@ export default {
   data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link ,
+      base_url: this.$store.state.image_base_url ,
     };
   },
   methods: {

@@ -85,7 +85,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
     submit: function submit() {
       var _this = this;
 
-      this.form.post("/api/merchant/verify/reset/code/" + this.$route.params.phone).then(function (resp) {
+      this.form.post("/api/manager/verify/reset/code/" + this.$route.params.phone).then(function (resp) {
         console.log(resp);
 
         if (resp.data.status == "SUCCESS") {
@@ -96,7 +96,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
           });
 
           _this.$router.push({
-            name: 'new_password_merchant',
+            name: 'new_password_manager',
             params: {
               phone: _this.$route.params.phone
             }
@@ -111,22 +111,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MOD
       })["catch"](function (error) {
         console.log(error);
 
-        _this.$toasted.show("some thing want to wrong", {
+        _this.$toasted.show("some thing went to wrong", {
           type: "error",
           position: "top-center",
           duration: 2000
         });
       });
     }
-  }
-});
-document.addEventListener("DOMContentLoaded", function () {
-  var sidebar = document.getElementsByClassName("main-sidebar")[0];
-  var footer = document.getElementsByClassName("main-footer")[0];
-
-  if (window.location.href == "/merchant/panel/login/view") {
-    sidebar.classList.add("none");
-    footer.classList.add("none");
   }
 });
 
@@ -144,7 +135,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.none {\r\n  display: none !important;\n}\n.form-wrapper {\r\n   \r\n    margin: 0px 10px;\n}\n.form_column{\r\n     margin-bottom: 20px;\r\n     box-shadow: 1px 1px 5px 1px #2e2e2e;\n}\n.btn_group{\r\n    margin-bottom: 16px;\r\n    margin-top: 10px;\n}\n.logo_mohasagor{\r\n  margin-top: 50px;\r\n  margin-bottom: 5px !important;\n}\n.btn_register{\r\n  background:#00acd6;\r\n  color:#fff;\n}\r\n", ""]);
+exports.push([module.i, "\n.none {\r\n  display: none !important;\n}\n.form-wrapper {\r\n\r\n    margin: 0px 10px;\n}\n.form_column{\r\n     margin-bottom: 20px;\r\n     box-shadow: 1px 1px 5px 1px #2e2e2e;\n}\n.btn_group{\r\n    margin-bottom: 16px;\r\n    margin-top: 10px;\n}\n.logo_mohasagor{\r\n  margin-top: 50px;\r\n  margin-bottom: 5px !important;\n}\n.btn_register{\r\n  background:#00acd6;\r\n  color:#fff;\n}\r\n", ""]);
 
 // exports
 
@@ -197,107 +188,118 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4 col-sm-12" }),
+    _c(
+      "div",
+      { staticClass: "container", staticStyle: { background: "#ffff" } },
+      [
+        _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 col-sm-12 form_column bg-white" }, [
-          _c("div", { staticClass: "form-wrapper " }, [
-            _c(
-              "h3",
-              {
-                staticStyle: { "padding-top": "10px", "text-align": "center" }
-              },
-              [_vm._v("\n              Code Verification\n           ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.submit($event)
-                  }
-                }
-              },
-              [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-4 col-sm-12" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-4 col-sm-12 form_column bg-white" },
+            [
+              _c("div", { staticClass: "form-wrapper " }, [
                 _c(
-                  "div",
-                  { staticClass: "form-grop" },
-                  [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "control-label",
-                        attrs: { for: "input-email" }
-                      },
-                      [_vm._v(" Verify Code")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.code,
-                          expression: "form.code"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("code") },
-                      attrs: {
-                        type: "text",
-                        name: "code",
-                        placeholder: "xxxxx",
-                        autocomplete: "off",
-                        autofocus: ""
-                      },
-                      domProps: { value: _vm.form.code },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "code", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("has-error", {
-                      attrs: { form: _vm.form, field: "code" }
-                    })
-                  ],
-                  1
+                  "h3",
+                  {
+                    staticStyle: {
+                      "padding-top": "10px",
+                      "text-align": "center"
+                    }
+                  },
+                  [_vm._v("\n              Code Verification\n           ")]
                 ),
                 _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-block btn-primary",
-                      attrs: { disabled: _vm.form.busy, type: "submit" }
-                    },
-                    [
-                      _vm.form.busy
-                        ? _c("i", { staticClass: "fa fa-spinner fa-spin" })
-                        : _vm._e(),
-                      _vm._v("Verify\n                ")
-                    ]
-                  )
-                ])
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 col-sm-12" })
-      ])
-    ])
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.submit($event)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "form-grop" },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "control-label",
+                            attrs: { for: "input-email" }
+                          },
+                          [_vm._v(" Verify Code")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.code,
+                              expression: "form.code"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: { "is-invalid": _vm.form.errors.has("code") },
+                          attrs: {
+                            type: "text",
+                            name: "code",
+                            placeholder: "xxxxx",
+                            autocomplete: "off",
+                            autofocus: ""
+                          },
+                          domProps: { value: _vm.form.code },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "code", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "code" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-block btn-primary",
+                          attrs: { disabled: _vm.form.busy, type: "submit" }
+                        },
+                        [
+                          _vm.form.busy
+                            ? _c("i", { staticClass: "fa fa-spinner fa-spin" })
+                            : _vm._e(),
+                          _vm._v("Verify\n                ")
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 col-sm-12" })
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -308,8 +310,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c("h2", { staticClass: "logo_mohasagor" }, [
         _c("a", [
-          _c("b", { staticStyle: { color: "#000" } }, [_vm._v("Mohasagor")]),
-          _vm._v(".com\n       ")
+          _c("b", { staticStyle: { color: "#000" } }, [_vm._v(" Outlet ")])
         ])
       ])
     ])

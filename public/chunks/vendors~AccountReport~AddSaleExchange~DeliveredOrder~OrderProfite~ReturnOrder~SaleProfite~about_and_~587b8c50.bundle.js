@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~e093604a"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~587b8c50"],{
 
 /***/ "./node_modules/vform/dist/vform.common.js":
 /*!*************************************************!*\

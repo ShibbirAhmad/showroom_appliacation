@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Manager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Models\Customer;
 use App\Models\ShowroomCustomerDue;
+use App\Models\Showroom;
 use App\Models\ShowroomSale;
 use App\Models\ShowroomSaleItem;
 use App\Models\ShowroomProduct;
 use App\Models\ShowroomCredit;
 use App\Models\ShowroomDebit;
+use App\Models\GeneralSetting;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -40,25 +43,47 @@ class SaleController extends Controller
            $item=$request->item?? 20;
            $showroom_id=session()->get('manager')['showroom_id'];
            $sales=ShowroomSale::where('showroom_id',$showroom_id)->orderBy('id','desc')->paginate($item);
-
             return response()->json([
                 'status' => 'SUCCESS',
-                'message' => 'new sale  added',
                 'sales' => $sales
             ]);
-
-
     }
+
+
+
+    public function retailSales(Request $request ){
+           $item=$request->item?? 20;
+           $showroom_id=session()->get('manager')['showroom_id'];
+           $sales=ShowroomSale::where('showroom_id',$showroom_id)->where('sale_type',1)->orderBy('id','desc')->paginate($item);
+            return response()->json([
+                'status' => 'SUCCESS',
+                'sales' => $sales
+            ]);
+    }
+
+
+       public function wholeSales(Request $request ){
+           $item=$request->item?? 20;
+           $showroom_id=session()->get('manager')['showroom_id'];
+           $sales=ShowroomSale::where('showroom_id',$showroom_id)->where('sale_type',2)->orderBy('id','desc')->paginate($item);
+            return response()->json([
+                'status' => 'SUCCESS',
+                'sales' => $sales
+            ]);
+    }
+
 
     public function saleDetails($id){
 
            $showroom_id=session()->get('manager')['showroom_id'];
            $sale=ShowroomSale::where('showroom_id',$showroom_id)->where('id',$id)->first();
            $sale_items=ShowroomSaleItem::where('showroom_sale_id',$sale->id)->with('product.productImage','variant')->get();
-            return response()->json([
+           $showroom=Showroom::where('id',$showroom_id)->first();
+           return response()->json([
                 'status' => 'SUCCESS',
                 'sale' => $sale,
                 'sale_items' => $sale_items,
+                'showroom' => $showroom,
             ]);
 
 
@@ -93,7 +118,7 @@ class SaleController extends Controller
                 $customer->phone=$request->customer_phone;
                 $customer->address=$request->customer_address ?? 'Dhaka';
                 $customer->city_id= 2;
-             //   $customer->customer_type= 1;
+                $customer->customer_type= 1;
                 $customer->save();
             }
             //inserting sale
@@ -135,7 +160,7 @@ class SaleController extends Controller
              if($sale->paid < $sale->total ){
                 $due= new ShowroomCustomerDue();
                 $due->showroom_id=$showroom_id;
-                $due->customer_id=$customer->id;
+                $due->showroom_sale_id= $sale->id;
                 $due->amount=$sale->due_amount;
                 $due->save();
             }
@@ -168,9 +193,22 @@ class SaleController extends Controller
         $showroom_id=session()->get('manager')['showroom_id'];
         $sale=ShowroomSale::where('showroom_id',$showroom_id)->where('id',$id)->first();
         $sale_items=ShowroomSaleItem::where('showroom_sale_id',$sale->id)->with('product.productImage','variant')->get();
-
-      return view('manager.pdf.print.invoicePrint', compact('sale','sale_items'));
+        $showroom=Showroom::where('id',$showroom_id)->first();
+      return view('manager.pdf.print.invoicePrint', compact(['sale','sale_items','showroom'] ));
     }
+
+
+
+
+    public function invoicePrintSmall($id){
+        $showroom_id=session()->get('manager')['showroom_id'];
+        $sale=ShowroomSale::where('showroom_id',$showroom_id)->where('id',$id)->first();
+        $sale_items=ShowroomSaleItem::where('showroom_sale_id',$sale->id)->with('product.productImage','variant')->get();
+        $showroom=Showroom::where('id',$showroom_id)->first();
+      return view('manager.pdf.print.smallPrint', compact(['sale','sale_items','showroom'] ));
+    }
+
+
 
 
 

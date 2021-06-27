@@ -14,7 +14,7 @@
       <section class="content">
         <div class="container">
           <div class="row  ">
-            <div class="col-lg-10">
+            <div class="col-lg-11">
               <div class="box box-primary">
                 <div class="box-body">
                       <table class="table table-bordered table-striped table-hover">
@@ -56,7 +56,7 @@
                     <router-link  class="btn btn-warning back" :to="{name:'product_transaction'}">
                       <i class="fa fa-arrow-circle-left" ></i>
                     </router-link>
-                    <button v-show="transaction.status==0" @click="approvedTransaction" class="btn btn-success"> Approved  <i class="fa fa-check"></i></button>
+                    <button v-show="transaction.status==0" @click="approvedTransaction" class="btn btn-success"> Received <i class="fa fa-check"></i></button>
                   </div>
                 </div>
               </div>

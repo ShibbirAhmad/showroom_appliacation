@@ -3,7 +3,7 @@
     <navbar></navbar>
     <div class="content-wrapper">
       <section class="content-header">
-        <h1>
+       <h1>
           <router-link :to="{ name: 'showroom_sale_add' }" class="btn btn-primary">
             <i class="fa fa-plus"></i>
           </router-link>
@@ -259,7 +259,7 @@ export default {
       //start progress bar
       this.$Progress.start();
       axios
-        .get("/api/showroom/sales/list?page=" + page, {
+        .get("/api/showroom/retailsales/list?page=" + page, {
           params: {
             //send data
             status: this.status,

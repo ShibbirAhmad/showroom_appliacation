@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Purchaseitem;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Picqer;
 use Barryvdh\DomPDF\Facade as PDF;

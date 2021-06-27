@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link
+      base_url: this.$store.state.image_base_url
     };
   },
   methods: {
@@ -145,11 +145,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Navbar.vue */ "./resources/js/components/manager/Navbar.vue");
-//
-//
-//
-//
-//
 //
 //
 //
@@ -358,47 +353,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    trash: function trash(debitId, index) {
-      var _this3 = this;
-
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't delete this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes!"
-      }).then(function (result) {
-        if (result.value) {
-          axios.get("/api/showroom/debit/delete/" + debitId).then(function (resp) {
-            console.log(resp);
-
-            if (resp.data.status == "SUCCESS") {
-              _this3.debits.data.splice(index, 1);
-
-              _this3.$toasted.show(resp.data.message, {
-                position: "top-center",
-                type: "success",
-                duration: 200
-              });
-            } else {
-              _this3.$toasted.show("some thing want to wrong", {
-                position: "top-center",
-                type: "error",
-                duration: 4000
-              });
-            }
-          });
-        } else {
-          _this3.$toasted.show("OK ! no action here", {
-            position: "top-center",
-            type: "info",
-            duration: 3000
-          });
-        }
-      });
-    },
     searchCredit: function searchCredit() {
       if (this.search.length >= 2) {
         this.status = "search";
@@ -587,7 +541,7 @@ var staticRenderFns = [
         _vm._v("LT")
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("showroom")])])
+      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("Outlet")])])
     ])
   },
   function() {
@@ -651,18 +605,6 @@ var render = function() {
                   attrs: { to: { name: "showroom_credit" } }
                 },
                 [_vm._v("Credit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  on: { click: _vm.exportDebit }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-download" }),
-                  _vm._v(" Exprot Debit")
-                ]
               )
             ],
             1
@@ -882,26 +824,7 @@ var render = function() {
                                       }
                                     },
                                     [_c("i", { staticClass: "fa fa-edit" })]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm.current_date == debit.date
-                                    ? _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-sm btn-danger",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.trash(debit.id, index)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-trash"
-                                          })
-                                        ]
-                                      )
-                                    : _vm._e()
+                                  )
                                 ],
                                 1
                               )

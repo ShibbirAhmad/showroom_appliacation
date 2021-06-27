@@ -380,7 +380,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link
+      base_url: this.$store.state.image_base_url
     };
   },
   methods: {
@@ -1111,7 +1111,7 @@ var staticRenderFns = [
         _vm._v("LT")
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("showroom")])])
+      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("Outlet")])])
     ])
   },
   function() {

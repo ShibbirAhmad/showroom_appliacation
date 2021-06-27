@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
 
     </div>
-    <strong>  &copy; 2021 <a href="#">showroom</a>.</strong> All rights
+    <strong>  &copy; 2021 <a href="https://outlet.sufilifestyle.com">outlet.sufilifestyle.com</a>.</strong> All rights
     reserved.
   </footer>
 

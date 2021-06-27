@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link
+      base_url: this.$store.state.image_base_url
     };
   },
   methods: {
@@ -149,6 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Navbar.vue */ "./resources/js/components/manager/Navbar.vue");
+//
 //
 //
 //
@@ -540,7 +541,7 @@ var staticRenderFns = [
         _vm._v("LT")
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("showroom")])])
+      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("Outlet")])])
     ])
   },
   function() {

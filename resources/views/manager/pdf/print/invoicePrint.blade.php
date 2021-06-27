@@ -112,16 +112,11 @@ width: 350px;
         <div class="row justify-content-center break">
             <div class="col-lg-12">
                 <div class="address_container">
-                    <img class="inv_logo" src="{{ asset('frontend/image/logo.png') }}" alt="logo" width="200">
                     <div class="address_p" >
-                        <p>Office: Houes:36,Road:06,Benaroshi Polli,Mirpur-10,Dhaka-1216.
-
-                        </p>
-                        <p>E-mail: :madinafashion2017@gmail.com</p>
-                        <p>Mobile: +88 01715-900066</p>
+                        <h5>{{ $showroom->name }} </h5>
+                        <p> Address : {{ $showroom->address }} </p>
+                        <p>Mobile: {{ $showroom->contact_number }} </p>
                         <p><strong>Date: <?php echo date("d-m-Y"); ?> </strong></p>
-
-
                     </div>
                 </div>
             </div>

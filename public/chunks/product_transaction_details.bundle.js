@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link
+      base_url: this.$store.state.image_base_url
     };
   },
   methods: {
@@ -456,7 +456,7 @@ var staticRenderFns = [
         _vm._v("LT")
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("showroom")])])
+      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("Outlet")])])
     ])
   },
   function() {
@@ -507,7 +507,7 @@ var render = function() {
         _c("section", { staticClass: "content" }, [
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row  " }, [
-              _c("div", { staticClass: "col-lg-10" }, [
+              _c("div", { staticClass: "col-lg-11" }, [
                 _c("div", { staticClass: "box box-primary" }, [
                   _c("div", { staticClass: "box-body" }, [
                     _c(
@@ -603,7 +603,7 @@ var render = function() {
                             on: { click: _vm.approvedTransaction }
                           },
                           [
-                            _vm._v(" Approved  "),
+                            _vm._v(" Received "),
                             _c("i", { staticClass: "fa fa-check" })
                           ]
                         )

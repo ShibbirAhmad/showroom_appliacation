@@ -7,15 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Credit;
 use App\Models\Debit;
 use App\Models\Account_purpose;
-use App\Models\EmployeeSalary;
 use App\Models\SupplierPayment;
-use App\Models\Team;
 use Maatwebsite\Excel\Facades\Excel ;
 use App\Exports\CreditExport ;
 use App\Exports\DebitExport ;
-use App\Models\Loaner;
-use App\Models\LoanPaid;
-use App\Models\Supplier;
+use App\Models\ShowroomCustomerDue;
+use Illuminate\Contracts\Session\Session;
 use Intervention\Image\Facades\Image;
 
 class AccountController extends Controller
@@ -25,11 +22,11 @@ class AccountController extends Controller
     {
         $this->middleware('admin');
     }
-   
+
 
     //this method return all type of credit data
     // method return data based on $request->satus;
-    
+
     public function get_credit(Request $request)
     {
 
@@ -61,7 +58,7 @@ class AccountController extends Controller
                                 ->orderBy('id','DESC')->with('admin')
                                 ->paginate($paginate);
             }
-           
+
             return response()->json($crdits);
 
          }
@@ -81,7 +78,7 @@ class AccountController extends Controller
             'amount' => 'required|numeric',
             'credit_in' => 'required'
         ]);
-        
+
         $credit = new Credit();
         $credit->purpose = $request->purpose;
         $credit->amount = $request->amount;
@@ -99,10 +96,10 @@ class AccountController extends Controller
 
     }
 
-  
+
     public function edit_credit(Request $request,$id)
     {
-      
+
         if($request->ajax()){
            $credit=Credit::find($id);
            if($credit){
@@ -116,17 +113,17 @@ class AccountController extends Controller
         }
     }
 
-  
+
     public function update_credit(Request $request,$id)
     {
-     
+
         if($request->ajax()){
         $validatedData = $request->validate([
             'date'=>'required|before:tomorrow',
             'purpose' => 'required',
             'amount' => 'required',
         ]);
-        
+
         $credit =Credit::find($id);
         $credit->purpose = $request->purpose;
         $credit->amount = $request->amount;
@@ -144,7 +141,7 @@ class AccountController extends Controller
     }
     }
 
-   
+
     public function destroy_credit(Request $request, $id)
     {
         if($request->ajax()){
@@ -154,14 +151,14 @@ class AccountController extends Controller
                     return response()->json([
                         'status' => 'SUCCESS',
                         'message' => "credit was successfully deleted",
-                    ]); 
+                    ]);
                 }
             }
 
         }else{
             return abort(404);
         }
-       
+
 
     }
 
@@ -201,7 +198,7 @@ class AccountController extends Controller
                                 ->orderBy('id','DESC')->with(['admin'])
                                 ->paginate($paginate);
             }
-           
+
             return response()->json($debits);
 
          }
@@ -222,11 +219,11 @@ class AccountController extends Controller
         //   'signature'=>'required'
         ]);
 
-     
+
         // //make signature image
         // $name='debit-signature-'.time().'.png';
         // Image::make(file_get_contents($request->signature))->save(public_path('storage/images/debitSignature/').$name);
-    
+
         $debit = new Debit();
         $debit->purpose = $request->purpose;
         $debit->debit_from=$request->debit_from;
@@ -261,7 +258,7 @@ class AccountController extends Controller
                $loan_paid->comment=$debit->comment;
                $loan_paid->paid_by=$debit->debit_from;
                 $loan_paid->save();
-                
+
                 $debit->comment = $debit->comment.'('. $loaner->name .')';
                 $debit->save();
           }
@@ -276,14 +273,14 @@ class AccountController extends Controller
                 $supplier_payment->date=$request->date;
                 $supplier_payment->paid_by=$debit->debit_from;
                 $supplier_payment->save();
-                
+
                 //update debit comment
                 $debit->comment = $debit->comment.'('. $supplier->name .')';
                   $debit->save();
 
              }
 
-       
+
           return response()->json([
                 'status' => 'SUCCESS',
                 'message' => "debit was successfully created",
@@ -291,7 +288,7 @@ class AccountController extends Controller
         }
     }
 
-  
+
     public function edit_debit(Request $request,$id)
     {
         if($request->ajax()){
@@ -307,7 +304,7 @@ class AccountController extends Controller
          }
     }
 
-  
+
     public function update_debit(Request $request,$id)
     {
         if($request->ajax()){
@@ -316,7 +313,7 @@ class AccountController extends Controller
                 'purpose' => 'required',
                 'amount' => 'required',
             ]);
-            
+
             $debit =Debit::find($id);
             $debit->purpose = $request->purpose;
             $debit->amount = $request->amount;
@@ -334,7 +331,7 @@ class AccountController extends Controller
         }
     }
 
-   
+
     public function destroy_debit(Request $request,$id)
     {
         if($request->ajax()){
@@ -344,7 +341,7 @@ class AccountController extends Controller
                     return response()->json([
                         'status' => 'SUCCESS',
                         'message' => "debit was successfully deleted",
-                    ]); 
+                    ]);
                 }
             }
 
@@ -356,20 +353,18 @@ class AccountController extends Controller
 
 
 
-
-
     public  function get_purpose_list(){
 
             $purposes = Account_purpose::orderBy('id','DESC')->paginate(10) ;
-           
+
             return response()->json([
                     "status" => "OK",
                     "purposes" => $purposes ,
             ]);
      }
 
-     
-     
+
+
     public  function add_purpose(Request $request){
 
          $validatedData = $request->validate([
@@ -385,11 +380,11 @@ class AccountController extends Controller
 
     }
 
-    
+
     public  function get_edit_purpose($id){
 
         $purpose = Account_purpose::find($id);
-       
+
         return response()->json([
                 "status" => "OK",
                 "purpose" => $purpose ,
@@ -399,7 +394,7 @@ class AccountController extends Controller
 
 
     public function update_purpose(Request $request, $id){
-          
+
         $validatedData = $request->validate([
                 'text' => 'required|unique:account_purposes,text,'.$id,
             ]);
@@ -410,7 +405,7 @@ class AccountController extends Controller
                         "status" => "OK",
                         "message" => "purpose edited " ,
                 ]);
-        
+
     }
 
     public function accountPurpose(){

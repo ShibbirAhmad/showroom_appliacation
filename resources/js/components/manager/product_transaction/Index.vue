@@ -14,7 +14,7 @@
       <section class="content">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-11 col-md-11">
               <div class="box box-primary">
                 <div class="box-header with-border text-center">
                     <h3 class="box-title">Product Trasformatin Tables</h3>
@@ -45,7 +45,7 @@
                         <td> &#2547; {{ transaction.total }} </td>
                         <td>
                           <span v-if="transaction.status==0" class="badge badge-warning"> Pending </span>
-                          <span v-else class="badge badge-success"> Approved </span>
+                          <span v-else class="badge badge-success"> Recieved </span>
                         </td>
                         <td>{{ transaction.comment}}</td>
                         <td>

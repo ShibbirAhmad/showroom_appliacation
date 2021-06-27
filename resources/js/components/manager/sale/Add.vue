@@ -48,6 +48,7 @@
                       type="text"
                       name="customer_phone"
                       class="form-control"
+                       autofocus
                       autocomplete="off"
                       placeholder="01xxxxxxxxx"
                       maxlength="11"
@@ -68,6 +69,7 @@
                       class="form-control"
                       autocomplete="off"
                       placeholder="Name"
+                       autofocus
                       v-model="form.customer_name"
                       :class="{
                         'is-invalid': form.errors.has('customer_name'),
@@ -151,7 +153,7 @@
                               <select
                                 class="form-control"
                                 v-model="form.products[index].variant_id"
-                                style="width: 70px"
+                                style="width:100px"
                               >
                                 <option value>select variant</option>
                                 <option
@@ -178,11 +180,11 @@
                                 product.s_stock
                               }}</span>
                             </td>
-                            <td>
+                            <td style="width:20px" >
                               <strong>{{ product.s_sale_price }}</strong>
                             </td>
-                            <td>{{ form.products[index].total }}</td>
-                            <td>
+                            <td style="width:20px" >{{ form.products[index].total }}</td>
+                            <td style="width:15px">
                               <a
                                 class="btn btn-danger btn-sm"
                                 @click="remove(index)"
@@ -208,7 +210,7 @@
                                class="form-control"
                                @change="calculateDiscount"
                                v-model="form.discount_type">
-                                <option disabled>discount type</option>
+                                <option value="select discount type" disabled>select discount type</option>
                                 <option value="percentage">percentage</option>
                                 <option value="flat">flat</option>
                               </select>
@@ -217,14 +219,20 @@
                             <td colspan="2" >
                               <input
                                 class="form-control"
-                                @keyup="totalCalculation"
                                 v-model="form.discount"
+                                disabled
                                 placeholder="0"
                               />
                             </td>
                           </tr>
                           <tr v-if="products.length > 0">
-                            <td colspan="3"></td>
+                            <td colspan="3">
+                              <input v-if="form.discount_type=='percentage' || form.discount_type=='flat' "
+                              type="number" class="form-control"
+                               v-model="discount_value"
+                               @keyup="calculateDiscount"
+                               >
+                            </td>
                             <td colspan="2" >Paid</td>
                             <td colspan="2">
                               <input
@@ -317,12 +325,13 @@ export default {
         status: 2,
         total: 0,
         discount: 0,
-        discount_type:'discount type',
+        discount_type:'select discount type',
         due: 0,
         paid: 0,
         order_type: 2,
         paid_by: "Bkash(merchant)",
       }),
+      discount_value:0,
       search_product_code: "",
       attribute_id: "",
       variant_id: "",
@@ -480,9 +489,9 @@ export default {
 
     calculateDiscount(){
         if (this.form.discount_type=="flat") {
-           this.form.discount=parseInt(this.form.discount) ;
+           this.form.discount=parseInt(this.discount_value) ;
        }else{
-          this.form.discount= (parseInt(this.form.total)*parseInt(this.form.discount)/100).toFixed(0) ;
+          this.form.discount= (parseInt(this.form.total)*parseInt(this.discount_value)/100).toFixed(0) ;
        }
            this.totalCalculation();
     },

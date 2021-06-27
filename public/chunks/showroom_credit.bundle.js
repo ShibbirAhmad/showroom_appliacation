@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link
+      base_url: this.$store.state.image_base_url
     };
   },
   methods: {
@@ -145,13 +145,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Navbar.vue */ "./resources/js/components/manager/Navbar.vue");
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -356,54 +349,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    trash: function trash(creditId, index) {
-      var _this3 = this;
-
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't delete this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes!"
-      }).then(function (result) {
-        if (result.value) {
-          axios.get("/credit/destroy/" + creditId).then(function (resp) {
-            console.log(resp);
-
-            if (resp.data.status == "SUCCESS") {
-              _this3.credits.data.splice(index, 1);
-
-              _this3.$toasted.show(resp.data.message, {
-                position: "top-center",
-                type: "success",
-                duration: 200
-              });
-            } else {
-              _this3.$toasted.show("some thing want to wrong", {
-                position: "top-center",
-                type: "error",
-                duration: 4000
-              });
-            }
-          })["catch"](function (error) {
-            // console.log(error)
-            _this3.$toasted.show("some thing want to wrong", {
-              position: "top-center",
-              type: "error",
-              duration: 4000
-            });
-          });
-        } else {
-          _this3.$toasted.show("OK ! no action here", {
-            position: "top-center",
-            type: "info",
-            duration: 3000
-          });
-        }
-      });
-    },
     searchCredit: function searchCredit() {
       if (this.search.length >= 2) {
         this.status = "search";
@@ -434,9 +379,6 @@ __webpack_require__.r(__webpack_exports__);
       var day = d.getDate();
       var output = d.getFullYear() + "-" + (("" + month).length < 2 ? "0" : "") + month + "-" + (("" + day).length < 2 ? "0" : "") + day;
       this.current_date = output;
-    },
-    exportCredit: function exportCredit() {
-      window.open('/api/export/credit', '_blank');
     },
     formatDate: function formatDate(date) {
       var origina_date = date.split("-");
@@ -595,7 +537,7 @@ var staticRenderFns = [
         _vm._v("LT")
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("showroom")])])
+      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("Outlet")])])
     ])
   },
   function() {
@@ -659,18 +601,6 @@ var render = function() {
                   attrs: { to: { name: "showroom_debit" } }
                 },
                 [_vm._v("Debit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  on: { click: _vm.exportCredit }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-download" }),
-                  _vm._v(" Exprot Credit")
-                ]
               )
             ],
             1
@@ -888,26 +818,7 @@ var render = function() {
                                       }
                                     },
                                     [_c("i", { staticClass: "fa fa-edit" })]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm.current_date == credit.date
-                                    ? _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-sm btn-danger",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.trash(credit.id, index)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-trash"
-                                          })
-                                        ]
-                                      )
-                                    : _vm._e()
+                                  )
                                 ],
                                 1
                               )

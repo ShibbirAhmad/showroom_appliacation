@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link
+      base_url: this.$store.state.image_base_url
     };
   },
   methods: {
@@ -330,6 +330,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -342,6 +343,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return _defineProperty({
       sale: "",
       items: "",
+      setting: "",
       loading: true,
       base_url: this.$store.state.image_base_link
     }, "loading", true);
@@ -356,6 +358,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (resp.data.status == "SUCCESS") {
           _this.sale = resp.data.sale;
           _this.items = resp.data.sale_items;
+          _this.setting = resp.data.showroom;
           _this.loading = false;
         } else {
           _this.$toasted.show("some thing want to wrong", {
@@ -369,6 +372,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     showroom_sale_price: function showroom_sale_price() {},
     print: function print(sale_id) {
       window.open('/api/showroom/sale/invoice/print/' + sale_id, '_SELF');
+    },
+    smallPrint: function smallPrint(sale_id) {
+      window.open('/api/invoice/small/print/' + sale_id, '_SELF');
     },
     formateDate: function formateDate(date) {
       var d = new Date(date);
@@ -568,7 +574,7 @@ var staticRenderFns = [
         _vm._v("LT")
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("showroom")])])
+      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("Outlet")])])
     ])
   },
   function() {
@@ -663,26 +669,16 @@ var render = function() {
                             _c("p", [
                               _vm._v("Invoice No: "),
                               _c("strong", [
-                                _vm._v(" " + _vm._s(_vm.sale.invoice_no) + " ")
+                                _vm._v(
+                                  " " + _vm._s("S-" + _vm.sale.invoice_no) + " "
+                                )
                               ])
                             ])
                           ])
                         ]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-3 col-sm-3 logo" }, [
-                        _c("img", {
-                          staticClass: "m_logo",
-                          attrs: {
-                            src: _vm.base_url + "images/mohasagor_logo.png",
-                            alt: "logo"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "m_title" }, [
-                          _vm._v(" Trusted Onlinde Shopping In Bangladesh ")
-                        ])
-                      ]),
+                      _c("div", { staticClass: "col-md-3 col-sm-3 logo" }),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -691,11 +687,21 @@ var render = function() {
                           staticStyle: { "margin-left": "27px" }
                         },
                         [
-                          _vm._m(0),
+                          _c("h5", [_vm._v(_vm._s(_vm.setting.name))]),
                           _vm._v(" "),
-                          _c("p", [_vm._v("Email: supportshowroom.com")]),
+                          _c("p", [
+                            _vm._v(
+                              " Address: " + _vm._s(_vm.setting.address) + " "
+                            )
+                          ]),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _c("p", [
+                            _vm._v(
+                              " Phone : " +
+                                _vm._s(_vm.setting.contact_number) +
+                                " "
+                            )
+                          ]),
                           _vm._v(" "),
                           _c("p", [
                             _vm._v(
@@ -834,7 +840,7 @@ var render = function() {
                           _c("tr", [
                             _c("td", { attrs: { colspan: "6" } }),
                             _vm._v(" "),
-                            _vm._m(2),
+                            _vm._m(0),
                             _vm._v(" "),
                             _c("td", [
                               _c("b", [_vm._v(_vm._s(_vm.sale.total))])
@@ -844,7 +850,7 @@ var render = function() {
                           _c("tr", [
                             _c("td", { attrs: { colspan: "6" } }),
                             _vm._v(" "),
-                            _vm._m(3),
+                            _vm._m(1),
                             _vm._v(" "),
                             _c("td", [
                               _c("b", [_vm._v(_vm._s(_vm.sale.discount))])
@@ -854,7 +860,7 @@ var render = function() {
                           _c("tr", [
                             _c("td", { attrs: { colspan: "6" } }),
                             _vm._v(" "),
-                            _vm._m(4),
+                            _vm._m(2),
                             _vm._v(" "),
                             _c("td", [_c("b", [_vm._v(_vm._s(_vm.sale.paid))])])
                           ]),
@@ -862,7 +868,7 @@ var render = function() {
                           _c("tr", [
                             _c("td", { attrs: { colspan: "6" } }),
                             _vm._v(" "),
-                            _vm._m(5),
+                            _vm._m(3),
                             _vm._v(" "),
                             _c("td", [
                               _c("b", [
@@ -894,7 +900,7 @@ var render = function() {
                               )
                             : _vm._e(),
                           _vm._v(" "),
-                          _vm._m(6)
+                          _vm._m(4)
                         ]
                       )
                     ]),
@@ -903,6 +909,15 @@ var render = function() {
                       "div",
                       { staticClass: "row bottomBtn" },
                       [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-warning back",
+                            attrs: { to: { name: "showroom_sale" } }
+                          },
+                          [_c("i", { staticClass: "fa fa-arrow-circle-left" })]
+                        ),
+                        _vm._v(" "),
                         _c(
                           "button",
                           {
@@ -913,33 +928,27 @@ var render = function() {
                               }
                             }
                           },
-                          [_c("i", { staticClass: "fa fa-print" })]
+                          [
+                            _c("i", { staticClass: "fa fa-print" }),
+                            _vm._v(" medium printer\n                  ")
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
-                          "router-link",
+                          "button",
                           {
-                            staticClass: "btn btn-warning back",
-                            attrs: { to: { name: "showroom_sale" } }
+                            staticClass: "btn btn-success ",
+                            on: {
+                              click: function($event) {
+                                return _vm.smallPrint(_vm.sale.id)
+                              }
+                            }
                           },
-                          [_c("i", { staticClass: "fa fa-arrow-circle-left" })]
-                        ),
-                        _vm._v(" "),
-                        _vm.sale.status != 5 && _vm.sale.status != 4
-                          ? _c(
-                              "router-link",
-                              {
-                                staticClass: "btn btn-success back",
-                                attrs: {
-                                  to: {
-                                    name: "saleEdit",
-                                    params: { id: _vm.sale.id }
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-edit" })]
-                            )
-                          : _vm._e()
+                          [
+                            _c("i", { staticClass: "fa fa-print" }),
+                            _vm._v(" small printer\n                  ")
+                          ]
+                        )
                       ],
                       1
                     )
@@ -955,25 +964,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "address_line" }, [
-      _vm._v("Office: Houes:02, Lane:11,Block:A, Banarosi Polli, "),
-      _c("br"),
-      _vm._v("\n                        section-10, Mirpur,Dhaka.")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("Hot Line: "),
-      _c("strong", [_vm._v(" 09636 203040")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

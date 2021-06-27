@@ -19,7 +19,8 @@ const state = {
 
     single_product: {},
 
-    image_base_link: '/../storage/',
+    image_base_url: '/../public/storage/',
+    image_base_link: 'https://madinafashion.com.bd/public/storage/',
 
     product_images: {},
 
@@ -49,6 +50,9 @@ const getters = {
     },
     image_base_link(state) {
         return state.image_base_link;
+    },
+     image_base_url(state) {
+        return state.image_base_url;
     },
     product_images(state) {
         return state.product_images;

@@ -26,21 +26,20 @@
                         </span>
 
                       </p>
-                      <p >Invoice No: <strong> {{sale.invoice_no}} </strong> </p>
+                      <p >Invoice No: <strong> {{"S-"+sale.invoice_no}} </strong> </p>
 
                     </div>
 
                    </div>
 
-                    <div class="col-md-3 col-sm-3 logo"> <img :src="base_url +'images/mohasagor_logo.png'" class="m_logo" alt="logo">
-                           <p class="m_title"> Trusted Onlinde Shopping In Bangladesh </p>
+                    <div class="col-md-3 col-sm-3 logo">
+
                      </div>
                     <div style="margin-left:27px" class="col-md-4 col-sm-4 address">
-                        <p class="address_line" >Office: Houes:02, Lane:11,Block:A, Banarosi Polli, <br/>
-                          section-10, Mirpur,Dhaka.</p>
-                        <p>Email: supportshowroom.com</p>
-                        <p>Hot Line: <strong> 09636 203040</strong>  </p>
-                        <p >
+                      <h5>{{ setting.name }}</h5>
+                      <p> Address: {{ setting.address }} </p>
+                      <p> Phone : {{ setting.contact_number }} </p>
+                     <p>
                         Date: {{formateDate( sale.created_at) }}
                       </p>
 
@@ -154,15 +153,17 @@
                   </div>
 
                   <div class="row bottomBtn">
-                    <button class="btn btn-success print"  @click="print(sale.id)">
-                      <i class="fa fa-print"></i>
-                    </button>
-                    <router-link :to="{name:'showroom_sale' }" class="btn btn-warning back" >
+                     <router-link :to="{name:'showroom_sale' }" class="btn btn-warning back" >
                       <i class="fa fa-arrow-circle-left" ></i>
                     </router-link>
-                     <router-link class="btn btn-success back" :to="{name:'saleEdit',params:{id:sale.id}}" v-if="sale.status!=5 && sale.status!=4">
-                      <i class="fa fa-edit" ></i>
-                    </router-link>
+
+                    <button class="btn btn-success print"  @click="print(sale.id)">
+                      <i class="fa fa-print"></i> medium printer
+                    </button>
+
+                     <button class="btn btn-success "  @click="smallPrint(sale.id)">
+                      <i class="fa fa-print" ></i> small printer
+                    </button>
                   </div>
                 </div>
               </div>
@@ -190,6 +191,7 @@ export default {
     return {
       sale: "",
       items: "",
+      setting:"",
       loading: true,
       base_url: this.$store.state.image_base_link,
       loading: true,
@@ -205,6 +207,7 @@ export default {
           if (resp.data.status == "SUCCESS") {
             this.sale = resp.data.sale;
             this.items = resp.data.sale_items;
+            this.setting = resp.data.showroom;
             this.loading=false;
           } else {
             this.$toasted.show("some thing want to wrong", {
@@ -221,6 +224,11 @@ export default {
     print(sale_id) {
      window.open('/api/showroom/sale/invoice/print/'+sale_id,'_SELF')
     },
+
+  smallPrint(sale_id) {
+     window.open('/api/invoice/small/print/'+sale_id,'_SELF')
+    },
+
 
     formateDate(date){
       let d=new Date(date);

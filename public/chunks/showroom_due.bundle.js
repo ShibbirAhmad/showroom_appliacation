@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       manager: {},
-      base_url: this.$store.state.image_base_link
+      base_url: this.$store.state.image_base_url
     };
   },
   methods: {
@@ -145,12 +145,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Navbar.vue */ "./resources/js/components/manager/Navbar.vue");
-var _methods;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
 //
 //
 //
@@ -291,22 +285,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       end_date: ""
     };
   },
-  methods: (_methods = {
-    getPaid: function getPaid() {},
+  methods: {
     dueList: function dueList() {
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.loading = true;
-      axios.get("/api/credit/due?page=" + page, {
+      axios.get("/api/showroom/credit/due?page=" + page, {
         params: {
           item: this.item
         }
       }).then(function (resp) {
-        _this2.credit_dues = resp.data;
+        console.log(resp);
+        _this2.credit_dues = resp.data.due_customers;
         _this2.loading = false;
-      })["catch"](function (error) {
-        console.log(error);
       });
     },
     searchCredit: function searchCredit() {
@@ -317,64 +309,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.status = "all";
         this.dueList();
       }
-    }
-  }, _defineProperty(_methods, "getPaid", function getPaid(id, index) {
-    var _this3 = this;
+    },
+    getPaid: function getPaid(id, index) {
+      var _this3 = this;
 
-    //open a dailoge box
-    Swal.fire({
-      // title:'Get  Paid',
-      html: "\n          <label>Amount</label>\n          <input id=\"amount\" value=".concat(this.credit_dues.data[index].amount, " class=\"swal2-input\">\n          <label>Paid By</label>\n          <select id=\"paid_by\" class=\"swal2-input\">\n          <option value=\"Cash\">Cash</option>\n          <option value=\"Bkash(personal)\">Bkash(personal)</option>\n          <option value=\"Bkash(merchant)\">Bkash(merchant)</option>\n          <option value=\"Bank(AIBL)\">Bank(AIBL)</option>\n          <option value=\"Bank(SIBL)\">Bank(SIBL)</option>\n\n          </select>\n          "),
-      showCancelButton: true
-    }).then(function (result) {
-      if (result.value) {
-        var amount = document.getElementById("amount").value;
-        var paid_by = document.getElementById("paid_by").value;
+      //open a dailoge box
+      Swal.fire({
+        // title:'Get  Paid',
+        html: "\n          <label>Amount</label>\n          <input id=\"amount\" value=".concat(this.credit_dues.data[index].amount, " class=\"swal2-input\">\n          <label>Paid By</label>\n          <select id=\"paid_by\" class=\"swal2-input\">\n          <option value=\"Cash\">Cash</option>\n          <option value=\"Bkash(personal)\">Bkash(personal)</option>\n          <option value=\"Bkash(merchant)\">Bkash(merchant)</option>\n          <option value=\"Bank(AIBL)\">Bank(AIBL)</option>\n          <option value=\"Bank(SIBL)\">Bank(SIBL)</option>\n\n          </select>\n          "),
+        showCancelButton: true
+      }).then(function (result) {
+        if (result.value) {
+          var amount = document.getElementById("amount").value;
+          var paid_by = document.getElementById("paid_by").value;
 
-        if (amount > 0 && amount.length > 0 && paid_by.length > 0) {
-          //send a request
-          axios.get("/api/due/to/paid/" + id, {
-            params: {
-              paid_by: paid_by,
-              amount: amount
-            }
-          }).then(function (resp) {
-            console.log(resp); //if resp success from serve
-
-            if (resp.data.status == "SUCCESS") {
-              Swal.fire({
-                type: "info",
-                text: resp.data.message
-              }); //if amount full paid
-              //remove form dom
-              //else update amount
-
-              if (resp.data.due.status == 1) {
-                _this3.credit_dues.data.splice(index, 1);
-              } else {
-                console.log(_this3.credit_dues.data[index].amount);
-                _this3.credit_dues.data[index].amount = resp.data.due.amount;
+          if (amount > 0 && amount.length > 0 && paid_by.length > 0) {
+            //send a request
+            axios.get("/api/showroom/due/to/paid/" + id, {
+              params: {
+                paid_by: paid_by,
+                amount: amount
               }
-            } else {
-              Swal.fire({
-                type: "warning",
-                text: resp.data
-              });
-            }
-          })["catch"](function (e) {
-            console.log(e);
-          });
-        }
-      }
+            }).then(function (resp) {
+              console.log(resp); //if resp success from serve
 
-      console.log(result);
-    });
-  }), _defineProperty(_methods, "clearAll", function clearAll() {
-    this.$Progress.start();
-    this.status = "all";
-    this.search = "", this.start_date = "", this.end_date = "", this.dueList();
-    this.$Progress.finish();
-  }), _methods),
+              if (resp.data.status == "SUCCESS") {
+                Swal.fire({
+                  type: "info",
+                  text: resp.data.message
+                }); //if amount full paid
+                //remove form dom
+                //else update amount
+
+                if (resp.data.status == 'SUCCESS') {
+                  _this3.dueList();
+                } else {
+                  console.log(_this3.credit_dues.data[index].amount);
+                  _this3.credit_dues.data[index].amount = resp.data.due.amount;
+                }
+              } else {
+                Swal.fire({
+                  type: "warning",
+                  text: resp.data
+                });
+              }
+            });
+          }
+        }
+
+        console.log(result);
+      });
+    },
+    clearAll: function clearAll() {
+      this.$Progress.start();
+      this.status = "all";
+      this.search = "", this.start_date = "", this.end_date = "", this.dueList();
+      this.$Progress.finish();
+    }
+  },
   components: {
     navbar: _Navbar_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -563,7 +555,7 @@ var staticRenderFns = [
         _vm._v("LT")
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("showroom")])])
+      _c("span", { staticClass: "logo-lg" }, [_c("b", [_vm._v("Outlet")])])
     ])
   },
   function() {
@@ -615,7 +607,7 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { to: { name: "creditAdd" } }
+                  attrs: { to: { name: "showroom_credit_add" } }
                 },
                 [_c("i", { staticClass: "fa fa-plus" })]
               ),
@@ -624,9 +616,9 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "btn btn-info",
-                  attrs: { to: { name: "debit" } }
+                  attrs: { to: { name: "showroom_credit" } }
                 },
-                [_vm._v("Debit")]
+                [_vm._v("Credit")]
               )
             ],
             1
@@ -665,10 +657,12 @@ var render = function() {
                               _vm._v(" "),
                               _c("td", [_vm._v(_vm._s(due.created_at))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(due.customer_name))]),
+                              _c("td", [
+                                _vm._v(_vm._s(due.sale.customer_name))
+                              ]),
                               _vm._v(" "),
                               _c("td", [
-                                _vm._v(_vm._s(due.customer_mobile_no))
+                                _vm._v(_vm._s(due.sale.customer_phone))
                               ]),
                               _vm._v(" "),
                               _c(
@@ -679,19 +673,15 @@ var render = function() {
                                     {
                                       attrs: {
                                         to: {
-                                          name: "ViewSale",
-                                          params: { id: due.memo_no }
+                                          name: "showroom_sale_view",
+                                          params: { id: due.sale.id }
                                         }
                                       }
                                     },
                                     [
                                       _vm._v(
-                                        "\n\n                        " +
-                                          _vm._s("S-") +
-                                          " " +
-                                          _vm._s(
-                                            due.memo_no ? due.memo_no : ""
-                                          ) +
+                                        "\n\n                         " +
+                                          _vm._s("S-" + due.sale.invoice_no) +
                                           "\n\n                          "
                                       )
                                     ]
@@ -700,7 +690,7 @@ var render = function() {
                                 1
                               ),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(due.amount))]),
+                              _c("td", [_vm._v(" ৳ " + _vm._s(due.amount))]),
                               _vm._v(" "),
                               _c("td", [
                                 _c(
@@ -818,7 +808,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Mobile No")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Memo Number")]),
+        _c("th", [_vm._v("Order Invoice")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Amount")]),
         _vm._v(" "),

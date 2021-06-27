@@ -1,12 +1,12 @@
 <template>
  <div>
 
-    <div  class="container">
- 
+    <div style="background:#ffff" class="container">
+
     <div  class="text-center">
       <h2 class="logo_mohasagor">
         <a>
-          <b style="color: #000">Mohasagor</b>.com
+          <b style="color: #000"> Outlet </b>
         </a>
       </h2>
     </div>
@@ -39,15 +39,15 @@
                   <i class="fa fa-spinner fa-spin" v-if="form.busy"></i>Verify
                  </button>
               </div>
-       
-                
+
+
               </form>
           </div>
       </div>
       <div class="col-md-4 col-sm-12"> </div>
     </div>
 
-  
+
  </div>
  </div>
 </template>
@@ -71,7 +71,7 @@ export default {
   methods: {
     submit() {
        this.form
-        .post("/api/merchant/verify/reset/code/"+this.$route.params.phone)
+        .post("/api/manager/verify/reset/code/"+this.$route.params.phone)
         .then((resp) => {
           console.log(resp);
           if (resp.data.status == "SUCCESS") {
@@ -81,7 +81,7 @@ export default {
               duration: 2000,
             });
 
-            this.$router.push({name:'new_password_merchant',params:{ phone:this.$route.params.phone } });
+            this.$router.push({name:'new_password_manager',params:{ phone:this.$route.params.phone } });
 
           } else {
            this.$toasted.show(resp.data.message, {
@@ -93,7 +93,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          this.$toasted.show("some thing want to wrong", {
+          this.$toasted.show("some thing went to wrong", {
             type: "error",
             position: "top-center",
             duration: 2000,
@@ -103,16 +103,6 @@ export default {
   },
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  let sidebar = document.getElementsByClassName("main-sidebar")[0];
-  let footer = document.getElementsByClassName("main-footer")[0];
-  if (
-    window.location.href == "/merchant/panel/login/view"
-  ) {
-    sidebar.classList.add("none");
-    footer.classList.add("none");
-  }
-});
 </script>
 <style >
 .none {
@@ -121,9 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 .form-wrapper {
-   
+
     margin: 0px 10px;
- 
+
 }
 
 .form_column{

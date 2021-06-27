@@ -43,7 +43,7 @@ const routes = [
     },
 
     {
-        path: '/showroom/backend/home',
+        path: '/showroom/home',
         component: () => import(/* webpackChunkName: "manager_dashboard" */'./components/manager/Dashboard'),
         name: 'manager_dashboard',
         meta: {
@@ -154,6 +154,29 @@ const routes = [
             title: 'showroom sale Info'
         }
     },
+
+    {
+        path: '/showroom/whole-sale',
+        component: () => import(/* webpackChunkName: "showroom_whole_sale" */'./components/manager/sale/wholesale.vue'),
+        name: 'showroom_whole_sale',
+         meta: {
+            authManager: true,
+            title: 'showroom whole sale Info'
+        }
+    },
+
+
+      {
+        path: '/showroom/retail-sale',
+        component: () => import(/* webpackChunkName: "showroom_retail_sale" */'./components/manager/sale/retailsale.vue'),
+        name: 'showroom_retail_sale',
+         meta: {
+            authManager: true,
+            title: 'showroom whole sale Info'
+        }
+      },
+
+
 
     {
         path: '/showroom/sale/view/:id',
@@ -1565,20 +1588,6 @@ const routes = [
         meta: {
             requiresAuthAdmin: true
         }
-    },
-
-
-
-    {
-        path: '/public/user/new/set/password',
-        component: () => import(/* webpackChunkName: "user_password_reset" */'./components/public/user/SetNewPassword'),
-        name: 'user_new_password_set',
-        meta: {
-            title: 'set new password ',
-            requiresAuthUser: true,
-
-        }
-
     },
 
 

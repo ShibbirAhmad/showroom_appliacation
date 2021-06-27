@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\session;
 use App\Models\ShowroomManager;
 use App\Models\ShowroomSale ;
@@ -58,7 +59,13 @@ class HomeController extends Controller
       }
 
 
-
+      public  function generalSetting()
+      {
+            $general_settig=GeneralSetting::latest()->first();
+            return response()->json([
+                  'general_setting' => $general_settig
+            ]);
+      }
 
 
 }

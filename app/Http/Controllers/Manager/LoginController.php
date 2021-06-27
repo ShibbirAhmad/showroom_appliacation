@@ -8,7 +8,7 @@ use App\Models\ShowroomManager;
 use Illuminate\Support\Facades\Auth ;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash ;
-use Illuminate\support\Facades\session;
+use Illuminate\Support\Facades\Session;
 
 
 class LoginController extends Controller
@@ -39,6 +39,22 @@ class LoginController extends Controller
                   'message' => 'Sorry :) in-valid login information'
               ]);
            }
+    }
+
+
+
+    public function admin_to_showroom_login(Request $request){
+
+         $manager = ShowroomManager::find($request->id);
+
+          if ($manager) {
+              session()->put('manager',$manager);
+              return response()->json([
+                   'status' => 'SUCCESS',
+                   'manager'   => Auth::guard('manager')->user(),
+                   'manager_token'  => Hash::make($request->password),
+              ]);
+          }
     }
 
 
@@ -197,6 +213,8 @@ class LoginController extends Controller
         }
 
     }
+
+
 
 
 

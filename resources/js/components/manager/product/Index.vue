@@ -3,8 +3,7 @@
     <navbar></navbar>
     <div class="content-wrapper">
       <section class="content-header">
-        <h1>
-        </h1>
+       <br/>
         <ol class="breadcrumb">
           <li>
             <a href="#"> <i class="fa fa-dashboard"></i>Dashboard </a>
@@ -15,7 +14,7 @@
       <section class="content">
         <div class="container">
           <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-11">
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="row">

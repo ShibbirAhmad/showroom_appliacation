@@ -24,7 +24,7 @@ class SliderController extends Controller
     }
 
     public  function getEditSlider($id){
-            
+
              $slider = Slider::find($id);
              if ($slider) {
                  return response()->json([
@@ -83,23 +83,23 @@ class SliderController extends Controller
 
            $slider = Slider::find($id);
            $slider->url=$request->url ;
-        if ($request->hasFile('image')) 
+        if ($request->hasFile('image')){ 
                if (file_exists('storage/'.$slider->image)) {
                    unlink('storage/'.$slider->image);
                }
                 $path = $request->file('image')->store('images/slider', 'public');
                 $slider->image=$path ;
-               
+
            }
            if($slider->save()){
-                   
+
             return response()->json([
                 'status' => 'SUCCESS',
                 'message' => 'slider updated successfully',
             ]);
-              
+
         }
-         
+
     }
 
 
@@ -183,7 +183,7 @@ class SliderController extends Controller
 
 
 
-    //function for display category slider 
+    //function for display category slider
     public function category_slider_index(){
 
         $sliders = Category_slider::orderBy('id', 'DESC')->with(['category','sub_category','sub_sub_category'])->paginate(10);
@@ -218,7 +218,7 @@ class SliderController extends Controller
                         'status' => 'SUCCESS',
                         'message' => 'slider add successfully'
                     ]);
-                }             
+                }
     }
 
 
@@ -238,7 +238,7 @@ class SliderController extends Controller
 
     public function update_category_slider(Request $request, $id){
 
-         
+
 
            // return $request->all();
             $slider = Category_slider::find($id);
@@ -252,23 +252,23 @@ class SliderController extends Controller
                 }
                 $path = $request->file('image')->store('images/category_slider', 'public');
                 $slider->image=$path ;
-                
+
             }
             if($slider->save()){
-                    
+
                 return response()->json([
                     'status' => 'SUCCESS',
                     'message' => 'slider updated successfully',
                 ]);
-                
+
             }
-      
+
     }
 
-    
+
 
     public function active_category_slider($id){
-           
+
         $slider = Category_slider::find($id);
         if ($slider) {
             $slider->status = 1;
@@ -279,7 +279,7 @@ class SliderController extends Controller
                 ]);
             }
         }
-             
+
     }
 
 

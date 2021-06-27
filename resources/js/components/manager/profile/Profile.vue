@@ -135,7 +135,7 @@ export default {
         address: "",
         image: "",
       }),
-      base_url: this.$store.state.image_base_link,
+      base_url: this.$store.state.image_base_url,
       loading: true,
       errors: [],
     };

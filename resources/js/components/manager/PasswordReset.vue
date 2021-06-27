@@ -1,7 +1,7 @@
 <template>
   <div class="login-box" v-if="!isLoading">
     <div class="login-logo">
-      <a href="#"> <b>showroom</b> </a>
+      <a href="#"> <b></b> </a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

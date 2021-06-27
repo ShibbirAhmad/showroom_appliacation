@@ -8,6 +8,7 @@ Route::post('api/manager/register','Manager\LoginController@register_manager')->
 Route::post('api/manager/password/reset/send/code','Manager\LoginController@send_reset_code');
 Route::post('api/manager/verify/reset/code/{phone}','Manager\LoginController@manager_reset_code_verified');
 Route::post('api/manager/new/password/set/{phone}','Manager\LoginController@manager_set_new_password');
+Route::post('api/admin/to/showroom/login','Manager\LoginController@admin_to_showroom_login');
 
 
 Route::group([
@@ -21,6 +22,8 @@ Route::group([
         Route::get('api/showroom/credit/edit/{id}','AccountController@creditItem');
         Route::get('api/showroom/credit/delte/{id}','AccountController@creditDelete');
         Route::post('api/showroom/credit/update/{id}','AccountController@creditUpdate');
+        Route::get('api/showroom/credit/due','AccountController@getCustomerDue');
+        Route::get('api/showroom/due/to/paid/{id}','AccountController@duePaid');
 
         Route::get('api/showroom/debits','AccountController@debits');
         Route::post('api/showroom/debit/add','AccountController@debitStore');
@@ -52,12 +55,16 @@ Route::group([
         Route::get('api/search/customer/{mobile_no}','SaleController@searchCustomer');
         Route::post('api/showroom/sale/add','SaleController@storeSale');
         Route::get('api/showroom/sales/list','SaleController@sales');
+        Route::get('api/showroom/retailsales/list','SaleController@retailSales');
+        Route::get('api/showroom/wholesales/list','SaleController@wholeSales');
         Route::get('api/sale/details/{id}','SaleController@saleDetails');
         Route::get('api/manager/order/view/{id}','SaleController@manager_order_details');
         Route::get('api/showroom/sale/invoice/print/{id}','SaleController@invoicePrint');
+        Route::get('api/invoice/small/print/{id}','SaleController@invoicePrintSmall');
 
         Route::get('api/manager/logout','LoginController@logout') ;
         //manager profile route
+        Route::get('api/get/general/setting','HomeController@generalSetting') ;
         Route::get('api/get/manager','HomeController@get_manager') ;
         Route::post('api/manager/info/update','HomeController@manager_update') ;
         Route::post('api/manager/password/update','LoginController@manager_password_update') ;

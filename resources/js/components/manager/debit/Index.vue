@@ -9,7 +9,7 @@
           ></router-link>
             <router-link :to="{ name: 'showroom_credit' }" class="btn btn-info"
             >Credit</router-link>
-             <button  @click="exportDebit" class="btn btn-success"> <i class="fa fa-download"></i> Exprot Debit</button>
+
         </h1>
         <ol class="breadcrumb">
           <li>
@@ -118,12 +118,7 @@
                             ><i class="fa fa-edit"></i
                           ></router-link>
 
-                          <a
-                            v-if="current_date == debit.date"
-                            class="btn btn-sm btn-danger"
-                            @click="trash(debit.id, index)"
-                            ><i class="fa fa-trash"></i
-                          ></a>
+
                         </td>
                       </tr>
                     </tbody>
@@ -212,45 +207,6 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-    },
-    trash(debitId, index) {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't delete this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes!",
-      }).then((result) => {
-        if (result.value) {
-          axios
-            .get("/api/showroom/debit/delete/"+debitId)
-            .then((resp) => {
-              console.log(resp);
-              if (resp.data.status == "SUCCESS") {
-                this.debits.data.splice(index, 1);
-                this.$toasted.show(resp.data.message, {
-                  position: "top-center",
-                  type: "success",
-                  duration: 200,
-                });
-              } else {
-                this.$toasted.show("some thing want to wrong", {
-                  position: "top-center",
-                  type: "error",
-                  duration: 4000,
-                });
-              }
-            })
-        } else {
-          this.$toasted.show("OK ! no action here", {
-            position: "top-center",
-            type: "info",
-            duration: 3000,
-          });
-        }
-      });
     },
     searchCredit() {
       if (this.search.length >= 2) {
