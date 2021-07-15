@@ -4,21 +4,14 @@ namespace App\Http\Controllers\Manager;
 
 use App\Models\Product;
 use App\Models\ProductAttribute;
-use App\Models\ProductBarcode;
-use App\Models\ProductImage;
 use App\Models\ProductVariant;
-use App\Models\Variant;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
-use App\Models\Purchaseitem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Validation\Rule;
 use Picqer;
 use Barryvdh\DomPDF\Facade as PDF;
-use App\Models\Order;
 use App\Models\ReturnShowroomProduct;
 use App\Models\ShowroomProduct;
 
@@ -88,33 +81,47 @@ class ProductController extends Controller
     }
 
 
+     public function putBackTransactinList(){
 
-      public function putBackProduct($id,$put_back_item){
+            $showroom_id =session()->get('manager')['showroom_id'];
+            $transactions = ReturnShowroomProduct::where('showroom_id',$showroom_id)->orderBy('id','desc')->with('product')->paginate(10);
+            return response()->json([
+                'status' => 'OK' ,
+                'transactions' => $transactions ,
+            ]);
+     }
 
-             $product=ShowroomProduct::where('product_id',$id)->first();
-             $r_pending_qty=ReturnShowroomProduct::where('product_id',$id)->where('status',0)->sum('quantity');
 
-             if ($r_pending_qty > 0) {
+    public function putBackProduct($id,$put_back_item){
+
+            $showroom_id =session()->get('manager')['showroom_id'];
+            $r_pending_qty=ReturnShowroomProduct::where('showroom_id',$showroom_id)->where('product_id',$id)->where('status',0)->count();
+             if ($r_pending_qty) {
                  return response()->json([
                      'status' => 'previous_pending',
-                     'message' => "you cant't pick back now. Because, previous pick back is pending",
+                     'message' => "you cant't put back now. Because, previous put back is pending",
                  ]);
              }else{
                  $retun_s_p = new ReturnShowroomProduct();
-                 $retun_s_p->showroom_id= session()->get('manager')['showroom_id'];
-                 $retun_s_p->product_id= $product->id;
+                 $retun_s_p->showroom_id= $showroom_id ;
+                 $retun_s_p->product_id= $id;
                  $retun_s_p->quantity= $put_back_item;
                  $retun_s_p->status = 0 ;
                  $retun_s_p->save();
                  return response()->json([
                       'status' => 'OK',
-                      'message' => 'successfully, pick backed. wait until approved '
+                      'message' => 'successfully, put backed. wait until approved '
                   ]);
              }
 
 
-
       }
+
+
+
+
+
+
 
 
 

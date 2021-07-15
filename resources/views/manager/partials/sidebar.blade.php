@@ -63,8 +63,12 @@
          <router-link :to="{ name : 'product_transaction'}"> <i class="fa fa-exchange"></i> Products Transaction </router-link>
         </li>
 
+        <li class="treeview">
+         <router-link :to="{ name : 'return_showroom_product'}"> <i class="fa fa-exchange"></i> Products Put Back </router-link>
+        </li>
 
-      
+
+
 
         <li class="treeview">
           <a href="#">

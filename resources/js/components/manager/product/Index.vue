@@ -189,7 +189,7 @@ export default {
                 });
               }
               else if (resp.data.status == "OK") {
-                this.$router.push('return_showroom_product');
+                this.$router.push({ name:'return_showroom_product'});
                 this.$toasted.show(resp.data.message, {
                   position: "top-center",
                   type: "success",

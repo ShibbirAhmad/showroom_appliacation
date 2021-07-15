@@ -40,6 +40,7 @@ Route::group([
         Route::get('api/search/showroom/product/{search}','ProductController@search_products');
         Route::get('api/search/product/with/{code}','ProductController@searchWithCode');
         Route::get('api/put/back/showroom/product/head/office/{id}/{put_back_item}','ProductController@putBackProduct');
+        Route::get('api/product/put/back/list','ProductController@putBackTransactinList');
 
         // route for dashboard data
          Route::get('api/get/dashboard/data','DashboardController@dashboardData');

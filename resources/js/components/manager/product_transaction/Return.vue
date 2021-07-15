@@ -7,28 +7,27 @@
           <li>
             <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
           </li>
-          <li class="active">product transfer</li>
+          <li class="active">product put back</li>
         </ol>
       </section>
          <br>
       <section class="content">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-11 col-md-11">
+            <div class="col-lg-8 col-md-8 col-lg-offset-1">
               <div class="box box-primary">
                 <div class="box-header with-border text-center">
-                    <h3 class="box-title">Product Trasformatin Tables</h3>
+                    <h3 class="box-title">Product Put Back Tables</h3>
                 </div>
                 <div class="box-body">
                   <table class="table table-bordered table-hover table-striped text-center ">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Invoice</th>
-                        <th scope="col">Total Amount </th>
+                        <th scope="col">Product </th>
+                        <th scope="col">Quantity </th>
                         <th scope="col">Status</th>
-                        <th scope="col">Comment</th>
-                        <th scope="col">Details</th>
+
                       </tr>
                     </thead>
                     <tbody>
@@ -41,23 +40,13 @@
                         v-else
                       >
                         <td scope="row">{{ index + 1 }}</td>
-                        <td>{{ transaction.invoice_no }}</td>
-                        <td> &#2547; {{ transaction.total }} </td>
+                        <td>{{ transaction.product.name  }} - {{ transaction.product.product_code  }} </td>
+                        <td> {{ transaction.quantity }} </td>
                         <td>
                           <span v-if="transaction.status==0" class="badge badge-warning"> Pending </span>
-                          <span v-else class="badge badge-success"> Recieved </span>
+                          <span v-else class="badge badge-success"> Approved </span>
                         </td>
-                        <td>{{ transaction.comment}}</td>
-                        <td>
 
-                           <router-link class="btn btn-sm btn-success"
-                            :to="{
-                              name: 'product_transaction_details',
-                              params: { id: transaction.id },
-                            }"
-                          > <i class="fa fa-eye"></i> </router-link>
-
-                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -91,7 +80,7 @@ export default {
   },
   methods: {
     transactionsList(page =1) {
-      axios.get("/api/product/transaction/list?page="+page)
+      axios.get("/api/product/put/back/list?page="+page)
       .then((resp) => {
         console.log(resp);
         if (resp.data.status == "OK") {
