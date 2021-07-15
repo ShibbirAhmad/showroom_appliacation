@@ -173,5 +173,15 @@
     "/chunks/vendors~product~showroom_products.bundle.js": "/chunks/vendors~product~showroom_products.bundle.js",
     "/chunks/viewOrder.bundle.js": "/chunks/viewOrder.bundle.js",
     "/chunks/viewSale.bundle.js": "/chunks/viewSale.bundle.js",
-    "/chunks/wholesaleOrder.bundle.js": "/chunks/wholesaleOrder.bundle.js"
+    "/chunks/wholesaleOrder.bundle.js": "/chunks/wholesaleOrder.bundle.js",
+    "/chunks/vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~4247625b.bundle.js": "/chunks/vendors~AccountReport~AddSaleExchange~DeliveredOrder~OrderProfite~ReturnOrder~SaleProfite~about_and_~4247625b.bundle.js",
+    "/chunks/vendors~product.bundle.js": "/chunks/vendors~product.bundle.js",
+    "/chunks/manager_code_verified~new_password_manager.bundle.js": "/chunks/manager_code_verified~new_password_manager.bundle.js",
+    "/chunks/vendors~buy_one_get_one~manager_code_verified~manager_login~manager_password_edit~manager_password_r~af3542cd.bundle.js": "/chunks/vendors~buy_one_get_one~manager_code_verified~manager_login~manager_password_edit~manager_password_r~af3542cd.bundle.js",
+    "/chunks/vendors~manager_code_verified~new_password_manager~showroom_sale_add.bundle.js": "/chunks/vendors~manager_code_verified~new_password_manager~showroom_sale_add.bundle.js",
+    "/chunks/vendors~showroom_products.bundle.js": "/chunks/vendors~showroom_products.bundle.js",
+    "/chunks/vendors~buy_one_get_one~manager_code_verified~manager_login~manager_password_edit~manager_password_r~fc8449a7.bundle.js": "/chunks/vendors~buy_one_get_one~manager_code_verified~manager_login~manager_password_edit~manager_password_r~fc8449a7.bundle.js",
+    "/chunks/vendors~manager_code_verified~manager_login~manager_password_edit~manager_password_reset~manager_pro~fd80acea.bundle.js": "/chunks/vendors~manager_code_verified~manager_login~manager_password_edit~manager_password_reset~manager_pro~fd80acea.bundle.js",
+    "/chunks/return_showroom_product.bundle.js": "/chunks/return_showroom_product.bundle.js",
+    "/chunks/vendors~manager_code_verified~manager_login~manager_password_edit~manager_password_reset~manager_pro~d7cb220f.bundle.js": "/chunks/vendors~manager_code_verified~manager_login~manager_password_edit~manager_password_reset~manager_pro~d7cb220f.bundle.js"
 }

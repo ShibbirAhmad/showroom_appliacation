@@ -12,15 +12,12 @@ const state = {
     manager: {},
 
 
-    //store admin
-    admin: {},
-
     user: {},
 
     single_product: {},
 
     image_base_url: '/../public/storage/',
-    image_base_link: 'https://madinafashion.com.bd/public/storage/',
+    image_base_link: 'https://sufilifestyle.com/public/storage/',
 
     product_images: {},
 
@@ -33,18 +30,14 @@ const state = {
 
 }
 const getters = {
-    admin(state) {
-        return state.admin
-    },
+
     manager(state) {
         return state.manager;
     },
     user(state) {
         return state.user;
     },
-    admin(state) {
-        return state.admin;
-    },
+
     single_product(state) {
         return state.single_product;
     },
@@ -104,32 +97,6 @@ const actions = {
             })
     },
 
-    //session check
-    //every time this session check, for admin session running or expired
-    admin(context) {
-        axios
-            .get("/check/session/admin")
-
-            //if session status ruuning
-            .then((resp) => {
-                if (resp.data.status == "RUNNING") {
-                    context.commit('admin', resp.data.admin)
-
-                }
-
-                //if session is expired, admin redirect ot login again
-                if (resp.data.status == "EXPIRED") {
-
-                    localStorage.removeItem("admin_token");
-                    router.push({ name: "adminLogin" });
-                    return;
-                }
-            })
-            //error handaling
-            .catch(() => {
-                router.push({ name: "adminLogin" });
-            });
-    },
 
 
     //method initial for get single product from db
@@ -172,9 +139,7 @@ const actions = {
 
 }
 const mutations = {
-    admin(state, payload) {
-        return state.admin = payload
-    },
+
     manager(state, payload) {
         return state.manager = payload;
     },
@@ -184,10 +149,7 @@ const mutations = {
         state.cartContent.total = cart.cart_total;
         state.cartContent.itemCount = cart.item_count;
     },
-    user(state, payload) {
-        return state.user = payload;
 
-    },
 
     single_product(state, payload) {
         return state.single_product = payload;

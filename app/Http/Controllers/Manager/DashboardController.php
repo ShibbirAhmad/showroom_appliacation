@@ -27,7 +27,7 @@ class DashboardController extends Controller
               $s_products=ShowroomProduct::where('showroom_id',$showroom_id)->where('stock','>',0)->get();
               $total_s_amount=0;
               foreach ($s_products as  $porduct) {
-                    $total_s_amount += $porduct->stock * $porduct->purchase_price ;
+                    $total_s_amount += $porduct->stock * $porduct->sale_price ;
               }
               $products['product_stock_amount']=$total_s_amount;
               //sale analysis

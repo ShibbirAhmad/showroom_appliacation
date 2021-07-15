@@ -52,8 +52,6 @@ Vue.component('frontend-header', require('./components/public/Header.vue').defau
 Vue.component('frontend-footer', require('./components/public/Footer.vue').default);
 Vue.component('nav-item', require('./components/public/Navitem.vue').default);
 
-
-Vue.component('admin-main', require('./components/admin/Main.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
 
 

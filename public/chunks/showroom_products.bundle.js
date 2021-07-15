@@ -289,6 +289,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -307,8 +309,61 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    productList: function productList() {
+    putBackProduct: function putBackProduct($product_id, $stock_qty) {
       var _this = this;
+
+      Swal.fire({
+        title: '<h4> How many item do you want to put back ? </h5>',
+        input: 'text',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Confirm',
+        showLoaderOnConfirm: true
+      }).then(function (result) {
+        if (result.value > $stock_qty) {
+          alert("put back item is greater than your product stock quantity");
+          return;
+        }
+
+        if (result.value <= $stock_qty) {
+          axios.get("/api/put/back/showroom/product/head/office/" + $product_id + '/' + result.value).then(function (resp) {
+            console.log(resp);
+
+            if (resp.data.status == "previous_pending") {
+              _this.$toasted.show(resp.data.message, {
+                position: "top-center",
+                type: "error",
+                duration: 8000
+              });
+            } else if (resp.data.status == "OK") {
+              _this.$router.push('return_showroom_product');
+
+              _this.$toasted.show(resp.data.message, {
+                position: "top-center",
+                type: "success",
+                duration: 4000
+              });
+            } else {
+              _this.$toasted.show("some thing went to wrong", {
+                position: "top-center",
+                type: "error",
+                duration: 4000
+              });
+            }
+          });
+        } else {
+          _this.$toasted.show("OK ! no action here", {
+            position: "top-center",
+            type: "info",
+            duration: 3000
+          });
+        }
+      });
+    },
+    productList: function productList() {
+      var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.$Progress.start();
@@ -319,18 +374,18 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (resp) {
         console.log(resp);
-        _this.products = resp.data.products;
-        _this.loading = false;
+        _this2.products = resp.data.products;
+        _this2.loading = false;
 
-        _this.$Progress.finish();
+        _this2.$Progress.finish();
       })["catch"](function (error) {
         console.log(error);
 
-        _this.$Progress.finish();
+        _this2.$Progress.finish();
       });
     },
     productSearch: function productSearch() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.search.length > 3) {
         this.$Progress.start();
@@ -339,10 +394,10 @@ __webpack_require__.r(__webpack_exports__);
           console.log(resp);
 
           if (resp.data.status == "SUCCESS") {
-            _this2.products = resp.data.products;
-            _this2.loading = false;
+            _this3.products = resp.data.products;
+            _this3.loading = false;
 
-            _this2.$Progress.finish();
+            _this3.$Progress.finish();
           }
         })["catch"](function (error) {
           console.log(error);
@@ -654,7 +709,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-lg-4" }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-4" }, [
+                      _c("div", { staticClass: "col-lg-6" }, [
                         _c("input", {
                           directives: [
                             {
@@ -665,7 +720,9 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { placeholder: "search with product code " },
+                          attrs: {
+                            placeholder: "search with product code or name"
+                          },
                           domProps: { value: _vm.search },
                           on: {
                             keyup: function($event) {
@@ -679,9 +736,7 @@ var render = function() {
                             }
                           }
                         })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-2" })
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
@@ -690,7 +745,7 @@ var render = function() {
                       "table",
                       {
                         staticClass:
-                          "table table-striped table-bordered table-hover"
+                          "table table-striped table-bordered text-center table-hover"
                       },
                       [
                         _vm._m(1),
@@ -730,7 +785,11 @@ var render = function() {
                                         _vm._v(" "),
                                         _c(
                                           "span",
-                                          { staticClass: "barcode-number" },
+                                          {
+                                            staticStyle: {
+                                              "margin-left": "-10%"
+                                            }
+                                          },
                                           [
                                             _vm._v(
                                               _vm._s(
@@ -742,10 +801,6 @@ var render = function() {
                                         )
                                       ]
                                     ),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(product.product_code))
-                                    ]),
                                     _vm._v(" "),
                                     _c("td", [
                                       product.product_image.length > 0
@@ -798,6 +853,27 @@ var render = function() {
                                               )
                                             ]
                                           )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      product.s_stock > 0
+                                        ? _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "btn btn-sm btn-danger",
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.putBackProduct(
+                                                    product.id,
+                                                    product.s_stock
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [_vm._v(" Put Back ")]
+                                          )
+                                        : _vm._e()
                                     ])
                                   ])
                                 })
@@ -883,25 +959,25 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _c("th", { attrs: { width: "5%" } }, [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _c("th", { attrs: { width: "25%" } }, [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Barcode")]),
+        _c("th", { attrs: { width: "10%" } }, [_vm._v("Barcode")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("P_code")]),
+        _c("th", { attrs: { width: "15%" } }, [_vm._v("Image")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Image")]),
-        _vm._v(" "),
-        _c("th", { attrs: { width: "5%", scope: "col" } }, [
+        _c("th", { attrs: { width: "10%", scope: "col" } }, [
           _vm._v("Purchase price")
         ]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "7%", scope: "col" } }, [
+        _c("th", { attrs: { width: "10%", scope: "col" } }, [
           _vm._v("Sale price")
         ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Stock")])
+        _c("th", { attrs: { width: "10%" } }, [_vm._v("Stock")]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "15%" } }, [_vm._v("Action")])
       ])
     ])
   }

@@ -81,33 +81,6 @@ $admin = session()->get('admin');
             @endif
 
 
-
-            {{-- <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bullhorn"></i> <span>Sale Campaign </span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <router-link :to="{ name: 'flash_deals'}"><i class="fa fa-eye"></i> Flash Deals </router-link>
-                    </li>
-
-                    <li>
-                        <router-link :to="{ name: 'occasional_campaign'}"><i class="fa fa-eye"></i> Occation Campaign </router-link>
-                    </li>
-
-                    <li>
-                        <router-link :to="{ name: 'seasonal_campaign'}"><i class="fa fa-eye"></i> Seasonal Campaign </router-link>
-                    </li>
-
-                    <li>
-                        <router-link :to="{ name: 'buy_one_get_one'}"><i class="fa fa-fire"></i>buy-one get-one offer </router-link>
-                    </li>
-
-                </ul>
-            </li> --}}
             @if ($admin->can('manage officesale'))
                 <li class="treeview">
                     <a href="#">

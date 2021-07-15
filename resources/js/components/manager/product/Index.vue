@@ -31,32 +31,31 @@
                         <option value="200">200</option>
                       </select>
                     </div>
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-4">
+                     <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-6">
                       <input
                         class="form-control"
-                        placeholder="search with product code "
+                        placeholder="search with product code or name"
                         v-model="search"
                         @keyup="productSearch()"
                       />
                     </div>
-                    <div class="col-lg-2">
-                    </div>
+
                   </div>
                 </div>
                 <div class="box-body">
-                  <table class="table table-striped table-bordered table-hover">
+                  <table class="table table-striped table-bordered text-center table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Barcode</th>
-                        <th scope="col">P_code</th>
-                        <th scope="col">Image</th>
-                        <th width="5%" scope="col">Purchase price</th>
-                        <th width="7%" scope="col">Sale price</th>
-                        <th scope="col">Stock</th>
-
+                        <th width="5%">#</th>
+                        <th width="25%">Name</th>
+                        <th width="10%">Barcode</th>
+                        <th width="15%">Image</th>
+                        <th width="10%" scope="col">Purchase price</th>
+                        <th width="10%" scope="col">Sale price</th>
+                        <th width="10%">Stock</th>
+                        <th width="15%">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -71,16 +70,15 @@
                       >
                         <td scope="row">{{ index + 1 }}</td>
                         <td>{{ product.name }}</td>
-                        <td style="width: 100px">
+                        <td style="width:100px;">
                           <p
                             v-html="product.product_barcode.barcode"
                             class="barcode"
                           ></p>
-                          <span class="barcode-number">{{
+                          <span style="margin-left:-10%" >{{
                             product.product_barcode.barcode_number
                           }}</span>
                         </td>
-                        <td>{{ product.product_code }}</td>
                         <td>
                           <img
                           v-if="product.product_image.length>0"
@@ -102,6 +100,10 @@
                           <span v-else class="badge badge-success"> {{
                             product.s_stock
                           }}</span>
+                        </td>
+
+                        <td>
+                            <button @click="putBackProduct(product.id,product.s_stock)" class="btn btn-sm btn-danger" v-if="product.s_stock > 0" > Put Back </button>
                         </td>
 
                       </tr>
@@ -159,6 +161,58 @@ export default {
     };
   },
   methods: {
+    putBackProduct($product_id,$stock_qty){
+        Swal.fire({
+        title: '<h4> How many item do you want to put back ? </h5>',
+        input: 'text',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Confirm',
+        showLoaderOnConfirm: true,
+      }).then((result) => {
+        if (result.value > $stock_qty) {
+           alert("put back item is greater than your product stock quantity");
+           return ;
+        }
+        if (result.value <= $stock_qty) {
+          axios
+            .get("/api/put/back/showroom/product/head/office/"+$product_id + '/'+ result.value)
+            .then((resp) => {
+               console.log(resp)
+               if (resp.data.status == "previous_pending") {
+                this.$toasted.show(resp.data.message, {
+                  position: "top-center",
+                  type: "error",
+                  duration: 8000,
+                });
+              }
+              else if (resp.data.status == "OK") {
+                this.$router.push('return_showroom_product');
+                this.$toasted.show(resp.data.message, {
+                  position: "top-center",
+                  type: "success",
+                  duration: 4000,
+                });
+              } else {
+                this.$toasted.show("some thing went to wrong", {
+                  position: "top-center",
+                  type: "error",
+                  duration: 4000,
+                });
+              }
+            })
+        } else {
+          this.$toasted.show("OK ! no action here", {
+            position: "top-center",
+            type: "info",
+            duration: 3000,
+          });
+        }
+      });
+
+    },
     productList(page = 1) {
       this.$Progress.start();
       axios

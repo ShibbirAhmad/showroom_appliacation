@@ -62,7 +62,7 @@ class SaleController extends Controller
     }
 
 
-       public function wholeSales(Request $request ){
+    public function wholeSales(Request $request ){
            $item=$request->item?? 20;
            $showroom_id=session()->get('manager')['showroom_id'];
            $sales=ShowroomSale::where('showroom_id',$showroom_id)->where('sale_type',2)->orderBy('id','desc')->paginate($item);
@@ -103,6 +103,7 @@ class SaleController extends Controller
         DB::transaction(function() use($request) {
 
             $showroom_id=session()->get('manager')['showroom_id'];
+            $showroom=Showroom::findOrFail($showroom_id);
             $max_id=showroomSale::max('id') ?? 0  ;
             $invoice_no=$max_id + 433 ;
 
@@ -136,7 +137,7 @@ class SaleController extends Controller
             $sale->due_amount=$request->due ?? 0 ;
             $sale->total=$request->total ;
             $sale->save();
-
+            ShowroomSale::sendMessageToCustomer($showroom->name,$customer,$sale);
             //save the sale item
            foreach ($request->products as $item) {
             //manage product stock
