@@ -47,7 +47,7 @@
                           <span v-if="transaction.status==0" class="badge badge-warning"> Pending </span>
                           <span v-else class="badge badge-success"> Recieved </span>
                         </td>
-                        <td>{{ transaction.comment}}</td>
+                        <td>{{ transaction.comment ? transaction.comment : 'no comment' }}</td>
                         <td>
 
                            <router-link class="btn btn-sm btn-success"

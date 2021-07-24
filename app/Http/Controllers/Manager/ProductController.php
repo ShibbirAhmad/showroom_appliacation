@@ -110,7 +110,7 @@ class ProductController extends Controller
                  $retun_s_p->save();
                  return response()->json([
                       'status' => 'OK',
-                      'message' => 'successfully, put backed. wait until approved '
+                      'message' => 'successfully, returned '.$put_back_item .' item. wait until approved '
                   ]);
              }
 

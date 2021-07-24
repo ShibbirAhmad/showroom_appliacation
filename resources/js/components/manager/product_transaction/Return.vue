@@ -51,6 +51,28 @@
                     </tbody>
                   </table>
                 </div>
+                 <div class="box-footer">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <pagination
+                        :data="transactions"
+                        @pagination-change-page="transactionsList"
+                        :limit="3"
+                      ></pagination>
+                    </div>
+                    <div
+                      class="col-lg-6 mt-1"
+                      style="margin-top: 25px; text-align: right"
+                    >
+                      <p>
+                        Showing
+                        <strong>{{ transactions.from }}</strong> to
+                        <strong>{{ transactions.to }}</strong> of total
+                        <strong>{{ transactions.total }}</strong> entries
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
